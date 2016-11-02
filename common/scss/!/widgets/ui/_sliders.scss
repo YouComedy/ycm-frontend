@@ -1,0 +1,60 @@
+/* SLIDER */
+
+/* Simple slider */
+.slider-inner {position: relative; overflow: hidden; /*overflow-x: scroll;*/}
+.slider-inner > ul {list-style: none !important; margin: 0; padding: 0;}
+
+/* animated slider */
+.slider.fx .slider-inner > ul {
+	-webkit-transition: margin-left 0.5s ease-out;
+	-moz-transition: margin-left 0.5s ease-out;
+    -ms-transition: margin-left 0.5s ease-out;
+    -o-transition: margin-left 0.5s ease-out;
+    -ms-transition: margin-left 0.5s ease-out;
+	transition: margin-left 0.5s ease-out;
+}
+
+.slider.fx {
+	-webkit-transition: height 0.5s ease-out;
+	-moz-transition: height 0.5s ease-out;
+    -ms-transition: height 0.5s ease-out;
+    -o-transition: height 0.5s ease-out;
+    -ms-transition: height 0.5s ease-out;
+	transition: height 0.5s ease-out;
+}
+
+.slider-wrapper {width: 100%;}
+.slider-item {position: relative; float:left;  list-style: none; margin: 0; visibility: hidden;}
+.slider-item.active {visibility:visible}
+
+/* SLIDER CUSTOM */
+.slider-upload {width: 100%; /*min-height: 270px;*/ overflow: hidden}
+.slider-inner-upload {width: 100%; /*min-height: 230px*/}
+.slider-wrapper-upload {width: 200%; /*min-height: 230px*/}
+.slider-item-upload {width: 50%; /*min-height: 230px;*/ height: auto}
+
+.slider_invite {
+    margin: auto;
+	min-height: 100px;
+}
+.slider_invite .slider-inner > ul {
+    text-align: center;
+    width: 200%;
+}
+.slider_invite .slider-inner > ul > li {
+    width: 50%;
+}
+.slider_invite .input_box__input {
+    height: 30px;
+    text-align: center;
+    width: 250px;
+}
+.slider_invite .follow-btn {
+    height: 40px;
+    padding: 0;
+    width: 264px;
+}
+.slider_invite .slider-item > p > a {
+    color: #1EB4E8;
+    text-decoration: underline;
+}

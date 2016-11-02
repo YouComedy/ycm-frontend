@@ -1,0 +1,27 @@
+
+
+.overlay {
+	padding: 0;
+	margin: 0;
+	z-index: 1000;
+	min-width: 100%;
+	width: 100%;
+	min-height: 100%;
+	height: 100%;
+	overflow: hidden;
+	position: fixed;
+	top: 0; left: 0;
+	display: none;
+	z-index: 1040;
+	background: black;
+
+	body.with_popup &, body.with_dialog & {
+		opacity: 0.7;
+		display: block;
+		@include animation(fadeInFromNone);
+	}
+	
+	// &._show {
+	// 	@include opacity(0.7);
+	// }
+}

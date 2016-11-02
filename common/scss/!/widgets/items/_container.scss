@@ -1,0 +1,292 @@
+@import "compass";
+
+.item__container {
+	background: #fff;
+}
+
+.item__content {
+	min-height: 100px;
+	cursor: pointer;
+	position: relative;
+	padding: 0;
+
+	._longpost & {
+		overflow: hidden;
+	}
+}
+
+.item__videoThumb {
+	min-height: 200px;
+}
+
+.item__contentImage {
+	margin: auto;
+	display: block;
+	width: 700px;
+
+	._long & {
+		max-width: 50%;
+	}
+
+	@if $isMobile == 1{
+		width: auto;
+	}
+}
+
+.item__contentText {
+	height: 100px;
+	width: 100%;
+	display: table;
+	margin-bottom: 20px;
+}
+
+.contentText__cell {
+	height: 100%;
+	vertical-align: middle;
+	display: table-cell;
+	font-size: 16px;
+	line-height: 1.5;
+	padding: 0 $item-padding;
+}
+
+.item__desc {
+	$desc-color: rgb(239, 245, 250);
+
+	word-break: break-all;
+	word-break: break-word;
+	word-wrap: break-word;
+	margin-top: 0;
+	position: relative;
+	background: #fff;
+	padding: 10px $item-padding;
+	@include transition-property(background);
+	@include transition-duration(0.3s);
+
+	 ._notouch &._editable:hover ,
+	&.editInPlace-active {
+		cursor: pointer;
+		background: $desc-color;
+
+		 ._notouch .comment-hashtag-link:hover  {
+			text-decoration: underline;
+		}
+	}
+
+	textarea {
+		width: 100%;
+		height: 18px;
+		padding: 0;
+		margin: 0;
+		line-height: 16px;
+		resize: none;
+		position: relative;
+		top: -1px;
+		border: 1px solid desaturate(darken($desc-color, 5%), 25%);
+	}
+
+	&._loading:after {
+		opacity: 0.6;
+		background: url('/common/img/loader.gif') center no-repeat;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		position: absolute;
+		content: '';
+		display: block;
+	}
+
+	@if $isMobile == 1 {
+		margin-top: 0;
+	}
+}
+
+.item__longpost {
+	$longpost-height: 40px;
+
+	height: $longpost-height;
+	line-height: $longpost-height;
+	background-color: rgba(20,20,20,0.3);
+	position: absolute;
+	display: none;
+	left: 0;
+	right: 0;
+	bottom: 0;
+
+	cursor: pointer;
+	text-align: center;
+
+	& > .ycm-icon {
+		line-height: $longpost-height;
+		font-size: 30px;
+		color: #fff;
+	}
+
+	@if $isMobile != 1 {
+		 ._notouch &:hover  {background-color: rgba(20,20,20,0.6);}
+	}
+}
+
+
+
+
+.play-btn-overlay {
+	$button-size: 120px;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	border-radius: 120px;
+	background-color: rgba(0,0,0,0.5);
+	width: $button-size;
+	height: $button-size;
+	position: absolute;
+	display: none;
+
+	.b-item-big_type_gif &,
+	.b-item-big_type_vid &,
+	.b-grid-item_type_vid &,
+	.b-grid-item_type_gif & {
+		display:block;
+	}
+
+	&:after {
+		font-family: 'ycm';
+		font-style: normal;
+		display: block;
+		font-size: 30px;
+		content:'\f184';
+		color: #fff;
+		height: $button-size;
+		line-height: $button-size;
+		width: 20px;
+		margin: auto;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+
+		.b-grid-item_type_gif &,
+		.b-item-big_type_gif & {
+			width: 48px;
+			content: 'GIF';
+			font-family: arial, sans-serif;
+		}
+	}
+
+
+	@if $isMobile != 1 {
+		 ._notouch &:hover  {
+			background-color: rgba($ycm-blue, 0.8);
+			box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+		}
+	}
+
+
+	&._disabled {
+
+		@if $isMobile != 1 {
+			 ._notouch &:hover  {
+				background-color: rgba(0,0,0,0.8);
+				box-shadow: none;
+			}
+		}
+
+		@if $isMobile == 1 {
+			&:after {
+				width: 30px !important;
+				content: '\e02e' !important;
+			}
+		}
+	}
+
+}
+
+.item__gifThumb img {
+	//min-width: 50%;
+	display: block;
+	margin: 0 auto;
+}
+
+.b-item-big__player {
+	display: none;
+
+	img {
+		width: 698px;
+		height: 419px;
+	}
+
+	iframe {
+		margin: auto;
+		width: 698px;
+		height: 419px;
+		display: block;
+	}
+}
+
+.b-item-big_type_gif {
+	video {
+		background: #000;
+		display: block;
+		margin: auto;
+	}
+
+	.b-item-big__player {
+		video,
+		img {
+			width: 698px;
+			height: auto;
+		}
+	}
+
+	&._long {
+		.b-item-big__player {
+			video,
+			img {
+				max-width: 50%;
+			}
+		}
+	}
+}
+
+.item__videoThumb {
+	margin: 0 10px;
+
+	.item__contentImage {
+		width: auto;
+		height: 419px;
+	}
+
+	._vine & {
+		background: #000;
+	}
+}
+
+.b-item-big_type_vid_active {
+	.item__contentImage,
+	.item__content .play-btn-overlay {
+		display: none
+	}
+	.b-item-big__player {
+		display: block
+	}
+}
+
+.item__tags {
+	margin: 0 10px;
+	position: relative;
+	top: -10px;
+}
+
+.item__tag {
+	background-color: #ededed;
+	border: 1px solid darken(#ededed, 5);
+	font-size: 12px;
+	line-height: 22px;
+	padding: 0 5px;
+	border-radius: 3px;
+	margin: 5px;
+	color: darken(#ededed, 40);
+	display: inline-block;
+}

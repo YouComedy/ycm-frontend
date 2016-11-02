@@ -1,0 +1,194 @@
+@import "compass";
+
+.auth-icon {
+    display: block;
+    width: 32px;
+    height: 32px;
+    background: url('/common/img/auth.png') no-repeat;
+}
+
+.auth-icon.google,
+.auth-icon.google_oauth { background-position: 0 -34px;  }
+.auth-icon.twitter		{ background-position: 0 -68px;  }
+.auth-icon.yandex		{ background-position: 0 -102px; }
+.auth-icon.vkontakte	{ background-position: 0 -136px; }
+.auth-icon.facebook		{ background-position: 0 -170px; }
+.auth-icon.mailru		{ background-position: 0 -204px; }
+
+ ._notouch a:hover  .auth-icon i,
+ ._notouch a.auth-icon:hover   i,
+a:focus .auth-icon i,
+a.auth-icon:focus  i {
+    display: block;
+    width: 32px;
+    height: 32px;
+    background: url('/common/img/auth.png') 0 0 no-repeat;
+    text-decoration: none;
+}
+
+ul.auth-services {
+    margin: 0 0 1em;
+    list-style: none;
+}
+
+ul.auth-services li {
+    float: left;
+    margin: 0 20px 0 20px;
+}
+
+ul.auth-services li a {
+    display: block;
+    width: 58px;
+    text-decoration: none;
+
+    /*padding: 0 0.4em;*/
+}
+
+ul.auth-services li a .auth-icon, ul.auth-services .auth-icon {
+    margin: 0 auto;
+    text-decoration: none;
+
+}
+
+ul.auth-services li a .auth-title {
+    display: block;
+    margin-top: 0.4em;
+    text-align: center;
+    text-decoration: none;
+}
+
+
+.social_profile {display: inline-block;width:700px;margin:5px 0;}
+.social_profile .avatar {width:40px; height:40px;float:left;margin-right:15px}
+.social_profile {
+	.link {float:left;display:inline-block;margin-top:12px;height:16px;width:200px}
+
+	.link a {vertical-align: middle;}
+	.link a.unBind {
+		width:13px;height:13px;
+		display: inline-block;
+		text-align: center;
+	};
+
+	.link img.unBind {
+		width:13px;height:13px;
+	}
+}
+
+.account_item {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url('/common/img/auth_small.png') 0 0 no-repeat;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+.account_item_split {
+    margin: 0 3px;
+}
+
+.account_item i {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background: url('/common/img/auth_small.png') 0 0 no-repeat;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+.account_item.google,
+.account_item.google_oauth { background-position: 0 -17px;  }
+.account_item.twitter		{ background-position: 0 -34px;  }
+.account_item.yandex		{ background-position: 0 -51px; }
+.account_item.vkontakte	{ background-position: 0 -68px; }
+.account_item.facebook		{ background-position: 0 -85px; }
+.account_item.mailru		{ background-position: 0 -102px; }
+
+.account_link {display: inline-block;float:left; height:16px;font-size:12px;}
+
+
+
+// Переделать и перенести в виджет
+/* Auth & registration */
+.auth-link {
+	text-align: center;
+	background-color: #09f;
+	color: #fff;
+	font-weight: normal;
+	font-size : 12px;
+	outline: none;
+	border: none;
+	display: inline-block;
+	padding : 5px;
+	margin-top: 0;
+	border-radius: 5px;
+	text-decoration: none;
+}
+
+.auth-service + .auth-service {
+	margin-left: 15px !important;
+}
+
+ul.auth-services {
+	float: left;
+	left: 50%;
+	list-style: none;
+	position: relative;
+}
+ul.auth-services li.auth-service {
+	margin: 0;
+	float: left;
+	right: 50%;
+	position: relative;
+
+	.stack & {
+		clear: both;
+		margin: 10px 0 !important;
+	}
+}
+ul.auth-services li a.auth-link {
+	width: 220px;
+	height: 40px;
+	line-height: 38px;
+	padding: 0 0 0 20px;
+	font-weight: bold;
+	font-size: 15px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	@include background-image(linear-gradient(#00aae4, #00a7e0, #019dd2));
+	border: 1px solid #0082dd;
+	position: relative;
+	color: #fff;
+}
+.auth-link:before {
+	font-family: Verdana, sans-serif;
+	position: absolute;
+	left: 20px;
+	top: 0px;
+}
+.auth-link.vkontakte:before {
+	content: 'B';
+	font-size: 24px;
+}
+.auth-link.vkontakte:after {
+	content: 'Войти через VK';
+
+	.profile__section & {
+		content: 'Привязать к VK';
+	}
+}
+.auth-link.facebook:before {
+	content: 'f';
+	font-size: 30px;
+}
+.auth-link.facebook:after {
+	content: 'Войти через FB';
+
+	.profile__section & {
+		content: 'Привязать к FB';
+	}
+}
+ul.auth-services li a.auth-link span {
+	display: none;
+}

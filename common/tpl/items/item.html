@@ -1,0 +1,414 @@
+<!-- big.html -->
+
+<script type="text/ycm-template" id='item-big-menu-tpl'>
+	<div class="_textCenter">
+		<a class="button" data-action="complainItem">пожаловаться модератору</a>
+		{{= APP.User.renderIgnoreBtn({type:"User", id: content_user_id, name: content_username, word : "пользователя"}) }}
+	</div>
+
+	{{ if( tags && tags.length ) { }}
+		<div class="_textCenter" style="margin-top: 20px;">
+			Не показывать шутки с тегом
+			<select onchange='(_t=$(this)) && (_v=_t.val());(!_v ? _t.next().hide() :_t.next().replaceWith(APP.User.renderIgnoreBtn({type:"Tag",id:_v,name:_v, word:"тег"})))'>
+				<option value="">Выбрать тег</option>
+				{{ each(tags, tag) }}
+					<option value="{{= tag }}">{{= tag }}</option>
+				{{ end }}
+			</select>
+			<a style='display:none'>игнорировать тег</a>
+		</div>
+	{{ end }}
+</script>
+
+
+<script type="text/ycm-template" id="item-big-likes-new-tpl">
+	<div class="item__buttons">
+		<div class="item__button button__rating">
+
+			<a data-title="Нравится" class="item__like item__buttonWrap {{= userVote > 0 && '_active' }}" data-vote='like' data-action="vote" data-param="like" href='#'>
+				<i class="ycm-icon ycm-icon-thumbs-up"></i>
+			</a>
+
+			<span class="item__rating item__likesCount" data-counter="likes" data-likes-counter>{{= rating }}</span>
+
+			<a data-title="Не нравится" class="item__dislike item__buttonWrap {{= userVote < 0 && '_active' }}" data-vote='dislike' data-action="vote" data-param="dislike" href='#'>
+				<i class="ycm-icon ycm-icon-thumbs-down"></i>
+			</a>
+
+		</div>
+
+		{{ if( !removable && !editable ) }}
+			<div class="item__button item__add" data-show-popover="addTo">
+				<a title="Сделать репост" data-title="Сделать репост" class="item__buttonWrap" data-addto='{{= id }}' href='#'>
+					<i class="ycm-icon ycm-icon-retweet"></i>
+				</a>
+			</div>
+		{{ elseif(editable && !via_username) }}
+			<div class="item__button item__edit">
+				<a title="Редактировать шутку"  data-title="Редактировать шутку" class="item__buttonWrap" data-action="editItem" href='#'>
+					<i class="ycm-icon ycm-icon-pencil"></i>
+				</a>
+			</div>
+		{{ end }}
+
+		<div class="item__button">
+			<a data-title="Поделиться шуткой с другом<br>на YouComedy.Me" title="Поделиться шуткой с другом на YouComedy.Me" class="item__buttonWrap" data-action="localShare" href='#' style="line-height:40px">
+				<i class="ycm-icon ycm-icon-users"></i>
+			</a>
+		</div>
+	</div>
+
+	<span class="item__shareWrap">
+		<a title="Email" class="b-share-btn__email" href="{{= mail_url }}">
+			<span class="b-share-icon_email"></span>
+		</a>
+		<span id="{{= _sharePrefix }}ib{{= id }}-share"></span>
+	</span>
+
+	<input data-container='shareUrl' class="item__shareLink _right" type="text" onclick="$(this).select(); return false;" readonly value="{{= share_url }}">
+
+</script>
+
+
+<script type="text/ycm-template" id='item-big-moderate-tpl'>
+	<div class="item__moderbtns">
+		<div>
+			{{ block btns }}
+			<a  class="item__buttonWrap _active" data-action='moderateDemoteItem' title="Бан шутки" href='#'>
+				<i class="ycm-icon ycm-icon-thumbs-down"></i>
+			</a>
+			<a  class="item__buttonWrap _active" data-action='moderateRemoveItem' title="Удалить шутку" href='#'>
+				<i class="ycm-icon ycm-icon-trashcan"></i>
+			</a>
+			<a  class="item__buttonWrap" role="button" data-owner="Popup" data-action="openModeration" data-param="{{= id }}" target="_blank" title="Модерировать шутки" href='/moderator?id={{= id }}'>
+				<i class="ycm-icon ycm-icon-flag"></i>
+			</a>
+			{{ endblock }}
+		</div>
+	</div>
+</script>
+
+
+<script type="text/ycm-template" id="item-big-content-tpl">
+	<div class="item__container">
+		<div class="item__content" data-next='1' >
+			{{ if( type == APP.globals.TYPE_IMG || type == APP.globals.TYPE_VID || type == APP.globals.TYPE_GIF)  }}
+				{{ if( type == APP.globals.TYPE_VID ) }}
+					<a class='play-btn-overlay' data-play='1'></a>
+					<div class="item__videoThumb">
+						<div class='b-item-big__player'></div>
+						<img data-role='content' class="item__contentImage" src='{{= big_image }}' />
+					</div>
+				{{ elseif(APP.globals.TYPE_GIF == type) }}
+					<a class='play-btn-overlay' data-play='1'></a>
+					<div class="item__gifThumb">
+						<div class='b-item-big__player'>
+							{{ if(this.model.get('gif_video')) }}
+								<video loop data-play="1" poster="{{= big_image }}"></video>
+							{{ end }}
+						</div>
+						<img data-role='content' class="item__contentImage" src='{{= big_image }}' />
+					</div>
+				{{ else }}
+					<img data-role='content' class="item__contentImage" src='{{= big_image }}' />
+				{{ end }}
+			{{ else }}
+				<p class='item__contentText'>
+					<span class="contentText__cell">{{= content }}</span>
+				</p>
+			{{ end }}
+			<div class="item__longpost">
+				<i class="ycm-icon ycm-icon-chevron-down"></i>
+			</div>
+		</div>
+		{{ block iteminfo }}
+			<div data-prop='description' class="item__desc" >
+				{{= description || "" }}
+			</div>
+			<div class="item__tags">
+				{{ each(tags, tag) }}
+					<a class="item__tag" href="/tag/{{= tag }}">{{= tag }}</a>
+				{{ end }}
+			</div>
+		{{ endblock }}
+	</div>
+</script>
+
+
+<script type="text/ycm-template" id='item-big-new-tpl'>
+	<div class="item__top _clear">
+
+		{{ if(APP.User.isModerator()) }}
+			{{ include #item-big-moderate-tpl }}
+		{{ end }}
+
+		<div class="item__topLike">
+			<a data-title="{{= removable ? 'Удалить шутку' : 'Игнорировать или пожаловаться' }}" title="{{= removable ? 'Удалить шутку' : 'Игнорировать или пожаловаться' }}" class="item__menu" data-action="itemMenu">
+				{{= removable && editable ? '<i class="ycm-icon ycm-icon-cross _textBig"></i>' : '<i class="ycm-icon ycm-icon-triple-menu _textBig"></i>' }}
+			</a>
+			<a class="item__cancel _dotted" data-action="itemMenuClose">отмена</a>
+		</div>
+
+
+		<a href="/user/{{= content_username }}" class="thumb"><img class="thumb__img" src="{{= content_user_avatar }}"></a>
+		<div class="popoverWrapper" data-uidinfo="{{= content_user_id }}">
+			<a href="/user/{{= content_username }}" class="title _big">{{= content_user_fullname }}</a>
+			<span class="remark">
+				{{= window._PAGE !== "recommend" && content_timestamp }}
+			</span>
+		</div>
+
+		<div class="repost">
+			{{ if( via_username ) }}
+				<i class="ycm-icon ycm-icon-arrow _left"></i>
+				<a href="/user/{{= via_username }}" class="thumb repost__thumb" >
+					<img class="thumb__img" src="{{= userAvatar || APP.get('small_avatar')  }}">
+				</a>
+				<div class="popoverWrapper" data-uidinfo="{{= via_user_id }}">
+					<a href="/user/{{= via_username }}" class="title _small">{{= via_fullname }}</a>
+				</div>
+			{{ end }}
+		</div>
+	</div>
+
+	<div class="item__hidden _textCenter remark" data-next="1">Шутка скрыта, потому что она вам не понравилась (<a class="link" data-action="showContents">показать шутку</a>)
+	</div>
+
+	{{ if(!removable) }}
+		<div class="item__menuContent" style="padding: 45px 0 60px; background: #fff;"></div>
+	{{ end }}
+
+	{{ include #item-big-content-tpl }}
+
+	<div class="item__bottom">
+		<div data-container='likes' class="item__controls _clear" id='i{{= id }}-likes'>
+			{{ include #item-big-likes-new-tpl }}
+		</div>
+		<div  class="item__comments">
+			<div data-container='comments' id="i{{=id}}-cmts"></div>
+			<div class="item__showAllComments" data-action="renderComments">
+				{{ if(totalComments > topComments.length) }}
+					Показать {{= (totalComments > 1 ? " все " : "") + totalComments + " " + plural(totalComments,"комментарий,комментария,комментариев") }}
+				{{ else }}
+					Оставить комментарий
+				{{ end }}
+			</div>
+		</div>
+	</div>
+</script>
+
+
+<script type="text/ycm-template" id='item-big-newcomment-tpl'>
+<div class="item__newComment">
+	<div class="thumb">
+		<img class="thumb__img" src="{{=APP.User.get('small_image') || APP.get('small_avatar') }}">
+	</div>
+	<form enctype="multipart/form-data" id='i{{=id}}-newcmt' data-type="newcmt" class="item__inputWrap"  data-item='{{=id}}' data-noreset='1' action="/items/{{=id}}/comments" method="POST">
+		<input type="hidden" name="attachment" />
+		<textarea class="item__input" name='text' placeholder="Напишите остроумный комментарий ;)"></textarea>
+		<div class="acholder" id="i{{=id}}-acholder"></div>
+		<div class="item__inputBox _clear">
+			<input type="submit" class="button _right" value="отправить">
+			<div class="item__inputRemark remark">Нажмите Enter, чтобы отослать комментарий, нажмите Shift+Enter, чтобы перейти на новую строку</div>
+		</div>
+	</form>
+	<form id='i{{=id}}-attach' data-iframe='1' data-type="attach" method="POST" action="{{= APP.User.uploadURL('attachment') + '&content_id=i' + id }}" enctype="multipart/form-data" class="item__fileWrap nonIE">
+		<input type="hidden" name="FileUpload[content]" value="">
+		<input accept="image/jpeg,image/png,image/gif" style="cursor: pointer;" name='FileUpload[file]' class="item__file" type="file">
+	</form>
+	<div data-container="attach-preview"></div>
+</div>
+</script>
+
+<!-- endof big.html -->
+<!-- comments.html -->
+
+<!--
+	шаблон коммента в попапе или в ленте
+-->
+
+<script type="text/ycm-template" id='comment-attach-preview-tpl'>
+	<div class="_clear">
+		<div class="previewAttach">
+			<a class="btnClose" href="#" data-action='unsetAttachment'></a>
+			<a href="">
+				<img src="{{= small_image }}" alt="">
+			</a>
+		</div>
+	</div>
+</script>
+
+
+<script type="text/ycm-template" id='comment-attach-tpl'>
+	{{ if( big_image ) {
+		var gif = big_image.indexOf("/gif_") > -1;
+	}}
+		<a onclick="APP.views.CommentBig.prototype.attachToggle(event,'{{=big_image}}','{{=small_image}}', this); return false;" href="{{= big_image }}" target="_blank" class="comment__attachment">
+			<img class='_preview' src="{{= small_image }}" alt="">
+			{{= gif ? '<div class="play-btn-overlay"></div>' : '' }}
+		</a>
+	{{ } else if( id ) { }}
+		<div class="panel _widget _inverse widget__itemAttach">
+			<div class="widget__head widgetItemAttach__head">
+				<a class="widgetItemAttach__preview" target="_blank" href="/{{= id }}" role="button" data-owner="Popup" data-action="openByID" data-param="{{= id }}">
+					<img src="{{= small_image }}" alt="">
+				</a>
+			</div>
+			<div class="widget__body widgetItemAttach__body">
+				<h3 class="widget__title widgetItemAttach__title">youcomedy.me/{{= id }}</h3>
+			</div>
+		</div>
+	{{ } }}
+</script>
+
+
+<script type="text/ycm-template" id='comment-popup-tpl'>
+	<a href='#' title='Удалить комментарий' data-remove='{{=id}}' class='comment__remove'><i class="ycm-icon ycm-icon-cross"></i></a>
+	<a href="/user/{{= username }}" class="thumb"><img class="thumb__img" src='{{= userAvatar || APP.get("small_avatar") }}'></a>
+	<div class="popoverWrapper" data-uidinfo="{{= user_id }}">
+		<a href="/user/{{= username }}" class="title">{{= fullname || username }}</a>
+		<span class="remark _small"> {{= timestamp }}</span>
+	</div>
+	<div class="comment__text">
+		{{= text }}
+	</div>
+	<div class="comment__likes">
+		<div class="_right">
+			<a href="/comments/{{=id}}/like" data-vote='like'  class="comment__like ycm-icon ycm-icon-up {{= userVote > 0 && '_active'}}"></a>
+			<a href="/comments/{{=id}}/dislike" data-vote='dislike' class="comment__dislike ycm-icon ycm-icon-down {{= userVote < 0 && '_active'}}"></a>
+			<span data-likes-counter="{{= id }}" class="comment__counter {{= (likes-dislikes) > 0 ? '_plus' : (likes-dislikes) < 0 ? '_minus' : '' }}" id="c{{=id}}-rating">{{= (likes-dislikes) || '' }}</span>
+		</div>
+		<a class="remark comment__reply" href="#" data-replyTo="{{= id }}">Ответить</a>
+	</div>
+</script>
+
+<!-- endof comments.html -->
+<!-- grid.html -->
+
+<!--
+	Шаблон итема в сетке
+ -->
+<script type="text/ycm-template" id='item-grid-new-tpl'>
+	<div class="panel _widget _inverse widget__itemGrid b-grid-item__frame">
+		<div class="widget__head" >
+			{{ if( type == APP.globals.TYPE_TXT ) { }}
+				<a data-popup='{{= id }}' class="widgetItemGrid__preview" href="#">
+					<table style='width:100%;height:100%;text-align: left'>
+						<tr>
+							<td valign='middle'>{{= content }}</td>
+						</tr>
+					</table>
+				</a>
+			{{ else }}
+				<a data-popup='{{= id }}' class="widgetItemGrid__preview" style="background-image: url({{= medium_image }})" href="#">
+					<div class='play-btn-overlay'></div>
+				</a>
+			{{ end }}
+
+			<div class="widgetItemGrid__description _shade">{{= description == '' ? '<i style="visibility:hidden;">.</i>' : description }}</div>
+			<div class="remark _small"><b style="vertical-align:middle">{{= rating }}</b>&nbsp;<i class="ycm-icon ycm-icon-star"></i></div>
+		</div>
+
+		<div class="widget__body">
+			<div class="widget__section _clear">
+				<a class="thumb _small" href="/user/{{= via_username || content_username }}">
+					<img class="thumb__img" src="{{= userAvatar || APP.get("small_avatar") }}">
+				</a>
+
+				<a href="/user/{{= via_username || content_username }}" class="title widgetItemGrid__username">{{= via_fullname || content_user_fullname }}</a>
+				<div class="remark _small">{{= content_timestamp }}</div>
+			</div>
+		</div>
+	</div>
+</script>
+
+<!-- endof grid.html -->
+<!-- popovers.html -->
+
+<!--
+	Контент поповера для добавления в коллекцию
+-->
+<script type="text/ycm-template" id="item-addto-popover">
+<div style='width:220px;min-height:40px'>
+	<div class="row-fluid">
+		<div class="span10">
+			<span class="check-wrap" onclick="var c=$(this).find('input'),s=!!c.attr('checked');c[(s?'removeA':'a')+'ttr']('checked',!s&&'checked');$.cookie('ITEM_AUTO_SHARE', Number(!s))">
+				<input type="checkbox" {{= 1 == $.cookie("ITEM_AUTO_SHARE") ? "checked='checked'" : "" }}><i></i><span>Поделиться в VK</span>
+			</span>
+		</div>
+		<div class="span2 ybtn" data-popover-action='addToAlbum'>OK</div>
+	</div>
+</div>
+</script>
+
+
+<!--
+	Контент поповера после успешного добавления в коллекцию
+-->
+<script type="text/ycm-template" id="item-addto-success-popover">
+<div class="popover-share-wrap">
+	<b>Шутка успешно добавлена!</b>
+	<input onclick="$(this).select(); return false;" readonly style='margin-top:4px' class='input-white block' data-select='1' value='{{= APP.get("url") }}/{{= id }}' />
+	<div id="i{{=id}}-share-grid"></div>
+</div>
+</script>
+
+
+<!--
+	Контент поповера для шеринга
+-->
+<script type="text/ycm-template" id="item-sharing-popover">
+<div class="popover-share-wrap" style='min-height: 80px'>
+	<b>Поделиться</b>
+	<input onclick="$(this).select(); return false;" readonly style='margin-top:4px' class='input-white block' data-select='1' value='{{= APP.get("url") }}/{{= id }}' />
+	<div id="i{{=id}}-share-grid"></div>
+</div>
+</script>
+
+
+
+
+<!--
+	Контент поповера для просмотра списка людей залайкавших итем
+	или добавивших его в коллекцию
+-->
+<script type="text/ycm-template" id="item-people-popover">
+<div style='width:220px'>
+	<div class="popover-people-count">Понравилось <b>{{=likes + " " + plural(likes, "человеку,людям,людям")}}</b></div>
+	<div class='popover-people'>
+		{{ if(userVote > 0 ){ }}
+			<a class="people-profile"  title="{{=APP.User.get('username') }}"  data-userid='{{=APP.User.id}}' href="/user/{{= APP.User.get('username')}}"><img src="{{=APP.User.get('small_image')}}" alt="{{APP.User.get('username')}}"></a>
+		{{ } }}
+		{{ if( (data = (data || {}).data) && data.length ) { _.each( data, function(i){ if (i.id == APP.User.id) return; }}
+			<a class="people-profile" title="{{=i.fullname}}" data-userid='{{=id}}' href="/user/{{=i.username}}"><img src="{{=i.small_image }}"></a>
+		{{ })} if (!likes) {}}
+			<p>Еще никому не понравилось</p>
+		{{ } }}
+	</div>
+	<div data-popover-action='openAddTo'>
+		<i class="ycm-icon ycm-icon-retweet _small"></i> <span class="people-addto-collection">Зарепостить</span>
+	</div>
+</div>
+</script>
+
+<!--
+	Поповер с инфой про юезра
+-->
+<script type="text/ycm-template" id="user-info-popover">
+<div style='height:90px;width:240px;' class="" data-uid="{{= data.id }}">
+	{{ if(!data.id) { }}
+		<b>{{= data.error_text }}</b>
+	{{ } else { }}
+	    <a href="/user/{{= data.username }}" class="localShare__userImage" style="height:90px;width:90px;margin-right:10px;"><img src="{{= data.avatar }}" /></a>
+	    <div class="_clear _left _shade" style="overflow:hidden;width:130px;white-space: nowrap;">
+	        <a href="/user/{{= data.username }}" class="link" style="font-size:16px">{{= data.fullname }}</a>
+	        <div>{{= data.rating }} <i style='display:inline-block;margin-top:-3px;' class="ycm-icon ycm-icon-star"></i></div>
+	        {{= data.followers }} {{= plural(data.followers, "подписчик,подписчика,подписчиков") }} <br>
+	        {{= data.content }} {{= plural(data.content, "шутка,шутки,шуток") }} <br>
+	        {{= APP.User.renderFollowBtn(null, data.id, "_small _hack") }}
+	    </div>
+    {{ } }}
+</div>
+</script>
+
+<!-- endof popovers.html

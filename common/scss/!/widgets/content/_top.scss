@@ -1,0 +1,18 @@
+.widgetTop__crown {
+	$color: rgb(250, 180, 10);
+
+	position: relative;
+	top: -3px;
+	font-size: 16px;
+	background: -webkit-linear-gradient(left, lighten($color, 15), darken($color, 5));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	margin-right: 10px;
+	color: $color;
+}
+.widgetTop__count {
+	font-weight: bold;
+	margin-left: 30px;
+	padding-left: 0;
+	border: 0;
+}

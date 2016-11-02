@@ -1,0 +1,46 @@
+.subscribePanel {
+	@if $isMobile == 1 {
+		max-width: 728px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+.subscribePanel__stat {
+	@if $isMobile == 1 {
+		min-width: 100px;
+	} @else {
+		min-width: 80px;
+	}
+
+	position: relative;
+	text-align: center;
+
+	&:after,
+	&:before {
+		content: '';
+		display: none;
+		position: absolute;
+		height: 100%;
+		top: 0;
+		border-left: 1px solid #ddd;
+	}
+
+	&:after {
+		right: -1px;
+	}
+}
+
+.subscribePanel__statLabel {
+	font-size: 12px;
+}
+
+.subscribePanel__buttonWrap {
+	min-width: 120px;
+	text-align: center;
+	padding-left: 15px;
+
+	@if $isMobile == 1 {
+		display: none !important;
+	}
+}

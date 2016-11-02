@@ -1,0 +1,232 @@
+@import "compass";
+@import "../_conf";
+
+.colWrap {
+	margin: 0 -10px;
+}
+
+.widgetRating {position: relative; height: 255px; padding: 0 !important; overflow: hidden; margin-bottom: 20px; width: 729px;}
+
+.widgetRating .col-8 {
+	height: 100%;
+	padding: 0 !important;
+	overflow: hidden;
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+}
+
+.widgetRating .col-4 {
+	height: 100%;
+	padding: 0 !important;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+	overflow: hidden;
+}
+
+.widgetRating__big {height: 100%; width: 101%; position: absolute;
+	top: 0; left: 0; background-size: 100% 100%; background-repeat: no-repeat;
+	background-position: center center; display: block;
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+}
+
+ ._notouch .widgetRating__container:hover  .widgetRating__info {
+	height: 70px;
+}
+
+.widgetRating__info {
+	width: 100%;
+	height: 0;
+	bottom: 0;
+	color: white;
+	position: absolute;
+	z-index: 1;
+	@include transition-property(height);
+	@include transition-duration(0.5s);
+	@include transition-timing-function(ease);
+}
+.widgetRating__info:before {
+	content: '';
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: #000;
+	opacity: 0.6;
+	bottom: 0;
+	left: 0;
+	z-index: -1;
+}
+
+.widgetRating__infoBox {
+	padding: 10px;
+}
+
+.widgetRating__slider {height: 100%;overflow: hidden;}
+.widgetRating__slide {height: 85px; display: block; background-size: 100%}
+
+.widgetRating__slide.active {background-color: white !important}
+
+.widgetRating__scroll {
+	position: absolute;
+	bottom: 0;
+	width: 33.33333333%;
+	height: 40px;
+	right: 0;
+	display: block;
+	text-align: center;
+	cursor: pointer;
+	color: #fff;
+	background: rgba(0,0,0,.2);
+
+	 ._notouch &:hover  {
+		background: rgba(0,0,0,.5);
+	}
+}
+
+.widgetRating__scrollButton {
+	background: #000;
+	width: 30px;
+	height: 30px;
+	border-radius: 15px;
+	opacity: 0.6;
+	margin: auto;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	position: absolute;
+	line-height: 30px !important;
+	right: 0;
+}
+
+.widgetRating__sliderInner {
+	position: relative;
+}
+
+.widgetTop__list {
+	margin: 0 10px;
+	min-height: 372px;
+}
+
+.widgetTop__count {
+	padding: 0;
+	height: 36px;
+}
+
+.panelBestItems {
+		display: block;
+		text-align: center;
+		position: relative;
+}
+.panelBestItems__text {
+		font-size: 12px;
+		font-weight: bold;
+		text-transform: uppercase;
+		color: $ycm-font-color;
+		z-index: 1;
+		position: relative;
+
+		&:before {
+				content: '';
+				display: block;
+				margin: auto;
+				left: 10px;
+				right: 10px;
+				bottom: 15px;
+				position: absolute;
+				border-top: 1px solid $ycm-border-color;
+				z-index: -1;
+		}
+
+		&:after {
+				content: '';
+				display: block;
+				width: 110px;
+				height: 30px;
+				margin: auto;
+				background: #fff url(/common/img/pages/hall/stars.png) center bottom no-repeat;
+				background-size: contain;
+		}
+}
+
+.widget__shadeUsername {
+	width: 135px;
+	white-space: nowrap;
+}
+
+.widgetTop__shadeUsername {
+	width: 180px;
+	white-space: nowrap;
+}
+
+.user-rating {
+    border-collapse: separate;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    text-align: center;
+    width: 728px;
+}
+.user-rating th {
+    border-right: 1px solid #E7E7EB;
+    padding: 5px 10px;
+}
+.user-rating th + th {
+    border-left: 1px solid #FFFFFF;
+}
+.user-rating th:last-child {
+    border-right: 0 none;
+}
+.user-rating td {
+    padding: 10px;
+}
+.user-rating td:first-child {
+    font-weight: bold;
+    width: 10px;
+}
+.user-rating > thead {
+    background: none repeat scroll 0 0 #F5F5F7;
+    font-size: 12px;
+}
+.user-rating > thead {
+    background: none repeat scroll 0 0 #F5F5F7;
+}
+.user-rating > tbody {
+    background: none repeat scroll 0 0 #FFFFFF;
+}
+.user-rating tr > td {
+    border-top: 1px solid #E7E7EB;
+}
+.user-rating .ybtn.follow-btn {
+    width: 70px;
+}
+.user-rating .num {
+    color: #00AAE4;
+    font-size: 16px;
+}
+.user-rating .follow {
+    text-align: right;
+    width: 100px;
+}
+.user-rating .user {
+    text-align: left;
+}
+.user-rating .avatar {
+    border-radius: 3px;
+    float: left;
+    max-height: 36px;
+    max-width: 36px;
+}
+.user-rating .name {
+    color: #1EB4E8;
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: 45px;
+}
+.user-rating .time {
+    color: #C2C2C4;
+    font-size: 10px;
+    font-style: italic;
+    line-height: 1;
+    margin-left: 45px;
+}

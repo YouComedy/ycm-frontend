@@ -1,0 +1,36 @@
+@import "compass";
+@import "_core/colors";
+@import "_libs/grid";
+
+$isMobile : 0;
+
+// Фирменные цвета
+$ycm-blue : #1eb4e8;
+$ycm-red  : #e63d60;
+$ycm-grey : #B5BBC5;
+$ycm-yellow : #fedb46;
+
+
+$ycm-grey-light: #f7f7f7; //lighten($ycm-grey, 22);
+$ycm-grey-medium : lighten($ycm-grey, 18);
+$ycm-grey-dark : darken($ycm-grey, 27);
+
+$ycm-yellow-light : lighten($ycm-yellow, 10);
+$ycm-yellow-dark  : darken($ycm-yellow, 15);
+$ycm-yellow-dark-text: darken($ycm-yellow, 30);
+
+$ycm-label-bg-color: darken($ycm-grey-medium, 5);
+$ycm-border-color: lighten($ycm-grey-medium, 2);
+
+// Разметка и размеры
+$layout-width : 998px;
+$layout-columns: 12;
+$contentWidth : 728px;
+
+// Толщина рамки итема
+$item-padding: 15px;
+
+$ycm-background-color : #ebedef;
+$ycm-font-color : darken($ycm-grey, 20);
+$ycm-font-default  : 'Trebuchet MS', Tahoma, Arial, sans-serif;
+$ycm-link-color : $ycm-blue;

@@ -1,0 +1,25 @@
+@import "_conf";
+
+@import "widgets/profile/_all";
+
+@import "widgets/ui/_tabs";
+@import "widgets/ui/_filters";
+@import "widgets/ui/_social";
+@import "pages/profile";
+
+
+/* Беджи */
+// $ids: 		700 3000 6000 650 200 201 203 204 600 800 205 206 202;
+// $levels: 	4   4    3    3   1   1   1   1   3   3   1   1   1;
+// $i:0;
+// @each $id in $ids {
+//     $i: $i + 1;
+//     .badge-big-#{$id}:after {background-image: url(/common/img/badges/#{$id}.png)}
+//     .badge-small-#{$id} {background-image: url(/common/img/badges/small/#{$id}.png)};
+//     $lvl: nth($levels, $i);
+// 	@while $lvl > 0 {
+// 		.badge-big-#{$id}_#{$lvl}:after { background-position: 0 -76px * $lvl}
+// 		.badge-small-#{$id}_#{$lvl} {background-position: 0 -60px * $lvl}
+// 		$lvl: $lvl - 1;
+// 	}
+// }

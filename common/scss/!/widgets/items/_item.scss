@@ -1,0 +1,256 @@
+.item {
+	margin-bottom: 20px;
+	color: #555;
+
+	&:after,
+	&:before {
+		content: '';
+		width: 100%;
+		display: table;
+	}
+
+	@if $isMobile == 1 {
+		.title {
+			position: relative;
+			top: -4px;
+		}
+
+		max-width: 728px;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 20px;
+	}
+
+
+	&._hidden {
+		.item__hidden {display: block}
+		.item__container {display: none}
+	}
+
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-tap-highlight-color: transparent;
+}
+
+
+
+.item__hidden {
+	display: none;
+	padding: 15px 0 30px;
+	background: #fff;
+	cursor: pointer;
+}
+
+
+// .item__container {
+// 	@include transition-property(height);
+// 	@include transition-duration(1s);
+// 	@include transition-timing-function(ease-in);
+// }
+
+
+.repost { margin-top: 1px; line-height: 16px; }
+.repost__thumb { width: 16px; height: 16px; margin: 0 0.3em; }
+
+
+.item__top {
+	background: #fff;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	padding: $item-padding;
+	position: relative;
+}
+
+
+.item__topLike {
+	float: right;
+	line-height: 18px;
+	vertical-align: middle;
+	margin-left: $item-padding;
+	color: darken($ycm-grey-medium, 10);
+
+	& > a {
+		position: relative;
+		& > .tooltip {
+			min-width: 200px !important
+		}
+	}
+
+	& > ._active,
+	& > .active {
+		color: $ycm-blue;
+
+		& > .ycm-icon {
+			color: $ycm-blue;
+		}
+	}
+
+	.ycm-icon-thumbs-up {
+		vertical-align: top;
+	}
+
+	.item__menu {
+		margin-left: 10px;
+
+		.ycm-icon-triple-menu {
+			line-height: 1;
+			vertical-align: middle;
+		}
+	}
+}
+
+
+
+.item__moderbtns {
+	position: absolute;
+	width: 50px;
+	right: -70px;
+	top: 0;
+	overflow: hidden;
+	background: white;
+	text-align: center;
+	border-radius: 3px;
+	border-bottom: 1px solid #d2d5db;
+
+	& > span:first-child {
+		display: none;
+	}
+
+	& > span { display: block; font-size: 11px }
+	// & > div {display: none}
+	.item__buttonWrap {
+		padding: 10px 0;
+		border-bottom: 1px solid rgba(0,0,0,.02);
+
+		&:last-child {
+			border-bottom: 0;
+		}
+
+		 ._notouch &:hover  {
+			background-color: #f9f9f9;
+		}
+	}
+
+	#popup & {z-index: 111111}
+}
+
+.item__bottom {
+	background: $ycm-grey-light;
+	border-bottom: 1px solid darken($ycm-border-color, 10);
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	position: relative;
+}
+
+.item__showAllComments {
+	cursor: pointer;
+	line-height: 40px;
+	text-align: center;
+	background: #fff;
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
+
+	 ._notouch &:hover  {
+		background: $ycm-grey-light;
+	}
+}
+
+.item__editDescription:after {
+	content : "Введите описание и #теги"
+}
+
+.item__cancel {
+	line-height: 1;
+	display: none;
+}
+._itemMenu .item__menu,
+._itemMenu .item__likes {
+	display: none;
+}
+._itemMenu .item__cancel {
+	display: block;
+}
+._itemMenu .item__hidden {
+	display: none !important;
+}
+._itemMenu .item__container {
+	display: none;
+}
+.item__menuContent {
+	display: none;
+}
+._itemMenu .item__menuContent {
+	display: block;
+}
+._itemMenu .item__top .repost,
+._itemMenu .item__top .thumb,
+._itemMenu .item__top .title,
+._itemMenu .item__top .popoverWrapper,
+._itemMenu .item__top .remark,
+._itemMenu .item__top .repost {
+	display: none;
+}
+
+.widgetItemGrid__previewRepost {
+	background: none repeat scroll 0 0 rgba(0,0,0,.5);
+	border-radius: 10px;
+	color: #fff;
+	cursor: pointer;
+	font-size: 20px;
+	height: 30px;
+	line-height: 30px;
+	position: absolute;
+	right: 15px;
+	text-align: center;
+	top: 15px;
+	width: 40px;
+	z-index: 1;
+
+	&._active,
+	._notouch &:hover {
+		background-color: rgba($ycm-blue, 0.8);
+		box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+	}
+}
+
+.item__dislike {
+	border-left: none !important;
+	width: 30px;
+	transition: 0.3s;
+}
+
+.item__like {
+	width: 30px;
+	transition: 0.3s;
+}
+
+.item__rating {
+	overflow: hidden;
+	transition: width 0.3s;
+	border-left: none !important;
+	cursor: default !important;
+	display: inline-block;
+	width: 40px;
+	vertical-align: middle;
+}
+
+._norating .item__rating {
+	width: 0;
+}
+
+.button__rating {
+	width: 130px;
+}
+
+.button__rating .item__buttonWrap {
+	display: inline-block;
+}
+
+._liked .item__rating, ._liked .item__rating:hover {color: #1eb4e8;}
+._disliked .item__rating, ._disliked .item__rating:hover {color: #e63d60;}
+
+.item__buttons {
+	float: left;
+	width: 290px;
+}
+
+.item__like, .item__dislike {position: relative;}

@@ -1,0 +1,740 @@
+@import "compass";
+@import "../widgets/ui/tips";
+@import "../_core/colors";
+
+$DEBUG : 1;
+
+$IMG_PREFIX : "";
+
+// Фирменные цвета
+$ycm-blue : #1eb4e8;
+$ycm-red  : #e63d60;
+$ycm-grey : #B5BBC5;
+$ycm-yellow : #fedb46;
+
+
+$ycm-grey-light: #f7f7f7; //lighten($ycm-grey, 22);
+$ycm-grey-medium : lighten($ycm-grey, 18);
+$ycm-grey-dark : darken($ycm-grey, 27);
+
+$ycm-yellow-light : lighten($ycm-yellow, 10);
+$ycm-yellow-dark  : darken($ycm-yellow, 15);
+$ycm-yellow-dark-text: darken($ycm-yellow, 30);
+
+$ycm-label-bg-color: darken($ycm-grey-medium, 5);
+$ycm-border-color: lighten($ycm-grey-medium, 2);
+
+// Разметка и размеры
+$layout-width : 998px;
+$layout-columns: 12;
+$contentWidth : 728px;
+
+// Толщина рамки итема
+$item-padding: 15px;
+
+$ycm-background-color : #ebedef;
+$ycm-font-color : darken($ycm-grey, 20);
+$ycm-font-default  : 'Trebuchet MS', Tahoma, Arial, sans-serif;
+$ycm-link-color : $ycm-blue;
+
+// цвет фона страницы
+$body-bgcolor : #333;
+
+// Цвета заголовков
+$header-color : #727272;
+
+// Цвет основного текста, описаний, и всяких длинных текстов на сайте
+$main-text-color : #8b8b8b;
+
+// Цвет текста комментария
+$comment-text-color : #5a5a5a;
+
+// Вспомогательный текст (даты, подсказки)
+$util-text-color: #b4b4b4;
+
+
+// Цвет фона текста обычных кнопок
+$btn-bgcolor : $ycm-blue;
+$btn-color   : white;
+$btn-hover-bgcolor : $ycm-blue;
+$btn-hover-color   : white;
+$btn-active-bgcolor : $ycm-blue;
+$btn-active-color   : white;
+
+// Цвет фона/текста кнопок отмены / удаления
+$btn-err-bgcolor : $ycm-red;
+$btn-err-color   : white;
+$btn-err-hover-bgcolor : $ycm-red;
+$btn-err-hover-color   : white;
+$btn-err-active-bgcolor : $ycm-red;
+$btn-err-active-color   : white;
+
+// Цвета ссылок
+$link-color : $ycm-blue;
+$link-color-hover : $ycm-blue;
+$link-color-active : $ycm-blue;
+$link-color-visited : $ycm-blue;
+
+@import "../widgets/ui/buttons";
+
+
+/* http://meyerweb.com/eric/tools/css/reset/ */
+/* v1.0 | 20080212 */
+body {
+	line-height: 1.4;
+}
+html, body, div, span,
+h1, h2, h3, h4, h5, h6, p,
+a,
+em, img,
+strong,
+b, u, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+/* remember to define focus styles! */
+:focus {
+	outline: 0;
+}
+
+/* remember to highlight inserts somehow! */
+ins {
+	text-decoration: none;
+}
+del {
+	text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+
+
+$units: 1px !default;
+
+@mixin screen($res-min, $res-max)
+{
+  @media screen and ( min-width: if(unitless($res-min), $res-min*$units, $res-min) ) and ( max-width: if(unitless($res-max), $res-max*$units, $res-max) )
+  {
+    @content;
+  }
+}
+
+@mixin max-screen($res)
+{
+  @media screen and ( max-width: if(unitless($res), $res*$units, $res) )
+  {
+    @content;
+  }
+}
+
+@mixin min-screen($res)
+{
+  @media screen and ( min-width: if(unitless($res), $res*$units, $res) )
+  {
+    @content;
+  }
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// --- hdpi ------------------------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------------------
+
+// Based on bourbon hidpi-media-queries file (https://github.com/thoughtbot/bourbon/blob/master/app/assets/stylesheets/css3/_hidpi-media-query.scss)
+// HiDPI mixin. Default value set to 1.3 to target Google Nexus 7 (http://bjango.com/articles/min-device-pixel-ratio/)
+
+@mixin hdpi($ratio: 1.3)
+{
+  @media only screen and (-webkit-min-device-pixel-ratio: $ratio),
+  only screen and (min--moz-device-pixel-ratio: $ratio),
+  only screen and (-o-min-device-pixel-ratio: #{$ratio}/1),
+  only screen and (min-resolution: #{round($ratio*96)}dpi),
+  only screen and (min-resolution: #{$ratio}dppx)
+  {
+    @content;
+  }
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// --- iphone ----------------------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------------------
+
+@mixin iphone3
+{
+  @media only screen and (min-device-width: 320px) and (max-device-width: 480px)
+  and (-webkit-device-pixel-ratio: 1)
+  {
+    @content;
+  }
+}
+
+@mixin iphone3-portrait
+{
+  @media only screen and (min-device-width: 320px) and (max-device-width: 480px)
+  and (-webkit-device-pixel-ratio: 1) and (orientation:portrait)
+  {
+    @content;
+  }
+}
+
+@mixin iphone3-landscape
+{
+  @media only screen and (min-device-width: 320px) and (max-device-width: 480px)
+  and (-webkit-device-pixel-ratio: 1) and (orientation:landscape)
+  {
+    @content;
+  }
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// --- iphone-retina ---------------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------------------
+
+@mixin iphone4
+{
+  @media only screen and (min-device-width: 320px) and (max-device-width: 480px)
+  and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 2/3)
+  {
+    @content;
+  }
+}
+
+@mixin iphone4-portrait
+{
+  @media only screen and (min-device-width: 320px) and (max-device-width: 480px)
+  and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 2/3) and (orientation:portrait)
+  {
+    @content;
+  }
+}
+
+@mixin iphone4-landscape
+{
+  @media only screen and (min-device-width: 320px)  and (max-device-width: 480px)
+  and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 2/3) and (orientation:landscape)
+  {
+    @content;
+  }
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// --- iphone-5 --------------------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------------------
+
+@mixin iphone5
+{
+  @media only screen and (min-device-width: 320px) and (max-device-width: 568px)
+  and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 40/71)
+  {
+    @content;
+  }
+}
+
+@mixin iphone5-portrait
+{
+  @media only screen and (min-device-width: 320px) and (max-device-width: 568px)
+  and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 40/71) and (orientation:portrait)
+
+  {
+    @content;
+  }
+}
+
+@mixin iphone5-landscape
+{
+  @media only screen and (min-device-width: 320px) and (max-device-width: 568px)
+  and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 40/71) and (orientation:landscape)
+  {
+    @content;
+  }
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// --- ipad + ipad mini ------------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------------------
+
+@mixin ipad
+{
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px)
+  and (-webkit-device-pixel-ratio: 1)
+  {
+    @content;
+  }
+}
+
+@mixin ipad-portrait
+{
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px)
+  and (-webkit-device-pixel-ratio: 1) and (orientation:portrait)
+  {
+    @content;
+  }
+}
+
+@mixin ipad-landscape
+{
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px)
+  and (-webkit-device-pixel-ratio: 1) and (orientation:landscape)
+  {
+    @content;
+  }
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// --- ipad-retina -----------------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------------------
+
+@mixin ipad-retina
+{
+  @media screen and (min-device-width: 768px) and (max-device-width: 1024px)
+  and (-webkit-device-pixel-ratio: 2)
+  {
+    @content;
+  }
+}
+
+@mixin ipad-retina-portrait
+{
+  @media screen and (min-device-width: 768px) and (max-device-width: 1024px)
+  and (-webkit-device-pixel-ratio: 2) and (orientation:portrait)
+  {
+    @content;
+  }
+}
+
+@mixin ipad-retina-landscape
+{
+  @media screen and (min-device-width: 768px) and (max-device-width: 1024px)
+  and (-webkit-device-pixel-ratio: 2) and (orientation:landscape)
+  {
+    @content;
+  }
+}
+
+
+@mixin respond-to($media) {
+  $small: 320px;
+  $large: 1024px;
+
+	@if $DEBUG == 1 {
+      @media only screen and (max-width : 480px) { @content; }
+    }
+
+  /*@if $media == iphone {
+    @if $DEBUG == 1 {
+      @media only screen and (max-width : 480px) { @content; }
+    }
+    @else {
+      @media only screen and (max-device-width : 480px) { @content; }
+    }
+  }*/
+  @else if $media == medium-screens {
+    @media only screen and (min-width: $small + 1) and (max-width: $large - 1) { @content; }
+  }
+  @else if $media == wide-screens {
+    @media only screen and (min-width: $large) { @content; }
+  }
+}
+
+body {
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	color: #666;
+	overflow: auto;
+}
+
+a {
+	color: $ycm-blue;
+}
+
+::-webkit-input-placeholder {
+	color: #9F9F9F;
+}
+::-moz-placeholder {
+	color: #9F9F9F;
+}
+:-moz-placeholder {
+	color: #9F9F9F;
+}
+:-ms-input-placeholder {
+	color: #9F9F9F;
+}
+
+#promo-logo {
+	display: block;
+	margin: 15px auto 0 !important;
+	width: 130px;
+	height: 75px;
+	background: url('/common/img/logos/logo__medium.png') no-repeat 0 0;
+	background-size: 100%;
+	text-decoration: none;
+	outline: none;
+}
+
+#overlay.fake {
+	opacity: 1;
+	background: #000 url('/common/img/login/fake_bg.jpg') no-repeat center top;
+}
+
+#popup {
+	background: none;
+	position: relative;
+	display: block;
+	box-shadow: none;
+
+	form {
+		max-width: 450px;
+		margin: 15px auto 15px;
+		overflow: hidden;
+		position: relative;
+	}
+}
+
+input[type=text],
+input[type=password] {
+	font-size: 12px;
+	box-shadow: none;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	background-color: #fff;
+	border: 1px solid rgba(30, 180, 232, .5);
+	border-radius: 3px;
+	margin: 0 auto 15px;
+	display: block;
+	padding: 0 10px;
+	width: 100%;
+	height: 30px;
+	max-width: 220px;
+}
+
+p {
+	text-align: center;
+	font-size: 13px;
+	margin: 0 0 15px;
+}
+
+h1, h3 {
+    color: $ycm-blue;
+    font-size: 27px;
+    font-weight: normal;
+    line-height: 30px;
+    margin: 30px auto;
+    position: relative;
+    text-align: center;
+	max-width: 450px;
+}
+
+h3 {
+	margin: 10px auto;
+}
+
+.line {
+	height: 1px;
+	max-width: 450px;
+	margin: 15px auto;
+	position: relative;
+	border: 0;
+}
+
+
+.line:before{
+    background: none repeat scroll 0 0 rgba(0,0,0,.05);
+    content: "";
+    display: block;
+    height: 1px;
+    position: relative;
+    width: 100%;
+}
+
+body {
+	min-height: 100%;
+	position: relative;
+	background: #81C9D8 url('/common/img/landing/bg.png') top center repeat-x;
+	font-family: Tahoma, Arial, sans-serif;
+}
+@-ms-keyframes animatedBackground {
+	from {background-position: 0 -40px}
+	to {background-position: 1000% 0}
+}
+
+@-webkit-keyframes animatedBackground {
+	from {background-position: 0 -40px}
+	to {background-position: 1000% 0}
+}
+
+@-moz-keyframes animatedBackground {
+	from {background-position: 0 -40px}
+	to {background-position: 1000% 0}
+}
+
+@keyframes animatedBackground {
+	from {background-position: 0 -40px}
+	to {background-position: 1000% 0}
+}
+
+#clouds {
+	width: 100%;
+	height: 100%;
+	background-image: url('/common/img/landing/clouds.png');
+	background-position: 0 -40;
+	background-repeat: repeat-x;
+
+	-webkit-animation: animatedBackground 1000s linear;
+	-moz-animation: animatedBackground 1000s linear;
+	-ms-animation: animatedBackground 1000s linear;
+	animation: animatedBackground 1000s linear;
+}
+
+.link {
+	width: auto;
+	color: $ycm-blue;
+	font-size: 12px;
+	text-decoration: underline;
+	margin: 0;
+}
+
+.right {
+	float: right;
+}
+
+.center {
+	width: 100%;
+	display: inline-block;
+	text-align: center;
+}
+
+.social-wrap {
+	overflow: hidden;
+	width: 310px;
+	margin: 20px auto;
+
+	.social {
+		padding: 5px 15px;
+
+		i {
+			font-size: 20px;
+			font-style: normal;
+			font-weight: bold;
+			position: relative;
+			top: 2px;
+			padding-right: 5px;
+		}
+	}
+}
+
+.slider-inner > ul {
+	width: 200%;
+	overflow: hidden;
+}
+
+.slider-item {
+	width: 50%;
+}
+
+
+/* Simple slider */
+.slider { position: relative; }
+
+.slider-inner { position: relative; overflow: hidden; /*overflow-x: scroll;*/ }
+
+.slider-inner > ul { list-style: none !important; margin: 0; padding: 0; }
+
+/* animated slider */
+.slider.fx .slider-inner > ul { -webkit-transition: margin-left 0.5s ease-out; -moz-transition: margin-left 0.5s ease-out; -ms-transition: margin-left 0.5s ease-out; -o-transition: margin-left 0.5s ease-out; -ms-transition: margin-left 0.5s ease-out; transition: margin-left 0.5s ease-out; }
+
+.slider-wrapper { width: 100%; }
+
+.slider-item { position: relative; float: left; list-style: none; margin: 0; visibility: hidden; }
+
+.slider-item.active { visibility: visible; }
+
+
+/* Auth & registration */
+.auth-link {
+	text-align: center;
+	background-color: #09f;
+	color: #fff;
+	font-weight: normal;
+	font-size : 12px;
+	outline: none;
+	border: none;
+	display: inline-block;
+	padding : 5px;
+	margin-top: 0;
+	border-radius: 5px;
+	text-decoration: none;
+}
+
+.auth-service + .auth-service {
+	margin-left: 15px !important;
+}
+
+ul.auth-services {
+	float: left;
+	left: 50%;
+	position: relative;
+}
+ul.auth-services li.auth-service {
+	margin: 0;
+	float: left;
+	right: 50%;
+	position: relative;
+
+	.stack & {
+		clear: both;
+		margin: 10px 0 !important;
+	}
+}
+ul.auth-services li a.auth-link {
+	width: 220px;
+	height: 40px;
+	line-height: 38px;
+	padding: 0 0 0 20px;
+	font-weight: bold;
+	font-size: 15px;
+	box-sizing: border-box;
+	background-image: linear-gradient(#00aae4, #00a7e0, #019dd2);
+	background-image: -webkit-linear-gradient(#00aae4, #00a7e0, #019dd2);
+	border: 1px solid #0082dd;
+	position: relative;
+	color: #fff;
+}
+.auth-link:before {
+	font-family: Verdana, sans-serif;
+	position: absolute;
+	left: 20px;
+	top: 0px;
+}
+.auth-link.vkontakte:before {
+	content: 'B';
+	font-size: 24px;
+}
+.auth-link.vkontakte:after {
+	content: 'Войти через VK';
+}
+.auth-link.facebook:before {
+	content: 'f';
+	font-size: 30px;
+}
+.auth-link.facebook:after {
+	content: 'Войти через FB';
+}
+ul.auth-services li a.auth-link span {
+	display: none;
+}
+.account-panel {
+	height: 40px;
+	position: relative;
+	width: 220px;
+	margin: auto;
+	padding: 7px;
+	overflow: hidden;
+	box-sizing: border-box;
+	box-sizing: -moz-border-box;
+	border: 1px solid #c7c7c7;
+	border-radius: 5px;
+	background-image: linear-gradient(#ebebeb, #e0e0e0);
+	background-image: -moz-linear-gradient(#ebebeb, #e0e0e0);
+	background-image: -webkit-linear-gradient(#ebebeb, #e0e0e0);
+	color: #757687;
+
+	img {
+		max-width: 24px;
+		max-height: 24px;
+		float: left;
+		border-radius: 3px;
+		margin-right: 10px;
+	}
+
+	.unbind {
+		height: 16px;
+		width: 16px;
+		position: absolute;
+		margin: auto;
+		top: 0;
+		bottom: 0;
+		right: 7px;
+		font-size: 20px;
+		font-weight: bold;
+		vertical-align: middle;
+		text-align: center;
+		line-height: 16px;
+	}
+
+	.name {
+		margin: 0;
+		line-height: 24px;
+		word-break: break-all;
+		display: block;
+		font-size: 14px;
+		text-align: left;
+	}
+}
+
+.button {
+	display: block;
+	margin: 10px auto !important;
+	width: 192px;
+}
+
+
+
+
+
+
+@mixin lg-pinked-border(
+  $size  : 2,
+  $color : black
+){
+  box-sizing: border-box;
+  background-clip: padding-box;
+  border-top: #{$size}px solid transparent;
+  &:after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: #{$size}px;
+    top: -#{$size}px;
+    left: 0;
+    background-image:
+      linear-gradient(45deg, transparent 33.333%, $color 33.333%, $color 66.667%, transparent 66.667%),
+      linear-gradient(-45deg, transparent 33.333%, $color 33.333%, $color 66.667%, transparent 66.667%);
+    background-size: #{$size*2}px #{$size*4}px;
+    background-position: 50% -#{$size*3}px;
+    background-repeat: repeat-x;
+    z-index: 1;
+  }
+}
+
+// #part2 {
+// 	@include lg-pinked-border(10, #ad424e);
+// 	z-index: 2;
+// 	-webkit-filter: drop-shadow(hsla(0, 0%, 0%, 0.55) 0px 1px 2px);
+// 	background-color: #ad424e;
+// }

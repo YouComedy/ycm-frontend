@@ -1,0 +1,89 @@
+//
+//
+//
+
+* {
+	@include box-sizing(border-box);
+	margin: 0;
+	padding: 0;
+}
+
+html, body {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+body {
+	font-family: $ycm-font-default;
+	font-size: 13px;
+	line-height: 1.4;
+	background-color: $ycm-background-color;
+	color: $ycm-font-color;
+
+	@if $isMobile != 1 {
+		min-width: 998px;
+		position: relative;
+		padding: 48px 0 0 !important;
+	}
+}
+
+h2, h3, h4 {
+	font-size: 22px;
+	font-family: Verdana, Geneva, 'Dejavu Sans', sans-serif;
+	font-weight: normal;
+	line-height: 1;
+}
+h4 {
+	font-size: 16px;
+}
+
+hr {
+	margin: 5px 0 20px;
+	border: 0;
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+label {
+	display: inline-block;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+	display: inline-block;
+	cursor : pointer;
+}
+
+input,
+textarea {
+	padding: 5px;
+	resize: none;
+	outline: none;
+	color: $ycm-font-default;
+	font-size: inherit;
+	font-family: inherit;
+	border-radius: 3px;
+	border: 1px solid rgba(0,0,0,.1);
+}
+
+table {
+	border-spacing: 0;
+}
+
+:focus {
+	outline: none;
+}
+
+ul {
+	list-style: none;
+}
+
+img {
+	max-width  : 100%;
+}
+
+form {
+	margin-bottom: 20px;
+}

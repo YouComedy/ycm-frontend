@@ -1,0 +1,96 @@
+.ue-tab-container {
+    width: 24px;
+    max-width: 24px;
+	z-index: 100001 !important;
+	position: fixed;
+	left: 0px;
+	top: 35%;
+    display: block !important;
+}
+
+* html .ue-tab-container {
+	position: absolute !important;
+}
+
+.ue-button {
+	border: 1px solid #fff;
+	box-shadow: rgba(255, 255, 255, 0.247059) 1px 1px 1px inset, rgba(0, 0, 0, 0.498039) 0px 1px 3px;
+	font: bold 14px Arial, sans-serif;
+	line-height: 1em;
+	overflow: hidden;
+	cursor: pointer;
+	top: 0%;
+	z-index: 9999;
+	display: block;
+	background-position: center 0px;
+	background-repeat: no-repeat;
+	background-color: #00ABE7;
+	float: right;
+	-webkit-transition: 0.3s ease-out background-color,0.1s ease-out padding-right;
+	-moz-transition: 0.3s ease-out background-color,0.1s ease-out padding-right;
+
+    &:hover {
+        background-color: #FEDB46;
+    }
+}
+
+.ue-right {
+	border-right-width: 0px;
+	border-style: solid none solid solid;
+	border-radius: 5px 0px 0px 5px;
+}
+
+.ue-bottom {
+	float: left;
+	border-bottom-width: 0px;
+	border-style: solid solid solid solid;
+	border-radius: 5px 5px 0px 0px;
+}
+
+.ue-top {
+	float: left;
+	border-top-width: 0px;
+	border-style: solid solid solid solid;
+	border-radius: 0px 0px 5px 5px;
+}
+
+.ue-left.ue-button {
+	left: 0px;
+	border-left-width: 0px;
+	border-style: solid solid solid none;
+	border-radius: 0 5px 5px 0;
+}
+
+.ue-left.ue-button #ueTabLabel {
+	padding: 0px 0px 0px 0px !important;
+	border-radius: 0 5px 5px 0;
+}
+
+.ue-right.ue-button #ueTabLabel {
+	padding: 10px 0px 0px 0px !important;
+}
+
+.ue-button.ue-chat.ue-bottom, .ue-button.ue-chat.ue-top {
+	float: left;
+	margin-right: 5px;
+}
+
+.ue-button.ue-chat.ue-left, .ue-button.ue-chat.ue-right {
+	margin-bottom: 5px;
+}
+
+.ue-button.ue-hidden {
+	opacity: 0;
+	filter: alpha(opacity=0);
+	display: none;
+}
+
+.ueLabel {
+    width: 24px;
+    max-width: 24px;
+    vertical-align:top;
+    border:0;
+    background-color: transparent;
+    padding:0;
+    margin:0;
+}

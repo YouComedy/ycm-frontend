@@ -1,0 +1,117 @@
+@import "compass";
+@import "../_conf";
+@import "../widgets/ui/buttons";
+
+.categories {
+	margin: 20px auto 20px;
+	overflow: hidden;
+	display: table;
+}
+.category__img {
+	width: 195px;
+	display: block;
+	position: relative;
+
+	-ms-filter: grayscale(100%);
+	-moz-filter: grayscale(100%);
+	-webkit-filter: grayscale(100%);
+	filter: grayscale(100%);
+}
+.category__filter {
+	display: block;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	position: absolute;
+	background: #eed;
+	opacity: 0.7;
+	z-index: 1;
+	-ms-transition: opacity 0.2s linear;
+	-moz-transition: opacity 0.2s linear;
+	-webkit-transition: opacity 0.2s linear;
+	transition: opacity 0.2s linear;
+}
+.category {
+	cursor: pointer;
+	display: block;
+	position: relative;
+}
+.category__title {
+	font-size: 13px;
+	font-family: Verdana, sans-serif;
+	color: #fff;
+	padding: 10px 15px;
+	text-shadow: 0 0 3px #444;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 5;
+	background-image: -ms-linear-gradient(rgba(0,0,0,.3) 0, rgba(0,0,0,0) 100%);
+	background-image: -moz-linear-gradient(rgba(0,0,0,.3) 0, rgba(0,0,0,0) 100%);
+	background-image: -webkit-linear-gradient(rgba(0,0,0,.3) 0, rgba(0,0,0,0) 100%);
+	background-image: linear-gradient(rgba(0,0,0,.3) 0, rgba(0,0,0,0) 100%);
+}
+.category__title:before {
+	content: '';
+	top: 0;
+	width: 100%;
+	left: 0;
+	position: absolute;
+	height: 0;
+	z-index: -1;
+	height: 100%;
+	opacity: 0;
+	background-image: -ms-linear-gradient(rgba(0,0,0,.3) 0, rgba(0,0,0,0) 100%);
+	background-image: -moz-linear-gradient(rgba(0,0,0,.3) 0, rgba(0,0,0,0) 100%);
+	background-image: -webkit-linear-gradient(rgba(0,0,0,.3) 0, rgba(0,0,0,0) 100%);
+	background-image: linear-gradient(rgba(0,0,0,.3) 0, rgba(0,0,0,0) 100%);
+
+	-ms-transition: opacity 0.2s linear;
+	-moz-transition: opacity 0.2s linear;
+	-webkit-transition: opacity 0.2s linear;
+	transition: opacity 0.2s linear;
+}
+ ._notouch .category:hover  .category__title:before {
+	opacity: 1;
+}
+ ._notouch .category:hover  .category__filter {
+	opacity: 0.6;
+}
+ ._notouch .category:hover  .category__img {
+	-ms-filter: grayscale(40%);
+	-moz-filter: grayscale(40%);
+	-webkit-filter: grayscale(40%);
+	filter: grayscale(40%);
+
+}
+.categories input[type='checkbox'] {
+	display: none;
+}
+input[type='checkbox']:checked + .category .category__img {
+	-ms-filter: grayscale(0%) !important;
+	-moz-filter: grayscale(0%) !important;
+	-webkit-filter: grayscale(0%) !important;
+	filter: grayscale(0%) !important;
+}
+input[type='checkbox']:checked + .category .category__filter {
+	opacity: 0 !important;
+}
+input[type='checkbox']:checked + .category .category__title:after {
+	content: '';
+	position: absolute;
+	display: block;
+	left: 0;
+	top: 0;
+	right: 0;
+	height: 109px;
+	background: url('/common/img/pages/quest/agree.png') center no-repeat;
+}
+.cell {
+	padding: 3px;
+	display: table-cell;
+}
+.row {
+	display: table-row;
+}

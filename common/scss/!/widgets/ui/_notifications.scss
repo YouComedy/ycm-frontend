@@ -1,0 +1,136 @@
+
+
+
+
+// ---------------------------------------------------------------------------------------------------------
+// Список уведомлений со стеком
+// ---------------------------------------------------------------------------------------------------------
+
+#notifier-box {
+	position: fixed;
+	bottom: 10px;
+	left: 10px;
+	z-index: 999999;
+	// max-height: 225px;
+	// overflow: hidden;
+	& .newslist__time {display: none}
+}
+
+.message-box {
+	background: #111;
+	background: rgba(0, 0, 0, .8);
+
+	margin: 0 0 10px 0;
+	padding: 10px;
+	width: 300px;
+
+	color: #888; font-size: 13px;
+
+	-webkit-box-shadow: 0 0 10px #999;
+	-moz-box-shadow: 0 0 10px #999;
+	-o-box-shadow: 0 0 10px #999;
+	box-shadow: 0 0 10px #999;
+
+	-webkit-text-shadow: 0 1px 0 #000;
+	-moz-text-shadow: 0 1px 0 #000;
+	-o-text-shadow: 0 1px 0 #000;
+	text-shadow: 0 1px 0 #000;
+
+	@include border-radius(3px);
+
+	padding-top: 1px;
+}
+
+ ._notouch .message-box:hover  {
+	background: #111;
+	background: rgba(0, 0, 0, .9);
+}
+
+.message-box .message-header {
+	color: #61cd07; font-size: 14px; font-family: 'PT Sans Narrow', Ubuntu, Tahoma, Arial, sans-serif;
+	margin: 0 0 10px 0;
+}
+
+.message-box a.message-close {
+	width: 8px; height: 8px;
+	display: block; float: right;
+
+	@include border-radius(3px);
+	@include opacity(.8);
+
+	position: relative;
+	top: -15px;
+
+	&:after {
+		content: '\00d7';
+		display: block;
+		border-radius: 100px;
+		background: #000;
+		opacity: 1;
+		width: 20px;
+		height: 20px;
+		text-align: center;
+		vertical-align: middle;
+		line-height: 20px;
+		border: 2px solid #FFF;
+		box-shadow: 0 0 4px #000;
+		color: #FFF;
+		font-size: 25px;
+	}
+}
+
+ ._notouch .message-box:hover  a.message-close {
+	@include opacity(.5);
+}
+
+ ._notouch .message-box a.message-close:hover  {
+	@include opacity(1);
+}
+
+.message-box .message-body {
+	width: 100%;
+	overflow: hidden;
+
+	img {
+		width: 32px;
+		height: 32px;
+		@include border-radius(3px);
+	}
+}
+
+.message-box .message-body .thumb {
+	width: 48px;
+	height: 48px;
+	margin: 0 10px 0 0;
+	float: left;
+	@include border-radius(2px);
+}
+
+.message-box .message-body .thumb img {
+	@include border-radius(2px);
+}
+
+.message-box .news_avatar-icon {
+	display: none;
+}
+
+.message-box .news_action-icon {
+	width: 32px !important;
+	height: 32px !important;
+	float: left;
+	margin: 0 10px 0 0;
+	border-color: #000;
+	@include border-radius(3px);
+}
+
+.message-box .news_content_inner a {
+	color: $ycm-blue;
+}
+
+.message-box a.news_avatar-link {
+	float: right;
+	margin: 0 10px;
+}
+.message-box .news_content {
+	padding-right: 0;
+}

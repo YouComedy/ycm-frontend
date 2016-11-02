@@ -1,0 +1,250 @@
+
+//  Main menu container
+//  ------------------------------------------------------------------------------
+
+.menu {
+	width: 100%;
+	background: black;
+	z-index: 1000;
+	@include background-image(linear-gradient(#151515, #292929));
+	@if $isMobile != 1 {
+		height: 48px;
+		top: 0;
+		left: 0;
+		position: absolute;
+	} @else {
+		position: relative;
+	}
+}
+
+
+.menu__container {
+	line-height : 44px;
+	height: 48px;
+	position: relative;
+}
+
+.header__icon {
+	position: relative;
+	.tooltip {
+		min-width: 150px !important
+	}
+}
+
+
+//  Main menu logo
+//  ------------------------------------------------------------------------------
+
+.menu__logo {
+	float : left;
+	margin-bottom : -10px;
+	line-height: 19px;
+	width: 23px;
+	padding: 0;
+	outline: none;
+	border: none;
+	width: 50px;
+	height: 55px;
+	position: relative;
+	background: #292929;
+	-webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+	box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+	border-bottom-left-radius: 50px 20px;
+	border-bottom-right-radius: 50px 20px;
+
+	& > i {
+		background: url("/common/img/logos/logo-mobile.png") center top no-repeat;
+		background-size: contain;
+		position: absolute;
+		top: 5px;
+		left: 0;
+		right: 0;
+		width: 30px;
+		height: 48px;
+		margin: auto;
+	}
+
+
+	@if $isMobile == 1 {
+		float: none;
+		margin: auto;
+		position: absolute;
+		left: 0;
+		right: 0;
+	}
+}
+
+//  Main menu items
+//  ------------------------------------------------------------------------------
+
+.menu__item {
+	height: 100%;
+	float: left;
+	color : $ycm-grey;
+	padding : 0 20px;
+
+	& + & {
+		border-left: 2px solid #333333
+	}
+
+	&.active, &._active {
+		color: $ycm-yellow
+	}
+
+	&:last-child {
+		border-left: 2px solid #333333;
+
+		& .ycm-icon-cog {
+			margin-right: 10px;
+		}
+	}
+}
+
+@if $isMobile != 1 {
+	 ._notouch a.menu__item:hover  {
+		background: #292929
+	}
+}
+
+
+//  Main menu search form
+//  ------------------------------------------------------------------------------
+
+.menu__searchForm {
+	height: 48px;
+	position: relative;
+}
+
+.menu__searchButton {
+	margin: auto;
+	padding: 0;
+	height: 30px;
+	background: #777;
+	border: 0;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+	position: absolute;
+	width: 30px;
+	line-height: 30px;
+	color: #ccc;
+	top: 0;
+	bottom: 0;
+	left: 218px;
+}
+
+
+.menu__searchIcon {
+	font-size: 12px;
+}
+
+
+
+
+.menu__search.menu__search {
+	width : 200px;
+	height: 30px;
+	margin: auto;
+	line-height: initial;
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+	border: 0;
+	position: absolute;
+	left: 20px;
+	top: 0;
+	bottom: 0;
+	padding-left: 15px;
+	@include background-image(linear-gradient(#3f3f3f 10%, #4f4f4f 100%));
+	font-size: 12px;
+
+	&:focus {
+		background: #fff;
+		border-bottom-color: #fff;
+	}
+
+	&::-webkit-input-placeholder {
+		color: #999;
+	}
+
+	&:-moz-placeholder {
+		color: #999;
+	}
+
+	&::-moz-placeholder {
+		color: #999;
+	}
+
+	&:-ms-input-placeholder {
+		color: #999;
+	}
+}
+
+
+// Main menu mobile switch
+//  ------------------------------------------------------------------------------
+
+.menuItemSwitch {
+	width: 40px;
+	height: 30px;
+	margin-top: 8px;
+	margin-left: 5px;
+	margin-right: 15px;
+	position: relative;
+	border-radius: 3px;
+	border-top: 1px solid #222;
+	border-bottom: 1px solid #0a0a0a;
+	box-shadow: 0 -1px 0px #111, 0 1px 0px #222;
+	@include background-image(linear-gradient(#292929, #141414));
+	background-color: #141414;
+	color: #fff;
+}
+
+.menuItemSwitch.active {
+	background-image: none;
+	border-top: 1px solid #111;
+	box-shadow: 0 -1px 0px #111, inset 0 2px 4px #111;
+}
+
+.menuItemSwitch:after {
+	content: '\2261';
+	display: block;
+	width: 40px;
+	height: 30px;
+	line-height: 27px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	text-align: center;
+	vertical-align: middle;
+	font-size: 29px;
+}
+
+.menu-count {
+	height: 20px;
+	min-width: 20px;
+	top: 0;
+	bottom: 0;
+	padding: 0 5px;
+	left: 35px;
+	margin: auto;
+	position: absolute;
+	text-align: center;
+	color: #fff;
+	font-size: 12px;
+	line-height: 20px;
+	border-radius: 10px;
+	display: inline-block;
+	background-color: #eb506e;
+	@include filter-gradient(#eb506e, #c8033c, vertical);
+	$experimental-support-for-svg: true;
+	@include background-image(linear-gradient(top, #eb506e 0%,#c8033c 100%));
+	text-shadow: 0px 0px 2px #333;
+	filter: dropshadow(color=#333, offx=0, offy=0);
+}
+
+
+
+//  Main menu users dropdown
+//  ------------------------------------------------------------------------------
+
+@import "../widgets/ui/dropdown/header";

@@ -1,0 +1,185 @@
+// Fancy Dialog
+
+.fancy-dialog-overlay {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	overflow: auto;
+	top: 0;
+	left: 0;
+	z-index: -9;
+	opacity: 0;
+	background-color: rgba(0,0,0,.3);
+	transition: .3s;
+}
+
+.fancy-dialog-show .fancy-dialog-overlay {
+	z-index: 9999;
+	opacity: 1;
+}
+
+.fancy-dialog {
+	transform: scale(.5);
+	-webkit-transform: scale(.5);
+
+	max-width: 600px;
+	min-height: 400px;
+	margin: auto;
+	position: relative;
+	top: 15%;
+	background: #fff;
+	transition: .3s;
+	box-shadow: 0 0 5px #000;
+	-webkit-box-shadow: 0 0 5px rgba(0,0,0,.5);
+}
+
+.fancy-dialog-show .fancy-dialog {
+	transform: scale(1);
+	-webkit-transform: scale(1);
+}
+
+
+// Badge Dialog
+
+.dialogBadge {
+	width: 379px;
+	height: 526px;
+	background: #000 url('../../../../img/profile/badges/badge-back.png') no-repeat;
+	cursor: pointer;
+	color: #fff;
+}
+.dialogBadge__image {
+	width: 180px;
+	height: 180px;
+	margin: auto;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+.dialogBadge__title,
+.dialogBadge__head {
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 30px;
+}
+.dialogBadge__head {
+	margin-top: 50px;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 24px;
+}
+.dialogBadge__title {
+	margin-bottom: 30px;
+	padding: 0 15px;
+	font-family: Tahoma, Arial, sans-serif;
+	font-weight: bold;
+	font-size: 28px;
+}
+
+.dialogBadge__image {
+	margin-bottom: 40px;
+
+	.dialogBadge-702 & {
+		margin-bottom: 20px;
+	}
+}
+
+.dialogBadge__reward {
+	color: #e63d60;
+	text-align: center;
+	margin-bottom: 5px;
+	font-size: 14px;
+
+	&:before {
+		content: '+';
+	}
+
+	&:after {
+		content: ' к рейтингу';
+	}
+}
+
+.dialogBadge__text {
+	margin: 0 30px;
+	text-align: center;
+	font-size: 14px;
+
+	.dialogBadge-8000 & {
+		margin: 0 100px;
+	}
+}
+.dialogBadge__share {
+	width: 100%;
+	position: absolute;
+	bottom: 10px;
+	text-align: center;
+	font-size: 12px;
+	color: #999;
+}
+
+$badges: 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 3100, 3200, 3300, 3400, 4100, 4200, 4300, 4400, 5100, 5200, 5400, 5500, 5700, 5800, 5900, 6000, 6100, 6200, 6300, 6400, 1500, 1600, 4500, 8000;
+
+$badges_multiple: 200, 300, 400, 600, 700, 800, 1200, 1400;
+
+$i: -1;
+
+._badge .news_avatar-icon {
+	background: url('../../../../img/profile/badges/badges.png') no-repeat;
+	background-size: 453px;
+}
+.backpack__item {
+	background-size: 632px;
+}
+[data-badge-image] {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+.widgetActivity ._badge .thumb {
+	background: url('../../../../img/profile/badges/badges.png') no-repeat;
+	background-size: 310px;
+}
+
+@each $badge in $badges {
+	$max: 11;
+	$i: $i + 1;
+
+	@if index($badges_multiple, $badge) {
+		@for $j from 0 through $max {
+			$id: $badge + $j + 1;
+
+			.backpack__item[data-badge='#{$id}'] {
+				background-position: (-53px * $j) (-53px * $i);
+				//background-position: 0 (-55px * $i);
+			}
+
+			._badge.news_badge-#{$id} .news_avatar-icon {
+				background-position: (-38px * $j) (-38px * $i);
+			}
+
+			.widgetActivity .thumb.news_badge-#{$id} {
+				background-position: (-26px * $j) (-26px * $i);
+			}
+
+			[data-badge-image='#{$id}'] {
+				background-image: url('/common/img/profile/badges/big/#{$id}.png');
+			}
+		}
+	} @else {
+		.backpack__item[data-badge='#{$badge}'] {
+			background-position: 0 (-53px * $i);
+		}
+
+		._badge.news_badge-#{$badge} .news_avatar-icon {
+			background-position: 0 (-38px * $i);
+		}
+
+		.widgetActivity .thumb.news_badge-#{$badge} {
+			background-position: 0 (-26px * $i);
+		}
+
+		[data-badge-image='#{$badge}'] {
+			background-image: url('/common/img/profile/badges/big/#{$badge}.png');
+		}
+	}
+}

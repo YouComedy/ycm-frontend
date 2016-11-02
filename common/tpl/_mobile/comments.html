@@ -1,0 +1,48 @@
+
+
+<style>
+	.full-comments .span9 > span {display: none}
+	.comment_best .full-comments .span9 > span {display: inline-block}
+	.comment__attachment {display: inline-block; margin-top: 5px; min-width: 198px; position: relative;}
+	.comment__attachment img._preview {min-width: 198px; min-height: 155px;}
+	.comment__attachment .play-btn-overlay {display: block}
+	.comment__attachment .play-btn-overlay:after {
+		width: 100% !important;
+		content: 'GIF';
+		text-align: center;
+		font-style: normal;
+	}
+</style>
+
+
+
+
+<script type="text/ycm-template" id='comment-popup-tpl'>
+	<a href="/user/{{= username }}" class="thumb"><img class="thumb__img" src='{{= userAvatar || APP.get("small_avatar") }}'></a>
+	<a href="/user/{{= username }}" class="title _small">{{= fullname || username }}</a>
+	<span class="remark _small">{{= timestamp }}</span>
+	<div class="comment__text">
+		{{= text }}
+		<div class="_clear">
+			<a href="#" class="_left comment__reply" data-replyTo="{{= id }}">ответить</a>
+			<a href='#' title='Удалить комментарий' data-remove='{{=id}}' class='comment__remove _right'>удалить</a>
+		</div>
+	</div>
+	<div class="comment__likes">
+		<div data-likes-counter='{{= id }}' class='comment__counter {{=  (likes-dislikes) > 0 ? "_plus" : (likes-dislikes) < 0 ? "_minus" : "" }}' id="c{{=id}}-rating">{{= likes-dislikes }}</div>
+		<span data-vote='like'  class="comment__like ycm-icon ycm-icon-chevron-up {{= userVote > 0 && '_active'}}"></span>
+		<span data-vote='dislike' class="comment__dislike ycm-icon ycm-icon-chevron-down {{= userVote < 0 && '_active'}}"></span>
+	</div>
+</script>
+
+
+<script type="text/ycm-template" id='comment-attach-tpl'>
+	{{ if( big_image ) {
+		var gif = big_image.indexOf("/gif_") > -1;
+	}}
+		<a onclick="APP.views.CommentBig.prototype.attachToggle(event,'{{=big_image}}','{{=small_image}}', this); return false;" href="{{= big_image }}" target="_blank" class="comment__attachment">
+			<img class='_preview' src="{{= small_image }}" alt="Нажмите, чтобы увеличить">
+			{{= gif ? '<div class="play-btn-overlay"></div>' : '' }}
+		</a>
+	{{ } }}
+</script>

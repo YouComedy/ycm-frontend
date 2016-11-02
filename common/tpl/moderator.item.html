@@ -1,0 +1,156 @@
+<script type="text/ycm-template" id='item-big-moderate-btns-tpl'>
+	{{ extends #item-big-moderate-tpl }}
+	{{ block btns }}
+		<a class="item__buttonWrap {{= userVote > 0 && '_active' }} item__moderatePromote" data-action='moderatePromoteItem' title="Повысить рейтинг шутки" href='#'>
+			<i class="ycm-icon ycm-icon-thumbs-up"></i>
+		</a>
+		<a  class="item__buttonWrap _active" data-action='moderateDemoteItem' title="Бан шутки" href='#'>
+			<i class="ycm-icon ycm-icon-thumbs-down"></i>
+		</a>
+		<a  class="item__buttonWrap _active" data-action='moderateRemoveItem2' title="Удалить шутку" href='#'>
+			<i class="ycm-icon ycm-icon-trashcan"></i>
+		</a>
+		<a class="item__buttonWrap _active item__moderateConfirm" data-action='moderateConfirm' title="Закончить модерацию" href='#'>
+			<i class="ycm-icon ycm-icon-check"></i>
+		</a>
+	{{ endblock }}
+</script>
+
+<script type="text/ycm-template" id='item-big-moderator-tpl'>
+	<div class="item__top _clear">
+			<div class="_clear" style="margin-bottom:10px">
+				{{ if(duplicate) }}
+				<div class="_right">
+					<span style='color:red;margin-left:10px'>Забанено.</span>
+					<a class="title" href="/moderator/unBanItem/{{= item_id }}">Разбанить</a>
+				</div>
+				{{ end }}
+				<p>{{= moderated }}</p>
+			</div>
+		<a href="/user/{{= content_username }}" class="thumb"><img class="thumb__img" src="{{= content_user_avatar }}"></a>
+		<div class="popoverWrapper" data-uidinfo="{{= content_user_id }}">
+			<a href="/user/{{= content_username }}" class="title _big">{{= content_user_fullname }}</a>
+			<span class="remark">&nbsp;{{= content_timestamp }}</span>
+		</div>
+		<div class="_right remark">
+			<input style="border:none;width:200px;" class="remark" onclick="$(this).select()" value="http://youcomedy.me/{{=id}}"> / <span class="title"><i style="display:inline-block;margin-top:-3px;" class="ycm-icon ycm-icon-star"></i> {{= rating }}</span> {{= complaint ? (" / <span style='color:red'>" + complaint + ' (<a class="title" href="/user/'+complaint_username+'">'+complaint_username+'</a>)'  + "</span>" ) : "" }}
+		</div>
+	</div>
+	{{ include #item-big-moderator-content-tpl }}
+	<div class="item__bottom">
+		{{ include #item-big-moderate-btns-tpl }}
+		<div data-container='likes' class="item__controls _clear" id='i{{= id }}-likes'>
+			{{! include #item-big-likes-new-tpl }}
+		</div>
+		<div  class="item__comments">
+			<div data-container='comments' id="i{{=id}}-cmts"></div>
+			<div class="item__showAllComments" data-action="renderComments">
+				{{ if(totalComments > topComments.length) }}
+					Показать {{= (totalComments > 1 ? " все " : "") + totalComments + " " + plural(totalComments,"комментарий,комментария,комментариев") }}
+				{{ else }}
+					Оставить комментарий
+				{{ end }}
+			</div>
+		</div>
+	</div>
+</script>
+
+
+<style>
+.item__moderatePromote._active {
+	color: #1eb4e8;
+}
+.item__moderateConfirm {
+	color: rgb(109, 165, 109);
+	background: rgb(234, 255, 219);
+}
+.item__suspect {
+	display: inline-block;
+	cursor: pointer;
+	padding: 10px;
+	background: #f9f9f9;
+	border-radius: 3px;
+	box-shadow: 0 0 3px rgba(0,0,0,.3);
+}
+.item__suspectWrap {
+	width: 150px;
+	height: 100px;
+	display: block;
+	overflow: hidden;
+}
+.item__suspectWrap > img {
+	border: 0;
+}
+.item__suspect + .item__suspect {
+	margin-left: 10px;
+}
+._moder .item__moderbtns {
+	top: auto;
+	bottom: 0;
+}
+._moder .item__controls {
+	border-bottom: 0;
+}
+.moderatorDialog {
+	width: 430px;
+}
+.moderatorDialog textarea {
+	width: 400px;
+	height: 100px;
+}
+.moderatorDialog select {
+	width: 250px;
+}
+</style>
+
+<script type="text/ycm-template" id='item-big-moderator-content-tpl'>
+	{{ extends #item-big-content-tpl }}
+	{{ block iteminfo }}
+		<div data-prop='description' class="dialog__section">{{= description }}</div>
+		<div class="dialog__section">
+			{{ each(suspects) }}
+				<div class="item__suspect">
+					<div class="item__suspectWrap" role="button" data-owner="Popup" data-action="openByID" data-param="{{= item.id }}">
+						{{ if (item.type == APP.globals.TYPE_TXT) }}
+							<p style="">{{= item.content }}</p>
+						{{ else }}
+							<img class="" src="{{= item.small_image }}">
+						{{ end }}
+					</div>
+				</div>
+			{{ end }}
+		</div>
+		<div class="item__tags">
+			{{ if( all_tags && all_tags.length ) }}
+				{{ each(all_tags, tag) }}
+					<input data-id="{{= tag.link }}" class="js-tag" name="tags[]" type="hidden" value="{{=tag.value}}">
+				{{ end }}
+			{{ else }}
+				<input class="js-tag" name="tags[]" type="hidden" value="">
+			{{ end }}
+		</div>
+		<div class="acholder" id="i{{=id}}-ac"></div>
+	{{ endblock }}
+</script>
+
+<script type="text/ycm-template" id='dialog-moderate-reason-tpl'>
+	<form data-contentid="{{=id}}" method="POST" action="/moderator/delete/{{=item_id}}" data-owner="Moderator" data-success="removeSuccess" data-before="removeBefore">
+		<div class="dialog__section">
+			<h4 class="title">Причина удаления шутки</h4>
+		</div>
+		<div class="dialog__section">
+			<select name="reason">
+				<option disabled selected value="">Выбрать причину</option>
+				{{ each(APP.Moderator.reasons, reason) }}
+					<option value="{{=reason}}">{{=reason}}</option>
+				{{ end }}
+			</select>
+		</div>
+		<div class="dialog__section">
+			<textarea name="comment" placeholder="комментарий"></textarea>
+		</div>
+		<div class="dialog__section _clear">
+			<button class="button _red _right">Удалить</button>
+		</div>
+	</form>
+</script>

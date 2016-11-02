@@ -1,0 +1,26 @@
+<!--
+	Шаблон пользователя в строке таблицы для администратора
+-->
+<script type="text/ycm-template" id='profile-row-tpl'>
+	<td>
+		<h2><a class='blue' href='/user/{{= username }}' target="_blank">{{= username }}</a></h2>
+	</td>
+	<td class='role {{= role }}'><i></i></td>
+	<td>
+		<h2 class='blue'>{{= items_uploaded }} / {{= remixes_uploaded }}</h2>
+	</td>
+	<td>
+		<ul>
+			<li>{{= likes_got_count }}</li>
+			<li>{{= dislikes_got_count }}</li>
+			<li>{{= comments_got_count }}</li>
+		</ul>
+	</td>
+	<td>
+		<ul>
+			<li>{{= likes_made_count }}</li>
+			<li>{{= dislikes_made_count }}</li>
+			<li>{{= comments_made_count }}</li>
+		</ul>
+	</td>
+</script>

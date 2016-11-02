@@ -1,0 +1,15 @@
+<!-- <form action="/{{= id }}"> -->
+<script type="text/ycm-template" id='album-edit-tpl' data-path='/common/tpl/profile/dialog.albums.html'>
+		<div class="dialog__section">
+			<input class="input-white input-white-big" style='text-align:left;' autofocus placeholder="Название коллекции" name="Collection[title]" value="{{= title || '' }}">
+		</div>
+		<div class="dialog__divider"></div>
+		<div class="dialog__section">
+			<textarea name="Collection[description]" class="textarea-white" placeholder='Описание и #теги'>{{=description || ''}}</textarea>
+		</div>
+		<div class="dialog__btns">
+			<button class="ybtn" type="submit">{{= blank ? 'Добавить' : 'Сохранить' }}</button>
+			<a href="/collection/{{=id}}/delete" data-remove='{{=id}}' class="ybtn ybtn-red">удалить</a>
+		</div>
+</script>
+<!-- </form> -->

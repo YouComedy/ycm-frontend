@@ -1,0 +1,12 @@
+@import "_conf";
+
+@import "_core/reset";
+@import "_core/fonts";
+@import "_core/utils";
+@import "_core/layout";
+@import "widgets/_pack.main.ui.scss";
+
+
+@import "_core/header";
+@import "widgets/content/all";
+@import "widgets/sidebar/all";

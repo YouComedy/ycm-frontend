@@ -1,0 +1,408 @@
+$count-size: 26px;
+$likes-width: 80px;
+
+@if $isMobile == 1 {
+	$likes-width : 50px;
+}
+
+
+.comment__fucktoggle {
+	display: none;
+	font-style: italic;
+}
+
+.comment {
+	min-height: 36px;
+	padding: 10px ($item-padding + 5px) 5px $item-padding;
+	position: relative;
+
+	&._fucked {
+		.comment__fucktoggle {display: block};
+		.comment__text {display: none}
+		.comment__reply {display: none}
+	}
+
+	@if $isMobile == 1 {
+		padding-top: 15px;
+		padding-bottom: 15px;
+		min-height: 28px;
+
+		.remark {
+			display: none;
+		}
+	} @else {
+		 ._notouch &:hover  {
+			.comment__like,
+			.comment__dislike {
+				opacity: 1;
+			}
+		}
+
+		& + & {
+			margin-top: 0;
+
+			&:before {
+				content: '';
+				display: block;
+				margin: -10px auto 10px;
+				height: 1px;
+				background: $ycm-border-color;
+			}
+		}
+
+		&:last-child {
+				border-bottom: 1px solid $ycm-border-color;
+		}
+	}
+}
+
+.comment__link {
+	text-decoration: underline;
+}
+
+.comment_user_link,
+.comment-hashtag-link {
+	color: $ycm-link-color;
+}
+
+.comment__text {
+	font-size: 13px;
+	margin-left: 46px;
+	word-wrap: break-word;
+	word-break: break-word;
+
+	@if $isMobile == 1 {
+		margin-left: 33px;
+		margin-right: 33px;
+		margin-top: -4px;
+	}
+}
+
+.comment__reply {
+	font-size: 11px;
+	color: $ycm-grey;
+	text-decoration: none;
+}
+
+@if $isMobile != 1 {
+	._notouch .comment.my_comment:hover  {
+		.comment__remove {
+			opacity: 1;
+		}
+	}
+} @else {
+	.comment.my_comment .comment__remove {
+		opacity: 1;
+	}
+}
+
+.comment__remove {
+	opacity: 0;
+
+	.comment.my_comment & {
+		color: $ycm-grey;
+		text-decoration: none;
+	}
+
+	@if $isMobile == 1 {
+		font-size: 11px;
+		color: $ycm-red;
+		text-decoration: underline;
+	} @else {
+		@include transition(opacity 0.1s linear);
+		line-height: 1;
+		display: block;
+		position: absolute;
+		right: 15px;
+		top: 15px;
+		color: $ycm-grey;
+	}
+}
+
+.comment__likes {
+	@if $isMobile == 1 {
+		color: #858585;
+		width: $likes-width;
+		height: $count-size;
+		position: absolute;
+		margin: auto;
+		top: 0;
+		bottom: 0;
+		right: $item-padding;
+		width: auto;
+		min-width: 26px;
+		text-align: center;
+	} @else {
+		font-size: 13px;
+		margin: 0 0 0 46px;
+		line-height: 20px;
+		height: 20px;
+		color: $ycm-grey;
+	}
+}
+
+.comment__like,
+.comment__dislike {
+	@if $isMobile == 1 {
+		position: absolute;
+		right: 0;
+		display: none;
+
+		.comment & {
+			display: block;
+		}
+
+		left: 0;
+		margin: auto;
+		width: 30px;
+		height: 16px;
+
+	} @else {
+		@include transition(opacity 0.1s linear);
+		opacity: 0;
+		margin: 0 2px;
+		font-size: 13px;
+		min-width: 13px;
+		min-height: 13px;
+		color: darken($ycm-grey-medium, 20);
+		display: inline-block;
+
+		 ._notouch &:hover  {
+			color: lighten($ycm-grey, 10%);
+		}
+	}
+}
+
+.comment__like {
+	&._active, &.active {
+		color: $ycm-blue;
+	}
+
+	@if $isMobile == 1 {
+		top: -12px;
+
+		&:before {
+			content: "\25" !important;
+		}
+	}
+}
+
+.comment__dislike {
+	&._active, &.active {
+		color: $ycm-red;
+	}
+
+	@if $isMobile == 1 {
+		bottom: -14px;
+
+		&:before {
+			content: "\26" !important;
+		}
+	}
+}
+
+.comment__counter {
+	&._plus {
+		color: $ycm-blue;
+		display: block;
+	}
+
+	&._minus {
+		color: $ycm-red;
+		display: block;
+	}
+
+	@if $isMobile == 1 {
+		float: right;
+		height: $count-size;
+		line-height: $count-size;
+		min-width: $count-size;
+		font-weight: bold;
+		vertical-align: middle;
+		border-radius: 3px;
+		box-sizing: border-box;
+		text-align: center;
+		display: none;
+
+		margin-right: 0;
+		font-size: 11px;
+		padding: 0 3px;
+		background: none;
+	} @else {
+		font-weight: bold;
+		font-size: 13px;
+
+		&._plus {
+			display: inline;
+		}
+
+		&._minus {
+			display: inline;
+		}
+	}
+}
+
+.item__newComment {
+	padding: $item-padding $item-padding 0 $item-padding;
+	position: relative
+}
+
+.item__inputWrap {
+	position: relative;
+	margin-left: 46px;
+
+	@if $isMobile == 1 {
+		margin-left: 33px;
+		padding-bottom: $item-padding;
+	}
+}
+
+.item__input {
+	width: 100%;
+	height: 36px;
+	display: block;
+	box-sizing: border-box;
+	padding-top: 7px;
+	padding-bottom: 0;
+	overflow: hidden;
+	margin-bottom: 5px;
+	border-color : #D2D5DB;
+
+	&:focus {
+		min-height: 66px;
+	}
+
+	@if $isMobile == 1 {
+		height: 28px;
+		padding-top: 5px;
+	} @else {
+		padding-right: 35px;
+	}
+}
+
+.item__inputRemark {
+	font-size: 10px;
+	line-height: 1;
+}
+
+.item__inputBox {
+	.item__input + & {
+		margin-top: 10px;
+		display: none;
+	}
+
+	.item__input:focus + & {
+		display: block;
+	}
+}
+
+.item__fileWrap {
+	z-index: 2;
+	width: 28px;
+	height: 28px;
+	margin: 0;
+	position: absolute;
+	line-height: 28px;
+	overflow: hidden;
+	top: 19px;
+	right: 19px;
+	color: $ycm-grey-light;
+
+	&:after {
+		width: 100%;
+		height: 100%;
+		cursor: pointer;
+		visibility: visible;
+		content: '';
+		display: block;
+		position: absolute;
+		font-family: 'ycm';
+		font-size: 15px;
+		content: '\31';
+		text-align: center;
+		color: $ycm-grey;
+		cursor: pointer;
+	}
+
+	@if $isMobile == 1 {
+		display: none;
+	}
+}
+
+.item__fileTrigger {
+	position: absolute;
+	z-index: 10;
+	opacity: 0.01;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	cursor: pointer;
+}
+
+.item__file {
+	top: 0;
+	left: 0;
+	right: 0;
+	position: absolute;
+	height: 30px;
+	line-height: 30px;
+	opacity: 0.01;
+	z-index: 1;
+}
+
+.widget__itemAttach {
+	width: 220px;
+	box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.1);
+	margin: 10px 0 !important;
+	border-bottom: 0;
+}
+.widgetItemAttach__head {
+	padding: 0;
+}
+.widgetItemAttach__body {
+	padding: 10px;
+}
+.widgetItemAttach__title {
+	font-style: normal;
+	color: darken($ycm-grey-medium, 20);
+}
+
+.widgetItemAttach__preview {
+	width: 100%;
+	border: 10px solid transparent;
+	max-height: 200px;
+	overflow: hidden;
+}
+
+.widgetItemAttach__thumb {
+	min-width: 100%;
+}
+
+.previewAttach {
+	float: left;
+	position: relative;
+	margin-bottom: $item-padding;
+	// #hack
+	// @todo Фиксануть эту херь, либо перенести блок с превьюхой в блок с полем ввода камента
+	// либо автоматически как-то этот отступ считать
+	// VS: считать будем из дефолтных размеров аватарки, но потом.
+	margin-left: 46px;
+}
+
+.comment._moderator > .popoverWrapper > .title {
+	color: $ycm-red;
+}
+
+
+.full-comments .span9 > span {display: none}
+.comment_best .full-comments .span9 > span {display: inline-block}
+.comment__attachment {display: inline-block; margin-top: 5px; max-width: 55%; position: relative;}
+.comment__attachment img._preview {min-width: 198px; min-height: 155px;}
+.comment__attachment .play-btn-overlay {display: block}
+.comment__attachment .play-btn-overlay:after {
+	width: 100% !important;
+	content: 'GIF';
+	text-align: center;
+	font-style: normal;
+}

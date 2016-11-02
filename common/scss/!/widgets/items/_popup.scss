@@ -1,0 +1,7 @@
+
+.popup .item {
+	display: none;
+	&._active {
+		display: block;
+	}
+}

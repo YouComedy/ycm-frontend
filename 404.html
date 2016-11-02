@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>404</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+html {
+	height: 100%;
+}
+body {
+	min-height: 100%;
+	position: relative;
+	background: url(/common/img/error/404.jpg) center no-repeat;
+	background-size: cover;
+}
+@media screen and (max-width: 800px){
+	html {
+		width: 800px;
+	}
+}
+@media screen and (max-height: 480px){
+	html {
+		height: 480px;
+	}
+}
+#banana {
+	position: absolute;
+	width: 24%;
+	height: 100%;
+	left: 0;
+	bottom: 0;
+	background: url(/common/img/error/banana.png) bottom no-repeat;
+	background-size: contain;
+}
+#rock {
+	position: absolute;
+	width: 16%;
+	height: 100%;
+	right: 0;
+	bottom: 0;
+	background: url(/common/img/error/rock.png) bottom no-repeat;
+	background-size: contain;
+}
+#bubble {
+	width: 50%;
+	min-height: 30%;
+	position: absolute;
+	background: url(/common/img/error/bubble.png) 85% no-repeat;
+	width: 100%;
+	top: 10%;
+	right: 0;
+	background-size: contain;
+}
+a {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+</style>
+</head>
+<body>
+	<div id="banana"></div>
+	<div id="rock"></div>
+	<div id="bubble"></div>
+	<a href="/"></a>
+</body>
+</html>

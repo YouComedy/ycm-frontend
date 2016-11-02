@@ -1,0 +1,127 @@
+.item__controls {
+	background: #fff;
+	border-top: 1px solid $ycm-border-color;
+	border-bottom: 1px solid $ycm-border-color;
+}
+
+.item__button {
+	@if $isMobile == 1 {
+		width: 25%;
+
+		&.item__like {
+			width: 20%;
+			border: 0 !important;
+		}
+
+		&.item__dislike {
+			width: 20%;
+			border: 0 !important;
+		}
+
+		&.item__rating {
+			width: 10%;
+			border: 0 !important;
+
+			._disliked & {
+				color: $ycm-red;
+				visibility: visible;
+			}
+
+			._liked & {
+				color: $ycm-blue;
+				visibility: visible;
+			}
+
+			._norating & {
+				visibility: hidden;
+			}
+		}
+	} @else {
+		min-width: 60px;
+		 ._notouch &:hover  {
+			color : lighten(#858585, 15%)
+		}
+	}
+
+	color: #858585;
+	height: 40px;
+	line-height: 40px;
+	float: left;
+	position: relative;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer;
+
+	& + & {
+		border-left: 1px solid $ycm-border-color;
+	}
+
+	&.item__like,
+	&.item__add {
+
+		line-height: 40px;
+
+		& > ._active, & > .active {
+			color: $ycm-blue;
+
+			& > .ycm-icon {
+				color: $ycm-blue;
+			}
+		}
+	}
+
+	.item__dislike._active {
+		color: $ycm-red;
+
+		& > .ycm-icon {
+			color: $ycm-red;
+		}
+	}
+
+	.item__like._active {
+		color: $ycm-blue;
+
+		& > .ycm-icon {
+			color: $ycm-blue;
+		}
+	}
+
+	&.item__dislike,
+	&.item__demoteMod,
+	&.item__removeMod {
+		& > ._active, & > .active {
+			color: $ycm-red;
+
+			& > .ycm-icon {
+				color: $ycm-red;
+			}
+		}
+	}
+}
+
+.item__buttonWrap {
+	display: block;
+	white-space: nowrap;
+	padding: 0;
+}
+
+.item__commentsCount {
+	position: relative;
+	top: -2px;
+}
+
+.item__shareLink.item__shareLink {
+	height: 24px;
+	width: 200px;
+	line-height: 1;
+	font-size: 11px;
+	color: $ycm-grey;
+	cursor: text;
+	margin: 8px 15px 0 0;
+}
+
+.item__commentsToggle {
+	float: right;
+	border-right: 0;
+	padding: 0 $item-padding;
+}

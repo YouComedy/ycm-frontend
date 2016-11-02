@@ -1,0 +1,101 @@
+
+<script src="/common/js/libs/forms/textarea.autogrow.js"></script>
+
+<div id='overlay_upld' style='display: none'></div>
+
+<style>
+	
+	.upload__form form input.grey.grey.grey:disabled {
+		color: #ff0000
+	}
+	
+	.upload__input_unsafe {margin-left: 10px; color: #66CCEF; cursor: pointer;}
+	.upload__input_unsafe input {display: inline-block}
+</style>
+
+
+<!-- <form action="/{{= id }}"> -->
+<script type="text/ycm-template" id='dialog-upload-tpl' data-path='/common/tpl/dialog.upload.html'>
+</script>
+<!-- </form> -->
+
+<style>
+.dialog-informer {
+	background: #FFF9D3;
+	border-top: 1px solid #CBC7A8;
+	border-bottom: 1px solid #CBC7A8;
+	text-align: center;
+	padding: 10px;
+	color: #6A6A66;
+}
+.dialog-informer a {
+	color: #1eb4e8;
+}
+.dialog-upload {
+	position: relative;
+}
+.dialog-upload .descr {
+	font-size: 12px;
+	color: #888;
+	text-align: center;
+	margin: 15px 0;
+	line-height: 1.2;
+}
+.magic-field__file.ybtn {
+	padding: 3px;
+	top: 5px;
+	right: 5px;
+	background-color: #B1B1B1;
+	cursor: pointer;
+}
+::-webkit-file-upload-button {cursor: pointer}
+.magic-field__file.ybtn:hover {
+	background-color: #1eb4e8;
+}
+.magic-field__input {
+	background-image: linear-gradient(#F5F5F5, #FFFFFF);
+	background-image: -webkit-linear-gradient(#F5F5F5, #FFFFFF);
+}
+.magic-field__input:-moz-placeholder {
+	line-height: 24px;
+	text-align: center;
+}
+.magic-field__input::-moz-placeholder {
+	line-height: 24px;
+	text-align: center;
+}
+.magic-field__input::-webkit-input-placeholder {
+	line-height: 24px;
+	text-align: center;
+}
+</style>
+
+<div id='upload-wrapper' class="popup_wrapper" style='display:none'>
+	<div class="dialog_overlay"></div>
+
+<div class="dialog-upload dialog-addto-album"  id='upload'>
+	<a class="dialog__close" role="button" data-owner="Upload" data-action="closeDialog" href="#"></a>
+	<h2 id='upld-dialog-title'></h2>
+	<div class="dialog-informer">Сохраняйте любые шутки с любого сайта, используя <a href="http://blog.youcomedy.me/post/44210364604/knopka-zakladka-youcomedy-me">кнопку YCM</a></div>
+	<p class="descr">Вы можете вставить URL картинки или видео (YouTube, Vimeo),<br>просто текст шутки или загрузить картинку с компьютера.</p>
+	<div class="magic-field">
+		<form enctype="multipart/form-data" action="/items/upload" method='post' data-noblock='1' data-noreset='1' data-owner='Upload' data-before='beforeUpload' data-success='afterUpload' >
+			<div style='position:relative' id='magic-field-zone'>
+				<div class="magic-field__file ybtn">
+					<div class="magic-field__caption">Перетащите сюда файл</div>
+					<input id='upld-form-pic-file' class="file" type="file" size="28" multiple="false" accept="image/jpeg,image/png" style="cursor: pointer;" name='FileUpload[file]'>
+				</div>
+				<div style="position: absolute;z-index:1;top:50%;height:1px !important;background-color:#b9b9b9;border-bottom: 1px solid #f5f5f5;width : 500px;left: -100px;"></div>
+				<textarea onkeydown='submitOnEnter(event, this);' class='magic-field__input' placeholder="текст или URL картинки/видео" name="FileUpload[content]" id="magic-input" cols="30" rows="10"></textarea>
+			</div>
+			<div style='text-align:center;margin-top:20px'>
+				<button type="submit" class='button _big' style='width:100px'>Загрузить</button>
+			</div>
+		</form>
+	</div> 
+	
+	<div class='upld-edit-section' id='upldsld2'></div>
+	
+</div>
+
+</div></div>

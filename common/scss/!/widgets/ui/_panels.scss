@@ -1,0 +1,97 @@
+.panel {
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 10px;
+	box-sizing: border-box;
+	background-color: #fff;
+	border-bottom: 1px solid darken($ycm-grey-light, 10);
+	border-radius: 3px;
+
+	&:after,
+	&:before {
+		content: '';
+		width: 100%;
+		display: table;
+	}
+
+	&:after {clear:both}
+
+	&._widget {
+		padding: 0;
+		margin-bottom: 20px;
+		background-color : transparent;
+	}
+}
+
+.bannerPanel {
+	height: 175px;
+	padding: 5px 25px 10px 200px;
+	position: relative;
+	display: table;
+	background: url('/common/img/blocks/block.png') top left;
+
+	&._news {
+		background: #fff;
+	}
+
+	& .button {
+		margin-bottom: 0;
+	}
+}
+.bannerPanel__title {
+	color: #B57439;
+	line-height: 1.2;
+	margin: 0 0 15px;
+
+	._news & {
+		color: $ycm-blue;
+	}
+}
+.bannerPanel__imageWrap {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	width: 200px;
+}
+.bannerPanel__image {
+	display: block;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+
+	._bottom > & {
+		top: auto;
+	}
+}
+.bannerPanel__content {
+	height: 100%;
+	display: table-cell;
+	vertical-align: middle;
+	padding: 15px 0;
+	color: #555;
+}
+
+.subscribePanel__stat {
+	min-width: 100px;
+	position: relative;
+	text-align: center;
+}
+
+.subscribePanel__statLabel {
+	font-size: 12px;
+}
+
+.subscribePanel__buttonWrap {
+	min-width: 120px;
+	text-align: center;
+	padding-left: 15px;
+}
+
+.panelFollow__shadeUsername {
+	width: 160px;
+	white-space: nowrap;
+}

@@ -1,0 +1,76 @@
+
+
+
+
+.dialog.localShare {
+	max-width: 600px;
+
+	.tagsPanel {
+		padding: 0 15px;
+	}
+
+	.tagsPanel__input {
+		border-radius: 5px;
+		width: auto !important;
+		position: relative;
+		overflow: hidden;
+		padding-right: 30px;
+		cursor: pointer;
+	}
+
+	.tagedit-list {
+		border-radius: 5px;
+		background: none;
+	}
+
+	.localShare__submitButton {
+		margin: 15px;
+	}
+
+	.localShare__text {
+		margin: 20px 0;
+	}
+
+	.tagsPanel .ui-autocomplete {
+		top: -18px !important;
+		left: 16px !important;
+		width: 538px !important;
+	}
+}
+
+.localShare__footer {
+	margin: 0 -15px;
+	border-top : 1px solid $ycm-border-color;
+}
+
+#localShare__friends {
+	max-height: 280px;
+	overflow-y: auto;
+}
+
+.localShare__user {
+	text-align: left;
+	width : 29%;
+	display: block;
+	float: left;
+	margin: 2%;
+	padding: 10px 5px 15px 10px;
+	cursor: pointer;
+	border-radius: 5px;
+	line-height: 1.1;
+	height: 65px;
+	overflow: hidden;
+
+
+	&._checked {
+		background-color : 	$ycm-grey-light;
+	}
+}
+
+.localShare__userImage {
+	display: block;
+	float: left;
+	margin-right : 5px;
+	width: 36px;
+	height: 36px;
+}

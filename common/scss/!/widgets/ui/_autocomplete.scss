@@ -1,0 +1,44 @@
+@import '../../_core/utils';
+
+.ui-autocomplete { padding: 4px 0; margin: 0; list-style: none; background-color: white; border-color: #CCC; border-style: solid; border-width: 1px; -webkit-border-radius: 0 0 5px 5px; -moz-border-radius: 0 0 5px 5px; border-radius: 0 0 5px 5px; -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); -webkit-background-clip: padding-box; -moz-background-clip: padding; background-clip: padding-box; }
+
+.ui-autocomplete::before { display: none; }
+
+.ui-autocomplete::after { display: none; }
+
+.ui-widget-content { background: #ffffff; color: #8f8f8f; }
+
+.ui-widget-content a b { color: #8f8f8f; }
+
+.ui-autocomplete { position: absolute; cursor: default; }
+
+.ui-menu { list-style: none; padding: 3px; margin: 5px 0 0 0; display: block; float: left; }
+
+.ui-menu .ui-menu { margin-top: -3px; }
+
+.ui-menu .ui-menu-item { margin: 1px 0 0 0; padding: 0; zoom: 1; float: left; clear: left; width: 100%; overflow: hidden; }
+
+.ui-menu .ui-menu-item a { text-decoration: none; display: block; padding: 4px; line-height: 1; zoom: 1; margin: 0; }
+.ui-menu .ui-menu-item a b { color: #1eb4e8 !important; }
+.ui-menu .ui-menu-item a.ui-state-focus b, .ui-menu .ui-menu-item a.ui-state-focus .remark { color: #fff !important; }
+.ui-menu .ui-menu-item a.ui-state-hover b, .ui-menu .ui-menu-item a.ui-state-hover i, .ui-menu .ui-menu-item a.ui-state-hover .remark { color: white !important; }
+
+.ui-autocomplete { padding: 2px; box-sizing: border-box; border-radius: 0; }
+
+.ui-autocomplete * { outline: none; box-sizing: border-box; }
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { border: 1px solid #93c3cd; font-weight: bold; color: #bbb; }
+
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { background: #1eb4e8; color: #fff; }
+
+.b-grid-item__form { display: block; position: relative; }
+.b-grid-item__form .ui-autocomplete { top: 34px !important; }
+
+.autocomplete__thumb { float: left; width: 30px; }
+
+.autocomplete__text { width: auto; vertical-align: middle; margin-left: 5px; }
+.autocomplete__thumb + .autocomplete__text { margin-left: 36px; }
+
+.ui-corner-all {
+	@extend ._clear;
+}

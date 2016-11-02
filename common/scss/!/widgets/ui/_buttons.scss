@@ -1,0 +1,186 @@
+
+$widget-btn : 1;
+$btn-border-radius : 3px;
+
+
+
+//  ========================================================================================
+// 										BASE BUTTON MIXINS
+//  ========================================================================================
+
+
+@mixin btn-basic( $font-size : 12px ) {
+	display: inline-block;
+	font-size: $font-size;
+	font-weight: normal;
+	padding: 5px 10px;
+	line-height: 15px;
+	vertical-align: middle;
+	text-transform: lowercase;
+	border: 1px solid;
+	text-decoration: none;
+	text-align: center;
+	min-width: 92px;
+
+	@if $btn-border-radius {
+		@include border-radius($btn-border-radius);
+	}
+
+}
+
+
+@mixin btn-colored ($base-color : $ycm-blue, $text-color: white, $gradient : true, $text-colored : false) {
+
+	color : $text-color;
+	// $default-text-shadow-color: rgba(darken($base-color, 20%), 1);
+	// $default-text-shadow-blur: 0;
+	// $default-text-shadow-v-offset: -1px;
+	// @include single-text-shadow;
+
+	@if $gradient {
+		background-color: $base-color;
+		@include gradient-from-color($base-color);
+		@include border-from-color($base-color);
+
+		 ._notouch &:hover  {
+			background-color: $base-color;
+			@include gradient-from-color-hover($base-color);
+			color : lighten($text-color, 10%);
+		}
+
+		&:active, &._active, &.active {
+			background-color: $base-color;
+			@include gradient-from-color-active($base-color);
+			color : darken($text-color, 5%)
+		}
+	} else  {
+
+	}
+}
+
+
+//  ========================================================================================
+// 									BASE COLORED BUTTONS
+//  ========================================================================================
+
+
+.button {
+	@include btn-basic();
+	@include btn-colored();
+
+	cursor: pointer;
+	// @include transition-property(background);
+	// @include transition-duration(0.3s);
+
+	&._grey, &.inactive {
+		@include btn-colored($ycm-grey-light, darken($ycm-font-color, 10));
+	}
+
+	&._red {
+		@include btn-colored($ycm-red, white);
+	}
+
+	// @todo Сделать миксин для создания разноразмерных кнопок
+	&._big {
+		min-width: 150px;
+		font-size: 15px;
+		line-height: 24px;
+		margin: 0;
+	}
+
+
+	&._xlarge {
+		min-width: 150px;
+		padding: 0 20px;
+		font-size: 20px;
+		line-height: 48px;
+		margin: 15px auto;
+		text-transform: initial;
+	}
+
+	&._small {
+		padding: 2px 4px;
+		&._hack {margin-top: 5px}
+	}
+
+	&._loading:after {}
+}
+
+
+
+//  ========================================================================================
+// 										UPLOAD BUTTON
+//  ========================================================================================
+
+.buttonUpload {
+	font-family: "Trebuchet MS", sans-serif;
+	font-weight: bold;
+	text-transform: none;
+	@include btn-colored($ycm-yellow, $ycm-yellow-dark-text);
+}
+
+ ._notouch .buttonUpload:hover  {
+	color : $ycm-yellow-dark-text !important
+}
+
+
+//  ========================================================================================
+// 										CLOSE BUTTON
+//  ========================================================================================
+
+
+.btnClose {
+	width: 0;
+	height: 0;
+	display: block;
+	position: absolute;
+	top: -3px;
+	right: 20px;
+	z-index: 999;
+
+	&:after {
+		content: '\00d7';
+		display: block;
+		border-radius: 100px;
+		background: #000;
+		@include opacity(1);
+		width: 20px;
+		height: 20px;
+		text-align: center;
+		vertical-align: middle;
+		line-height: 19px;
+		border: 2px solid #FFF;
+		box-shadow: 0 0 4px #000;
+		color: #FFF;
+		font-size: 19px;
+	}
+
+	 ._notouch &:hover  {
+		@include opacity(0.8);
+	}
+
+	&._mobile {
+		top: 2px;
+		right: 26px;
+	}
+
+	&._big {
+		top: -15px;
+
+		&:after {
+			content: '\e006';
+			font-family: 'ycm';
+			font-size: 20px;
+			width: 30px;
+			height: 30px;
+			line-height: 32px;
+			border-radius: 30px;
+			border: 4px solid #FFF;
+			box-shadow: 0 0 4px #000;
+		}
+
+		 ._notouch &:hover  {
+			@include opacity(0.9);
+		}
+	}
+}

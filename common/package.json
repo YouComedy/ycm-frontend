@@ -1,0 +1,26 @@
+{
+  "name": "ycm",
+  "version": "0.0.0",
+  "description": "ERROR: No README data found!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "author": "",
+  "license": "BSD",
+  "dependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-compass": "~0.6.0",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-uglify": "~0.2.4",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-ftp-deploy": "~0.0.10",
+    "grunt-ftpush": "~0.3.2",
+    "grunt-replace": "~0.5.1",
+    "grunt-string-replace": "~0.2.4"
+  },
+  "devDependencies": {
+    "grunt-git-deploy": "~0.1.1"
+  }
+}

@@ -1,0 +1,54 @@
+@import "_conf";
+
+$isMobile : 1;
+
+@import "_core/reset";
+@import "_core/fonts";
+@import "_core/utils";
+@import "_core/layout";
+
+@import "widgets/mobile/sidebar";
+@import "widgets/mobile/botmenu";
+
+@import "widgets/ui/panels";
+@import "widgets/ui/buttons";
+@import "widgets/ui/forms";
+@import "widgets/ui/thumbs";
+@import "widgets/ui/filters";
+@import "widgets/ui/texts";
+@import "widgets/ui/labels";
+@import "widgets/ui/tabs";
+@import "widgets/ui/widgets";
+
+
+@import "_core/header";
+@import "widgets/content/all";
+@import "widgets/items/all";
+@import "widgets/profile/header";
+@import "widgets/profile/news";
+@import "widgets/profile/subscribers";
+@import "pages/upload";
+
+
+.item__contentImage {
+	width: auto !important;
+}
+
+.b-item-big__player {
+	img {
+		width: auto !important;
+		height: auto !important;
+	}
+
+	iframe {
+		width: auto !important;
+		height: auto !important;
+	}
+}
+
+.item__videoThumb {
+	.item__contentImage {
+		width: auto !important;
+		height: auto !important;
+	}
+}

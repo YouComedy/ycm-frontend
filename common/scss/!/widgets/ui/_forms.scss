@@ -1,0 +1,27 @@
+.textField {
+	height: 36px;
+}
+
+.areaField,
+.textField {
+	width: 100%;
+	padding: 10px;
+	font-size: 13px;
+}
+.areaField {
+	height: 100px;
+}
+.uploadField {
+	width: 100%;
+}
+.uploadField._avatar {
+	font-size: 14px;
+	margin: 5px 0 20px;
+}
+.labelField {
+	line-height: 36px;
+	margin: 0;
+}
+.radio {
+	margin-right: 10px;
+}

@@ -1,0 +1,95 @@
+.filters {
+	text-align: right;
+	@if $isMobile == 1 {
+		max-width: 728px;
+		margin-bottom: -10px;
+		margin-left: auto !important;
+		margin-right: auto !important;
+	} @else {
+		margin: 0 0 20px;
+	}
+}
+
+.filters__filter {
+	overflow: hidden;
+	display: inline-block;
+	border-bottom: 1px solid #D6D7D9;
+
+
+	& + & {
+		border-left: 1px solid #E7E7EB;
+	}
+
+	& > a {
+		padding: 7px 10px;
+		display: block;
+		text-align: center;
+		text-transform: lowercase;
+		background: #F5F5F7;
+		font-size: 11px;
+
+		@if $isMobile != 1 {
+			 ._notouch &:hover  {
+				background: lighten(#F5F5F7, 10%)
+			}
+		}
+
+	}
+
+	&.active,
+	&._active {
+		border-bottom: 1px solid #1EB4E8;
+
+		& > a {
+			color: $ycm-blue;
+			background: #fff linear-gradient(#FFF 80%, #F8F8F9);
+			background: #fff -webkit-linear-gradient(#FFF 80%, #F8F8F9);
+		}
+	}
+
+	&:last-child {
+		border-top-right-radius: 3px;
+		border-bottom-right-radius: 3px;
+	}
+
+	&:first-child {
+		border-top-left-radius: 3px;
+		border-bottom-left-radius: 3px;
+	}
+}
+
+.filtersTop .filters__filter > a {
+	padding-left: 40px;
+}
+
+.filters__filterItems > a {
+	background-image: url('/common/img/icons/top.png') !important;
+	background-position: 10px center !important;
+	background-repeat: no-repeat !important;
+	background-size: 18px !important;
+}
+.filters__filterItems.active > a {
+	background-image: url('/common/img/icons/top-active.png') !important;
+}
+
+.filters__filterTrends > a {
+	background-image: url('/common/img/icons/trends.png') !important;
+	background-position: 10px center !important;
+	background-repeat: no-repeat !important;
+	background-size: 18px !important;
+}
+
+.filters__filterTrends.active > a {
+	background-image: url('/common/img/icons/trends-active.png') !important;
+}
+
+.filters__filterComments > a {
+	background-image: url('/common/img/icons/comments.png') !important;
+	background-position: 10px center !important;
+	background-repeat: no-repeat !important;
+	background-size: 18px !important;
+}
+
+.filters__filterComments.active > a {
+	background-image: url('/common/img/icons/comments-active.png') !important;
+}

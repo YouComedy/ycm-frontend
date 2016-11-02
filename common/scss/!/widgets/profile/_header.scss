@@ -1,0 +1,55 @@
+.panelProfile {
+	@if $isMobile == 1 {
+		max-width: 728px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+.anon_user {
+	._dotted {
+		display: none; // скрываем кнопку игнорирования для анонов
+	}
+}
+
+.panelProfile__social {
+	padding: 0 5px 0 20px;
+	float: right;
+	font-size: 16px;
+	color: #CCD0D7;
+}
+.create-btn-xxlarge {
+	margin: 0 0 20px 0;
+	cursor: pointer;
+	border: 3px #DDD dotted;
+	padding: 20px 100px;
+	font-size: 16px;
+	border-radius: 5px;
+	text-align: center;
+	color: #CCC;
+	 ._notouch &:hover  {
+		border: 3px #aaa dotted;
+		color: #aaa;
+	}
+}
+.create-btn-xxlarge > i {
+	font-size: 22px;
+	left: -10px;
+	position: relative;
+}
+.searchField {
+	position: relative;
+	width: 50%;
+	margin-bottom: 20px;
+}
+.searchField__input {
+	width: 100%;
+	border-radius: 3px;
+	border: 2px solid #E0E0E0;
+	height: 30px;
+	font-size: 13px;
+}
+.searchField__input::-webkit-input-placeholder { color: #c4c4c4; text-align: center; }
+.searchField__input::-moz-placeholder { color: #c4c4c4; text-align: center; }
+.searchField__input:-moz-placeholder { color: #c4c4c4; text-align: center; }
+.searchField__input:-ms-input-placeholder { color: #c4c4c4; text-align: center; }

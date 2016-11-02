@@ -1,0 +1,197 @@
+
+
+<!--
+	Шаблон заголовка итема в попапе
+-->
+<script type="text/ycm-template" id='item-popup-title-tpl'>
+	<div class='span9'>
+		<h2>{{= title || "ЭТОТ ЧУДЕСНЫЙ ЗАГОЛОВОК" }}<i></i></h2>
+		<p style='color:#626262'>
+			<span>Добавил <a href='/user/{{= username }}'><b>{{= username }}</b></a>, <i>{{= timestamp }}</i></span>
+		</p>
+	</div>
+	<div class='span3'>
+		<div class='row-fluid' style='padding-top:28px'>
+			<div style='width:48px;height:48px;float:left;margin-right:10px;'>
+				<img style='border:2px solid #000;width:47px;height:47px;border-radius:5px' src="{{= userAvatar || 'http://placekitten.com/50/50' }}" />
+			</div>
+			<div style='float:left;'>
+				<div style='margin-bottom:3px'><a style='margin-top:0' href='/user/{{= username }}'><b>{{= username }}</b></a></div>
+				<div>
+					<a id='if{{=id}}' href='/user/{{= user_id }}/{{=followed?"unfollow":"follow"}}' role='button' data-owner='Popup' data-action='userFollow' class='ycmbtn ycmbtn-min'><b style='color:#8BBFD5'>{{=followed?"Отписаться":"Подписаться"}}</b></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</script>
+<!--
+
+
+
+<!--
+	Шаблон просмотра итема в попапе
+-->
+<style>
+
+	.popup__text {
+		line-height: 1.6;
+		padding: 6px;
+		width: auto;
+		margin: 0 auto;
+		background: #fff;
+		color: #000;
+		display: inline-block;
+		text-align: left;
+		font-size: 16px;
+	}
+</style>
+<script type="text/ycm-template" id='item-popup-tpl'>
+	<div class='row-fluid'>
+		<div class='span9 content' style='width:600px;'>
+			<div class='img' style='line-height: 0;'>
+				<table cellpadding="0" cellspacing="0"><tr><td><div style='position: relative; width:100%; height: 100%; min-height: 400px; display: inline-block'><table style='width:100%;height:100%;text-align: center'><tr><td data-next='1'>
+
+							{{ if( type == 1 ) { }}
+								<img src="{{= big_image }}" id='img{{= id }}' />
+							{{ } }}
+							{{ if( type == 2 ) { }}
+								{{= content }}
+							{{ } }}
+							{{ if( type == 3 ) { }}
+								<p class='popup__text'>{{= content }}</p>
+							{{ } }}
+
+						</td></tr></table>
+
+						<div id='popup-buttons' style='bottom:80px;left:50px;width:600px'>
+							<a href='#' class='prev-btn'><i></i></a><a href='#' class='next-btn'><i></i></a>
+						</div>
+
+						{{ if( type == 1 ) { }}
+						<div class="row-fluid stats" style='position: absolute; bottom: 0; margin: 0; padding-top: 15px; height: 55px; background: url(/common/img/adminka/noise.png)'>
+							<span><a href='#' class="vote views">{{= views }} <i class='icon-view'></i></a></span>
+						</div>
+						{{ } }}
+
+					</div></td></tr></table>
+			</div>
+
+			<div class="tags"><b style='color:#000'><?=TAGS?></b><ul></ul></div>
+
+			<div class="description">
+				<b style='color:#000'><?=DESCRIPTION?></b>
+				<p style='color:#626262'>{{= description }}</p>
+			</div>
+
+			<div class="comments topcomments">
+				<h3 class='header_grey'><?=BEST_COMMENTS?></h3>
+				<hr class='grey' />
+				<ul></ul>
+			</div>
+
+			<div class="comments basecomments">
+				<h3 class='header_grey'><?=COMMENTS?></h3>
+				<hr class='grey' />
+				<div class="writecomment row-fluid">
+					<div class='span1 popup__avatar'>
+						<img src='{{= APP.User.get("small_image") || "http://placekitten.com/45/45" }}' style='margin-top:10px;width:33px;border-radius:4px'>
+					</div>
+					<div class='span11 new_comment__textarea'>
+						<form class='new_comment' action='/items/{{= id }}/comments' method='POST' data-owner='Popup' data-success='commentPosted'>
+							<div class='textarea_dark'><textarea id='comment-text' name='text'></textarea></div>
+							<div style='padding-top: 8px; font-size: 10px; color: #AAA;'>
+								<span id='text-counter'>300</span> <?=REMAINING?>
+								<div style='float:right; display:inline-block' class='ycmbtn ycmbtn-min'><button type="submit"><?=ADD_COMMENT?></button></div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<ul></ul>
+			</div>
+
+		</div>
+		<div class='span3'>
+
+			<div class='popup__vote'>
+				<div></div>
+				<div>
+					<div class='row-fluid'>
+						<div class='vote-btns-big'>
+							<a class='vote-btn-big-like vote {{= userVote > 0 && "active"}}'  role='button' data-owner='Popup' data-action='like'></a>
+							<a class='vote-btn-big-hate vote {{= userVote < 0 && "active"}}'  role='button' data-owner='Popup' data-action='hate'></a>
+						</div>
+					</div>
+					<div class='row-fluid'>
+						<div class='vote-btns-small'>
+							<a class="i-mini-like">{{= likes }}<i></i></a>
+							<a class="i-mini-hate">{{= dislikes }}<i></i></a>
+						</div>
+					</div>
+					<div class='row-fluid'>
+						<div class='like-bar'><span style='width:{{=likes_percent}}'></span></div>
+					</div>
+				</div>
+			</div>
+
+
+
+			{{ if( APP.User.id == user_id || /moderator|administrator/.test(APP.User.get("role")) ) { }}
+				<div class='row-fluid'>
+					<a href='#' role='button' data-owner='Upload' data-action='editItemDialog' data-param='{{= id }}'>Редактировать итем</a>
+				</div>
+			{{ } }}
+
+			{{ if( APP.User.id == user_id || /moderator|administrator/.test(APP.User.get("role"))) { }}
+				<div class='row-fluid'>
+					<a href='#' class='delete-item' style='color:#a00'>Удалить итем</a>
+				</div>
+			{{ } }}
+			{{ if(APP.User && /moderator|administrator/.test(APP.User.get("role"))) { }}
+				<div class='row-fluid'>
+					<div class='span1'>
+						<input id='activate-item-chk' type='checkbox'  {{= active ? 'checked="checked"' : "" }} data-owner='Moderation' data-action='itemFlags' data-param='/items/{{= id }}/active/' />
+					</div>
+					<label for="activate-item-chk" class='span8'>
+						Виден на сайте
+					</label>
+				</div>
+				<div class='row-fluid'>
+					<div class='span1'>
+						<input id='censore-item-chk' type='checkbox' {{= unsafe ? 'checked="checked"' : "" }} data-owner='Moderation' data-action='itemFlags' data-param='/items/{{= id }}/unsafe/' />
+					</div>
+					<label for="censore-item-chk" class='span8'>
+						Небезопасный контент
+					</label>
+				</div>
+			{{ } }}
+			{{ if(APP.Moderation && APP.Moderation.get("translators")) { }}
+				<div>
+					<a href='/items/{{= id }}/accept' class='btn btn-success' role='button' data-owner='Moderation' data-action='moderateTranslatorItem' data-param='accepted!'>accept</a>
+					<a href='/items/{{= id }}/decline' class='btn btn-danger reject'  role='button' data-owner='Moderation' data-action='moderateTranslatorItem' data-param='declined!'>decline</a>
+					<a href='#' class='btn'  role='button' data-owner='Moderation' data-action='switchItem' data-param='{{= parent_id }}'>оригинал -></a>
+					<b>{{= id }}</b>
+				</div>
+			{{ } }}
+			{{ if(APP.Moderation) { }}
+				<div>
+					{{ if(APP.Moderation.get("scouts")) { }}
+						<a href='/items/{{= id }}/scoutNotranslate' class='btn btn-success' role='button' data-owner='Moderation' data-action='moderateScoutItem'>Оставить так</a>
+						<br><br>
+						<a href='/items/{{= id }}/scoutDecline' class='btn btn-danger' role='button' data-owner='Moderation' data-action='moderateScoutItem'>Дерьмо</a>
+						<br><br>
+						<a href='/items/{{= id }}/scoutAccept' class='btn btn-success' role='button' data-owner='Moderation' data-action='moderateScoutItem'>На перевод</a>
+					{{ } else { }}
+						<a href='/items/{{= id }}/translate' class='btn btn-success' role='button' data-owner='Moderation' data-action='moderateScoutItem'>На перевод</a>
+					{{ } }}
+					<br><br>
+				</div>
+			{{ } }}
+
+
+			<div class='related'>
+				<h3 class='header_grey'><?=RECOMMENDED?></h3>
+				<ul></ul>
+			</div>
+		</div>
+	</div>
+</script>

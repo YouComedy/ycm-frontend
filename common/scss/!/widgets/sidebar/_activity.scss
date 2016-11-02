@@ -1,0 +1,256 @@
+
+
+.widgetActivity {
+	.text > div {
+		display: inline;
+	}
+
+	position: fixed;
+	width: 250px;
+	top: 301px;
+
+	.widget__section {
+		min-height: 55px;
+		max-height: 90px;
+		overflow: hidden;
+		position: relative;
+		word-wrap: break-word;
+		word-break: break-all;
+		word-break: break-word;
+		padding-right : 44px;
+
+		.thumb {
+			@include transition(all 0.1s ease-in);
+			right: 10px;
+			top: 10px;
+			position: absolute;
+			border-radius: 3px;
+		}
+
+		&:before {
+			width: 200%;
+			left: 0;
+			bottom: 0;
+			position: absolute;
+			content: '';
+			height: 10px;
+			display: block;
+			@include background-image(linear-gradient(top, rgba(#fff, 0) 0%, rgba(#fff, 1) 50%));
+		}
+	}
+}
+
+.widgetActivity__body {
+	position: relative;
+}
+
+.widgetActivity__wrap {
+	height: 250px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.widgetActivity__linkImage {
+	line-height: 1;
+	position: relative;
+	top: 6px;
+	margin: 0 3px;
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+	background: url(/common/img/icons/pics.png) no-repeat;
+	background-size: contain;
+}
+
+
+
+
+
+//
+// Вставлено из template_examples
+//
+.bannerPanel {
+	//max-width: 698px;
+	background: url('/common/img/blocks/block.png') top left;
+}
+
+.widget__head._table {
+	width: 100%;
+	padding: 0;
+	border: 0;
+}
+.widget__title._cell {
+	width: 50%;
+	padding: 10px;
+	text-align: center;
+	border-bottom: 1px solid #eef0f2;
+	color: #8f8f8f;
+}
+.widget__title._cell:first-child {
+	border-top-left-radius: 3px;
+}
+.widget__title._cell:last-child {
+	border-top-right-radius: 3px;
+}
+.widget__title._cell + .widget__title._cell {
+	border-left: 1px solid #dde0e2;
+}
+.widget__title._active {
+	background: #fff;
+	border-bottom: 0;
+}
+
+
+.widgetActivity__body:after,
+.widgetActivity__body:before {
+	left: 0;
+	right: 0;
+	position: absolute;
+	content: '';
+	height: 10px;
+	display: block;
+	z-index: 1;
+}
+
+.widgetActivity__body:before {
+	@include background-image(linear-gradient(bottom, rgba(#fff, 0) 0%, rgba(#fff, 1) 70%));
+}
+
+.widgetActivity__body:after {
+	bottom: 0;
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
+	@include background-image(linear-gradient(top, rgba(#fff, 0) 0%, rgba(#fff, 1) 70%));
+}
+
+.widgetActivity__footer {
+	height: 30px;
+	line-height: 17px;
+	text-align: center;
+	font-size: 11px;
+	border-top: 1px solid #eef0f2;
+
+	.link {
+		margin: 5px 0
+	}
+}
+
+
+.widgetActivity._nofriends {
+	.widgetActivity__body:after {display: none}
+	.widgetActivity__body:before {display: none}
+
+	#activitytab {
+		&:after, &:before {
+			position: absolute;
+			content: "";
+			display: block;
+			background: black;
+			width: 100%;
+			height: 100%;
+			top: 0;
+		}
+
+		&:after {
+			opacity: 0.75;
+			border-bottom-left-radius: 5px;
+			border-bottom-right-radius: 5px;
+		}
+
+		&:before {
+			background: url("/common/img/nofriends.jpg") 0 0 no-repeat;
+			z-index: 0;
+		}
+	}
+
+	._textCenter {
+		position: relative;
+		z-index: 2;
+		margin-top: 50px;
+		color : white;
+	}
+}
+
+// ACtivitivity widget__title
+#activityfeed {
+
+
+
+	.news__cite {
+		display: inline-block;
+		border: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.widget__section {
+		padding-left: 30px;
+		line-height: 1.2;
+
+		&._badge:after {
+			display: block;
+			content: "\e00a";
+			background-color: #fff000;
+			color: #e2971d;
+			line-height: 20px;
+			text-shadow: 0 1px 1px rgba(255,255,255,.3);
+			@include background-image(linear-gradient(top, #fff000, #ffd800));
+		}
+
+		&._like:after {
+			display: block;
+			content: "\e00e";
+			@include background-image(linear-gradient(top, #F03D65, #CE2F51));
+		}
+
+		&._comment:after {
+			display: block;
+			content: "\e023";
+			@include background-image(linear-gradient(top, #6FBC1D, #5C9E16));
+		}
+
+		&._repost:after {
+			display: block;
+			content: "\e025";
+			@include background-image(linear-gradient(top, #F6CC2E, #FF9E45));
+		}
+
+		&._post:after {
+			display: block;
+			content: "\e018";
+			@include background-image(linear-gradient(top, #F6CC2E, #FF9E45));
+		}
+
+		&._follow:after {
+			font-size: 10px;
+			display: block;
+			content: "\e022";
+			@include background-image(linear-gradient(top, #00ADE8, #058EE2));
+		}
+
+		&._shared:after {
+			font-size: 10px;
+			display: block;
+			content : "\e031";
+			@include background-image(linear-gradient(top, #cb00ff, #7a02c7));
+		}
+
+
+		&:after {
+			position: absolute;
+			display: none;
+			width: 20px;
+			height: 20px;
+			line-height: 22px;
+			font-family: 'ycm';
+			border-radius: 100px;
+			box-shadow: 0 0 5px #ccc;
+			top: 13px;
+			left: 4px;
+			color: #fff;
+			font-size: 12px;
+			text-align: center;
+		}
+
+	}
+}

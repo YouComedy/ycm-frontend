@@ -1,0 +1,84 @@
+.b-share {
+	height: 40px;
+	display: block;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	top: 3px;
+
+
+	.b-share__link {
+		display: inline-block;
+		margin: 0;
+		padding: 0 !important;
+		height: auto;
+		position: relative;
+
+		 ._notouch &:hover  {
+			opacity: 0.9;
+		}
+	}
+
+	.b-share-icon {
+		width: 32px;
+		height: 32px;
+		display: block;
+		margin-left: 5px;
+	}
+
+	.b-share-icon_vkontakte {
+		background: url(/common/img/social/vkontakte.png) 0 0;
+		background-size: 100%;
+	}
+
+	.b-share-icon_facebook {
+		background: url(/common/img/social/facebook.png) 0 0;
+		background-size: 100%;
+	}
+
+	.b-share-icon_twitter {
+		background: url(/common/img/social/twitter.png) 0 0;
+		background-size: 100%;
+	}
+
+	.item .popover & {
+		float: none;
+
+		.b-share__link {
+			float: none;
+			display: inline-block;
+		}
+	}
+
+	.item & {
+		float: left;
+
+		.b-share__link {
+			display: block;
+			float: left;
+		}
+	}
+}
+
+.b-share-btn__email {
+	position: relative;
+	top: 4px;
+	left: 2px;
+	 ._notouch &:hover  {
+		opacity: 0.9
+	}
+}
+
+.b-share-icon_email {
+	width: 32px;
+	height: 32px;
+	display: block;
+	background: url(/common/img/social/mail.png) 0 0;
+	background-size: 100%;
+}
+
+.item__shareWrap {
+	display: inline-table;
+	position: relative;
+	z-index: 5;
+}

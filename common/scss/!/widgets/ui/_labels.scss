@@ -1,0 +1,31 @@
+.label {
+	border-radius: 3px;
+	font-size: 11px;
+	height: 18px;
+	line-height: 18px;
+	padding: 0 5px;
+	font-weight: bold;
+	display: inline-block;
+	color: $ycm-font-color;
+	background: $ycm-label-bg-color;
+	text-align: center;
+	min-width: 34px;
+
+	&._red {
+		color: #fff;
+		background: $ycm-red;
+	}
+
+	&._tag {
+		border: 1px solid;
+		height: 22px;
+		line-height: 22px;
+		padding: 0 15px;
+		margin: 5px;
+
+		&._white {
+			background: #fff;
+			border-color: #ddd;
+		}
+	}
+}

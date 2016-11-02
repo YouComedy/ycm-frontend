@@ -1,0 +1,10 @@
+#go-to-top { position: fixed; cursor: pointer; top: 40px; bottom: 0; color: #fff; padding: 10px; width: 60px; left: 0; display: none; text-align: left; font-size: 20px; width: 30%; }
+ ._notouch #go-to-top:hover  > i { filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100); opacity: 1; background-color: rgba(0, 0, 0, 0.3); visibility: visible; }
+#go-to-top > i { filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0); opacity: 0; position: absolute; color: #E8EAED; display: block; width: 20%; background-color: rgba(0, 0, 0, 0.2); height: 100%; top: 0; padding-top: 40px; left: 0; margin: 0; text-align: center; }
+#go-to-top._down { display: block !important; }
+#go-to-top._down > i { transform: rotateZ(180deg); -webkit-transform: rotateZ(180deg); -moz-transform: rotateZ(180deg); -ms-transform: rotateZ(180deg); }
+
+// Hide go-to-top for iPad
+._touch #go-to-top {
+	display: none !important;
+}

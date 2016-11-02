@@ -1,0 +1,19 @@
+
+<!-- <div class="collection-panel b-collection-my"> -->
+<script type='text/ycm-template' id='album-grid-tpl'>
+
+	<div class="info">
+		<div>
+			<a href='/album{{=id}}' class="title">{{= title }}</a>
+			<p><b>{{= collection_content_count + "</b> " + plural(collection_content_count, "шутка,шутки,шуток") }},
+			<b>{{= collection_followers_count + "</b> " + plural(collection_followers_count, "подписчик,подписчика,подписчиков") }}</p>
+		</div>
+	</div>
+	{{ _.each(thumbnailsArray || [0,0,0,0], function(thumb){ }}
+		<a href='/album{{=id}}'><img class="thumb" {{= thumb ? 'src="' + thumb + '"' : ''}} alt=""></a>
+	{{ }); }}
+	
+	<a href="{{=!my ? followURL : '#' }}" {{= !my ? ("data-aid=" + id ) : "" }} class='ybtn follow-btn inactive' data-edit='{{=id}}'>{{= action_word }}</a>
+
+</script>
+<!-- </div> -->

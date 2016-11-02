@@ -1,0 +1,20 @@
+
+<!-- <div class="b-collection b-collection-my"> -->
+<script type='text/ycm-template' id='album-grid-tpl'>
+        <a class="b-collection__header" style='display:block' href='/album{{=id}}'>
+            <b>{{= title }}</b>
+            <span>({{= collection_content_count + " " + plural(collection_content_count, "шутка,шутки,шуток") }})</span>
+        </a>
+        <a class="b-collection__frame" style='display:block' href='/album{{=id}}'>
+            <div class="b-collection__cover" style="background:url({{=cover}})"></div>
+            <div class="b-collection__thumbs">
+                {{ _.each(thumbnailsArray || [0,0,0,0], function(thumb){ }}
+                    <div class="b-collection__thumb" {{= thumb ? 'style="background:url('+thumb+')"':""}}></div>
+                {{ }); }}
+            </div>
+        </a>
+        <div class="b-collection__btn">
+            <a href="{{=!my ? followURL : '#' }}" {{= !my ? ("data-aid=" + id ) : "" }} class='ybtn {{= followed && "inactive" }}' data-edit='{{=id}}'>{{= action_word }}</a>
+        </div>
+</script>
+<!-- </div> -->

@@ -1,0 +1,48 @@
+
+<script src="/common/js/libs/forms/textarea.autogrow.js"></script>
+
+<div id='overlay_upld' style='display: none'></div>
+
+<style>
+	
+	.upload__form form input.grey.grey.grey:disabled {
+		color: #ff0000
+	}
+	
+	.upload__input_unsafe {margin-left: 10px; color: #66CCEF; cursor: pointer;}
+	.upload__input_unsafe input {display: inline-block}
+</style>
+
+
+<!-- <form action="/{{= id }}"> -->
+<script type="text/ycm-template" id='dialog-upload-tpl' data-path='/common/tpl/dialog.upload.html'>
+</script>
+<!-- </form> -->
+
+<div id='upload-wrapper' class="popup_wrapper" style='display:none'>
+	<div class="dialog_overlay"></div>
+
+<div class="dialog dialog-upload" id='upload'>
+	<a class="dialog__close" role="button" data-owner="Upload" data-action="closeDialog" href="#"></a>
+	<h2 id='upld-dialog-title' class="dialog__title"></h2>
+	<p class="descr">Вы можете вставить ссылку на картику или видео (YouTube, Vimeo), просто текст шутки или загрузить картинку с телефона.</p>
+	<div class="magic-field">
+		<form enctype="multipart/form-data" action="/items/upload" method='post' data-noblock='1' data-noreset='1' data-owner='Upload' data-before='beforeUpload' data-success='afterUpload' >
+			<div style='position:relative' id='magic-field-zone'>
+				<div class="magic-field__file ybtn">
+					<div class="magic-field__caption">Перетащите сюда файл</div>
+					<input id='upld-form-pic-file' class="file" type="file" size="28" accept="image/jpeg,image/png" style="cursor: pointer;" name='FileUpload[file]'>
+				</div>
+				<textarea class='magic-field__input' placeholder="текст или ссылка на шутку" name="FileUpload[content]" id="magic-input" cols="30" rows="10"></textarea>
+			</div>
+			<div style='text-align:center;margin-top:10px'>
+				<button type="submit" class='ybtn' style='width:100px'>Загрузить</button>
+			</div>
+		</form>
+	</div> 
+	
+	<div class='upld-edit-section' id='upldsld2'></div>
+	
+</div>
+
+</div></div>

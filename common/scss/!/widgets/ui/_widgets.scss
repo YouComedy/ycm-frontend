@@ -1,0 +1,118 @@
+.widget__head {
+	position: relative;
+	padding: 10px;
+	border-bottom: 1px solid $ycm-border-color;
+	background: $ycm-grey-light;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	display: block;
+	color: inherit;
+	
+	._inverse & {
+		background: #fff;
+	}
+}
+.widget__title {
+	line-height: 1;
+	margin: 0;
+	font-size: 13px;
+}
+.widget__titleLink {
+	font-size: 11px;
+	text-decoration: underline;
+	color: inherit;
+	float: right;
+}
+.widget__body {
+	position: relative;
+	background: #fff;
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
+	
+	._inverse & {
+		background: $ycm-grey-light;
+	}
+}
+.widget__section {
+	width: 100%;
+	margin: 0;
+	line-height: 1.4;
+	position: relative;
+	padding: 8px 10px;
+	color: $ycm-font-color;
+	border-bottom: 1px solid $ycm-border-color;
+
+	&:first-child {
+		border-top: none;
+	}
+
+	&:last-child {
+		border-bottom: none;
+	}
+	
+	&._double,
+	&._triple {
+		height: 92px; //выравнивание для таблиц в HoF
+	}
+
+	&._double {
+		width: 50%;
+
+		&:nth-child(2n) {
+			border-left: 1px solid lighten($ycm-border-color, 5);
+		}
+
+		&:nth-last-child(2) {
+			border-bottom: none;
+		}
+	}
+
+	&._triple {
+		width: 33%;
+
+		&:nth-child(3n-1) {
+			width: 34%;
+		}
+
+		&:nth-child(3n),
+		&:nth-child(3n-1) {
+			border-left: 1px solid lighten($ycm-border-color, 5);
+		}
+
+		&:nth-last-child(2),
+		&:nth-last-child(3) {
+			border-bottom: none;
+		}
+	}
+
+	.widget__sectionLastSingle &,
+	.widget__sectionLastDouble & {
+		&:last-child:after {
+				height: 100%;
+				width: 1px;
+				top: 0;
+				right: -1px;
+				content: '';
+				display: block;
+				position: absolute;
+				background: lighten($ycm-border-color, 5);
+		}
+	}
+
+	.widget__sectionLastSingle & {
+		&._triple:nth-last-child(2),
+		&._triple:nth-last-child(3) {
+			border-bottom: 1px solid lighten($ycm-border-color, 5);
+		}
+		
+		&._double:nth-last-child(2) {
+			border-bottom: 1px solid lighten($ycm-border-color, 5);
+		}
+	}
+
+	.widget__sectionLastDouble & {
+		&._triple:nth-last-child(3) {
+			border-bottom: 1px solid lighten($ycm-border-color, 5);
+		}
+	}
+}

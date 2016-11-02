@@ -1,0 +1,91 @@
+@import 'compass';
+
+html,
+body,
+.test-container,
+.test-pusher,
+.test-content {
+	height: 100%;
+}
+
+
+.test-content {
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
+	background-color: $ycm-background-color;
+	margin-top: -45px;
+}
+
+.test-content,
+.test-content-inner {
+	position: relative;
+}
+
+.test-content-inner {
+	padding: 60px 5px 5px;
+}
+
+.test-container {
+	position: relative;
+	overflow: hidden;
+	@include background-image(linear-gradient(#1b1e3e, #1C424D));
+}
+
+.test-pusher {
+	position: relative;
+	left: 0;
+	z-index: 99;
+	height: 100%;
+	-webkit-transition: -webkit-transform 0.5s;
+	transition: transform 0.5s;
+}
+
+.test-pusher::after {
+	position: absolute;
+	top: 48px;
+	right: 0;
+	width: 0;
+	height: 0;
+	background: rgba(0,0,0,0.2);
+	content: '';
+	opacity: 0;
+	-webkit-transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
+	transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
+}
+
+.test-menu-open .test-pusher::after {
+	width: 100%;
+	height: 100%;
+	opacity: 1;
+	-webkit-transition: opacity 0.5s;
+	transition: opacity 0.5s;
+}
+
+.test-menu {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	visibility: hidden;
+	width: 200px;
+	height: 100%;
+	-webkit-transform: translate3d(-100%, 0, 0);
+	transform: translate3d(-100%, 0, 0);
+}
+
+
+.test-menu-open .test-pusher {
+	-webkit-transform: translate3d(200px, 0, 0);
+	transform: translate3d(200px, 0, 0);
+}
+
+.test-menu-open .test-menu {
+	visibility: visible;
+	-webkit-transition: -webkit-transform 0.5s;
+	transition: transform 0.5s;
+}
+
+.no-csstransforms3d .test-pusher,
+.no-js .test-pusher {
+	padding-left: 200px;
+}

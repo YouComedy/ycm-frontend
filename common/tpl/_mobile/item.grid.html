@@ -1,0 +1,30 @@
+<!--
+	Шаблон итема в сетке
+ -->
+<script type="text/ycm-template" id='item-grid-new-tpl'>
+	<div class="panel _widget _inverse widget__itemGrid b-grid-item__frame">
+		<div class="widget__head" data-popup='{{= id }}'>
+			{{ if(type == APP.globals.TYPE_TXT) }}
+				<a data-popup='{{= id }}' class="widgetItemGrid__preview" href="#">
+					<table style='width:100%;height:100%;text-align: left'>
+						<tr>
+							<td valign='middle'>{{= content }}</td>
+						</tr>
+					</table>
+				</a>
+			{{ else }}
+				<a class="widgetItemGrid__preview" style="background-image: url({{= medium_image }})" href="#"></a>
+			{{ end }}
+			<div class="remark _small widgetItemGrid__likes"><b>{{= likes }}</b> понравилось</div>
+		</div>
+		<div class="widget__body">
+			<div class="widget__section _clear">
+				<a class="thumb _small" href="/user/{{= via_username || content_username }}">
+					<img class="thumb__img" src="{{= userAvatar || APP.get("small_avatar") }}">
+				</a>
+				<a href="/user/{{= via_username || content_username }}" class="title widgetItemGrid__username">{{= via_fullname || content_user_fullname }}</a>
+				<div class="remark _small">{{= content_timestamp }}</div>
+			</div>
+		</div>
+	</div>
+</script>

@@ -1,0 +1,383 @@
+
+body > .popover { z-index: 111111; }
+
+.popoverWrapper { display: inline-block; width: auto; position: relative; }
+
+
+.popover {
+position:absolute;
+top:0;
+left:0;
+z-index:5;
+display:none;
+max-width:276px;
+text-align:left;
+white-space:normal;
+background-color:#fff;
+border:1px solid rgba(0,0,0,0.2);
+-webkit-border-radius:2px;
+-moz-border-radius:2px;
+-ms-border-radius:2px;
+-o-border-radius:2px;
+-webkit-box-shadow:0 5px 10px rgba(0,0,0,0.2);
+-moz-box-shadow:0 5px 10px rgba(0,0,0,0.2);
+box-shadow:0 5px 10px rgba(0,0,0,0.2);
+-webkit-background-clip:padding-box;
+-moz-background-clip:padding;
+background-clip:padding-box;
+cursor:default;
+border-radius:3px;
+font-size:11px;
+padding:1px;
+}
+
+.popover .arrow {
+border-width:11px;
+}
+
+.popover .arrow,.popover .arrow:after {
+position:absolute;
+display:block;
+width:0;
+height:0;
+border-color:transparent;
+border-style:solid;
+}
+
+.popover .arrow:after {
+content:"";
+border-width:10px;
+}
+
+.popover .check-wrap {
+display:inline;
+position:relative;
+color:#1eb4e8;
+font-size:11px;
+cursor:pointer;
+}
+
+.popover .check-wrap i {
+white-space:nowrap;
+position:relative;
+display:inline-block;
+width:10px;
+height:10px;
+border:1px solid #ddd;
+margin-right:3px;
+top:2px;
+}
+
+.popover .check-wrap input {
+position:absolute;
+left:0;
+top:0;
+visibility:hidden;
+margin:0;
+}
+
+.popover .check-wrap input[checked] + i {
+position:relative;
+}
+
+.popover .check-wrap input[checked] + i:before {
+position:absolute;
+content:'\00D7';
+display:block;
+left:-1px;
+top:-1px;
+width:8px;
+height:8px;
+color:#1eb4e8;
+line-height:10px;
+font-weight:700;
+font-size:17px;
+}
+
+.popover .people-addto-collection {
+cursor:pointer;
+}
+
+.popover .popover-people {
+height:42px;
+overflow:hidden;
+}
+
+.popover .popover-people .people-profile {
+width:30px;
+height:30px;
+float:left;
+border-radius:3px;
+overflow:hidden;
+margin:6px 6px 6px 0;
+}
+
+.popover .popover-people .people-profile img {
+display:block;
+}
+
+.popover .popover-people > p {
+line-height:42px;
+text-align:center;
+}
+
+.popover .popover-people-count {
+font-weight:700;
+}
+
+.popover .popover-share-wrap {
+width:220px;
+text-align:center;
+}
+
+.popover .popover-share-wrap .input-white {
+border-radius:3px;
+border:1px solid #ddd;
+color:#999;
+}
+
+.popover .row-fluid [class*="span"] {
+min-height:0;
+}
+
+.popover .ybtn {
+height:17px;
+line-height:18px;
+font-size:10px;
+cursor:pointer;
+padding:0;
+}
+
+.popover b {
+font-size:12px;
+}
+
+.popover select {
+border:1px solid #ddd;
+border-radius:0;
+height:1.6em;
+font-size:12px;
+margin:10px 0;
+padding:0;
+}
+
+.popover-content {
+line-height:1.2;
+padding: 10px 10px 10px 25px;
+}
+
+.popover-inner {
+height:80px;
+display:table-cell;
+vertical-align:middle;
+}
+
+.popover-title {
+font-size:14px;
+font-weight:400;
+line-height:18px;
+background-color:#f7f7f7;
+border-bottom:1px solid #ebebeb;
+-webkit-border-radius:5px 5px 0 0;
+-moz-border-radius:5px 5px 0 0;
+border-radius:5px 5px 0 0;
+margin:0;
+padding:8px 14px;
+}
+
+.popover-title:empty {
+display:none;
+}
+
+.popover.bottom {
+margin-top:10px;
+}
+
+.popover.bottom .arrow {
+top:-11px;
+left:50%;
+margin-left:-11px;
+border-bottom-color:rgba(0,0,0,0.25);
+border-top-width:0;
+}
+
+.popover.bottom .arrow:after {
+top:1px;
+margin-left:-10px;
+border-bottom-color:#fff;
+border-top-width:0;
+}
+
+.popover.left {
+margin-left:-10px;
+}
+
+.popover.left .arrow {
+top:50%;
+right:-11px;
+margin-top:-11px;
+border-left-color:rgba(0,0,0,0.25);
+border-right-width:0;
+}
+
+.popover.left .arrow:after {
+right:1px;
+bottom:-10px;
+border-left-color:#fff;
+border-right-width:0;
+}
+
+.popover.right {
+margin-left:10px;
+}
+
+.popover.right .arrow {
+top:50%;
+left:-11px;
+margin-top:-11px;
+border-right-color:rgba(0,0,0,0.25);
+border-left-width:0;
+}
+
+.popover.right .arrow:after {
+bottom:-10px;
+left:1px;
+border-right-color:#fff;
+border-left-width:0;
+}
+
+.popover.top {
+margin-top:-10px;
+}
+
+.popover.top .arrow {
+bottom:-11px;
+left:50%;
+margin-left:-11px;
+border-top-color:rgba(0,0,0,0.25);
+border-bottom-width:0;
+}
+
+.popover.top .arrow:after {
+bottom:1px;
+margin-left:-10px;
+border-top-color:#fff;
+border-bottom-width:0;
+}
+
+
+// Черные поповеры, убрать в отдельный файл с поповерами
+.popover._black {
+	& {
+		background: #111;
+		background: rgba(0, 0, 0, .9);
+
+		margin: 0 0 10px 0;
+		padding: 10px;
+		width: 330px;
+		max-width: 330px;
+
+		color: #fff;
+
+		-webkit-box-shadow: 0 0 10px #999;
+		-moz-box-shadow: 0 0 10px #999;
+		-o-box-shadow: 0 0 10px #999;
+		box-shadow: 0 0 10px #999;
+
+		-webkit-text-shadow: 0 1px 0 #000;
+		-moz-text-shadow: 0 1px 0 #000;
+		-o-text-shadow: 0 1px 0 #000;
+		text-shadow: 0 1px 0 #000;
+
+		@include border-radius(3px);
+		border: 0;
+
+		 ._notouch &:hover  {
+			background: #111;
+			background: rgba(0, 0, 0, .9);
+
+			& .arrow {
+				@include opacity(1);
+			}
+		}
+	}
+
+	.popover-close {
+		width: 0;
+		height: 0;
+		display: block;
+		float: right;
+		cursor: pointer;
+
+		@include border-radius(3px);
+
+		position: relative;
+		top: -20px;
+
+		&:after {
+			content: '\00d7';
+			display: block;
+			border-radius: 100px;
+			background: #000;
+			@include opacity(1);
+			width: 20px;
+			height: 20px;
+			text-align: center;
+			vertical-align: middle;
+			line-height: 19px;
+			border: 2px solid #FFF;
+			box-shadow: 0 0 4px #000;
+			color: #FFF;
+			font-size: 19px;
+		}
+	}
+
+	.popover-inner {
+		width: 100% !important;
+		height: 60px !important;
+		display: block !important;
+	}
+
+	&._banana {
+		.popover-inner {
+			padding-left: 50px !important;
+		}
+
+		.popover-banana {
+			display: block;
+		}
+	}
+
+	&.bottom .arrow {
+		&:after {
+			border-bottom-color: #000;
+		}
+	}
+
+	&.top .arrow {
+		&:after {
+			border-top-color: #000;
+		}
+	}
+
+	.popover-banana {
+		position: absolute;
+		width: 60px;
+		height: 85px;
+		left: 0;
+		bottom: 0;
+		display: none;
+		background: url(/common/img/banana-popover.png) center no-repeat;
+		background-size: 100%;
+	}
+
+	.popover-content {
+		width: 100%;
+		font-size: 12px !important;
+		overflow: hidden;
+
+		a {
+			color: $ycm-link-color;
+		}
+	}
+}

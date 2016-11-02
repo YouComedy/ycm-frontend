@@ -1,0 +1,166 @@
+.widgetBrain__content {
+	margin: 0 40px 10px;
+	position: relative;
+}
+.widgetBrain__img {
+	display: block;
+	position: relative;
+	z-index:1;
+}
+
+.widgetBrain__progress {
+	position: absolute;
+	width: 100%;
+	height: 0%;
+	max-height: 99%;
+	background: url('/common/img/quest/progress-back.png') center no-repeat;
+	background-size: 100%;
+	bottom: 1px;
+	left: 0;
+	transition: 1s;
+	line-height: 129px;
+	font-size: 20px;
+	text-align: center;
+}
+
+.widgetBrain__progressText {
+	text-align: center;
+	line-height: 129px;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	font-size: 20px;
+	color: #000;
+}
+
+.calibrate_1,
+.calibrate_2 {
+	overflow: hidden;
+	border-radius: 5px;
+	margin-bottom: 20px;
+}
+
+.calibrate_1 {
+	width: 727px;
+	height: 439px;
+	position: relative;
+	background: #fdf3d1 url('/common/img/quest/calibrate_1.png') no-repeat;
+}
+
+.calibrateLamp {
+	position: absolute;
+	top: 0;
+	left: 50px;
+	width: 178px;
+	height: 100%;
+	background: url('/common/img/quest/lamp.png') top no-repeat;
+
+	-webkit-animation: twiggle .4s linear;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-direction: alternate;
+
+	animation: twiggle .4s linear;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+
+.calibrate_2 {
+	text-align: center;
+	color: #000;
+	background: #fff;
+	font-size: 20px;
+	font-family: Verdana, Geneva, Arial, sans-serif;
+}
+
+.calibrate_2 > img {
+	display: block;
+	margin: 80px auto;
+}
+
+.calibrate_2 b {
+	-webkit-animation: multicolor 5s linear;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-direction: alternate;
+
+	animation: multicolor 5s linear;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+
+
+	@for $i from 1 through 10 {
+		&:nth-child(#{$i}) {
+			animation-delay: -#{$i*1.3}s;
+			-webkit-animation-delay: -#{$i*1.3}s;
+		}
+	}
+}
+
+@keyframes multicolor {
+	0% {
+		color: #000;
+	}
+	16% {
+		color: #00f;
+	}
+	32% {
+		color: #0f0;
+	}
+	48% {
+		color: #0ff;
+	}
+	64% {
+		color: #f00;
+	}
+	80% {
+		color: #f0f;
+	}
+	100% {
+		color: #ff0;
+	}
+}
+
+@-webkit-keyframes multicolor {
+	0% {
+		color: #000;
+	}
+	16% {
+		color: #00f;
+	}
+	32% {
+		color: #0f0;
+	}
+	48% {
+		color: #0ff;
+	}
+	64% {
+		color: #f00;
+	}
+	80% {
+		color: #f0f;
+	}
+	100% {
+		color: #ff0;
+	}
+}
+
+@keyframes twiggle {
+	from {
+		-moz-transform: rotateZ(-3deg);
+	}
+
+	to {
+		-moz-transform: rotateZ(3deg);
+	}
+}
+
+@-webkit-keyframes twiggle {
+	from {
+		-webkit-transform: rotateZ(-3deg);
+	}
+
+	to {
+		-webkit-transform: rotateZ(3deg);
+	}
+}

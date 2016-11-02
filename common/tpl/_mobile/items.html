@@ -1,0 +1,212 @@
+<style>
+	.item__menuContent .button {margin: 5px;}
+</style>
+
+<script type="text/ycm-template" id='item-big-menu-tpl'>
+	<div class="_textCenter">
+		<a class="button" href="#" data-action="complainItem">пожаловаться модератору</a>
+		{{= APP.User.renderIgnoreBtn({type:"User", id: content_user_id, name: content_username, word : "пользователя"}) }}
+	</div>
+
+	{{ if( tags && tags.length ) { }}
+		<div class="_textCenter" style="margin-top: 20px;">
+			Не показывать
+			<select onchange='(_t=$(this)) && (_v=_t.val());(!_v ? _t.next().hide() :_t.next().replaceWith(APP.User.renderIgnoreBtn({type:"Tag",id:_v,name:_v, word:"тег"})))'>
+				<option value="">Выбрать тег</option>
+				{{ each(tags, tag) }}
+					<option value="{{= tag }}">{{= tag }}</option>
+				{{ end }}
+			</select>
+			<a style='display:none'>игнорировать тег</a>
+		</div>
+	{{ end }}
+</script>
+
+
+<script type="text/ycm-template" id="item-big-likes-new-tpl">
+	<div class="item__button item__like _textBig">
+		<a class="item__buttonWrap {{= userVote > 0 && '_active' }}" data-vote='like' data-action="vote" data-param="like" href='#'>
+			<i class="ycm-icon ycm-icon-thumbs-up"></i>
+		</a>
+	</div>
+	<div class="item__button item__rating" data-counter="likes" data-likes-counter>{{= rating || 0 }}</div>
+	<div class="item__button item__dislike _textBig">
+		<a class="item__buttonWrap {{= userVote < 0 && '_active' }}" data-vote='dislike' data-action="vote" data-param="dislike" href='#'>
+			<i class="ycm-icon ycm-icon-thumbs-down"></i>
+		</a>
+	</div>
+
+	<div class="item__button item__full _textBig">
+		<a  class="item__buttonWrap" data-action='openImgNewTab' href='#'>
+			<i class="ycm-icon ycm-icon-fullscreen"></i>
+		</a>
+	</div>
+
+	<div class="item__button item__mobile _textBig">
+		<a  class="item__buttonWrap" data-action='openMobileBtns' href='#'>
+			<i class="ycm-icon ycm-icon-ellipsis"></i>
+		</a>
+	</div>
+</script>
+
+
+<style>
+	.item__top .ycm-icon-star {display: inline-block; margin-top: -3px}
+</style>
+
+<script type="text/ycm-template" id='item-big-new-tpl'>
+	<div class="item__top _clear">
+
+		<div class="item__topLike">
+			<a data-title="{{= removable ? 'Удалить шутку' : 'Игнорировать или пожаловаться' }}" title="{{= removable ? 'Удалить шутку' : 'Игнорировать или пожаловаться' }}" class="item__menu" data-action="itemMenu">
+				{{= removable ? '<i class="ycm-icon ycm-icon-cross _textBig"></i>' : '<i class="ycm-icon ycm-icon-triple-menu _textBig"></i>' }}
+			</a>
+			<a class="item__cancel _dotted" data-action="itemMenuClose" href="#">отмена</a>
+		</div>
+
+		<a href="/user/{{= content_username }}" class="thumb"><img class="thumb__img" src="{{= content_user_avatar }}"></a>
+		<a href="/user/{{= content_username }}" class="title _small">{{= content_user_fullname }}</a>
+		<div class="repost">
+			{{ if( via_username )  { }}
+				<i class="ycm-icon ycm-icon-arrow _left"></i>
+				<a href="/user/{{= via_username }}" class="title _small">{{= via_fullname }}</a>
+			{{ } }}
+		</div>
+	</div>
+
+	<div class="item__hidden _textCenter remark">Шутка скрыта, потому что она вам не понравилась
+		(<a class="link" href="#" onclick="$(this).parents('.item').removeClass('_hidden');return !1;">показать шутку</a>)
+	</div>
+
+	<div class="item__menuContent" style="padding: 45px 0 60px; background: #fff;"></div>
+
+	<div class="item__container">
+		<div class="item__content" data-action='goNext'>
+			{{ if( type == APP.globals.TYPE_IMG || type == APP.globals.TYPE_VID || type == APP.globals.TYPE_GIF) { }}
+				{{ if( type == APP.globals.TYPE_VID ) { }}
+					<a class='play-btn-overlay' data-play='1'></a>
+					<div class="item__videoThumb">
+						<div class='b-item-big__player'></div>
+						<img data-role='content' class="item__contentImage" src='{{= mbig_image }}' />
+					</div>
+				{{ } else if(APP.globals.TYPE_GIF == type) { }}
+					<a class='play-btn-overlay' data-play='1'></a>
+					<div class="item__gifThumb">
+						<div class='b-item-big__player'>
+						</div>
+						<img data-role='content' class="item__contentImage" src='{{= mbig_image }}' />
+					</div>
+				{{ } else { }}
+					<img data-role='content' class="item__contentImage" src='{{= mbig_image }}' />
+				{{ } }}
+			{{ } else { }}
+				<p class='item__contentText'>
+					<span class="contentText__cell">{{= content }}</span>
+				</p>
+			{{ } }}
+			<div class="item__longpost">
+				<i class="ycm-icon ycm-icon-chevron-down"></i>
+			</div>
+		</div>
+		<div data-prop='description' class="item__desc">
+			{{= description }}
+		</div>
+		<div style="position: relative; padding: 0 15px; top: -10px;">
+
+			{{ each(tags, tag) }}
+				<a class="comment-hashtag-link" href="/tag/{{= tag }}">#{{= tag }}</a> 
+			{{ end }}
+		</div>
+	</div>
+
+	<div class="item__bottom">
+		<div data-container='likes' class="item__controls _clear" id='i{{= id }}-likes' >
+			{{ include #item-big-likes-new-tpl }}
+		</div>
+		<div  class="item__comments">
+			<div data-container='comments' id="i{{=id}}-cmts"></div>
+			<div class="item__showAllComments" data-action="renderComments">
+				{{ if( totalComments > 3 ) }}
+					{{= "Показать все " + totalComments + " " + plural(totalComments,"комментарий,комментария,комментариев") }}
+				{{ else }}
+					Оставить комментарий
+				{{ end }}
+			</div>
+		</div>
+	</div>
+</script>
+
+
+<script type="text/ycm-template" id='item-big-newcomment-tpl'>
+<form class="item__newComment"  data-item='{{=id}}' data-noreset='1' action="/items/{{=id}}/comments" method="POST">
+	<div class="thumb">
+		<img class="thumb__img" src="{{=APP.User.get('small_image') || APP.get('small_avatar') }}">
+	</div>
+	<div class="item__inputWrap _clear" id='i{{=id}}-newcmt'>
+		<textarea class="item__input" name='text' placeholder="Напишите остроумный комментарий ;)"></textarea>
+		<button class="button _grey item__submitComment _right">Отправить</button>
+	</div>
+</form>
+</script>
+
+<!-- попап добавления итема в коллекцию -->
+<script type="text/ycm-template" id="item-big-addto-dialog-tpl">
+	<div class="dialog__section">
+		<div class="dialog__image-thumb">
+			<div></div>
+			<!-- <div class='dialog__image-thumb-wrapper'></div> -->
+			{{ if( type == 1 || type == 2 ) { }}
+				<img src='{{= small_image }}'>
+			{{ } else { }}
+				<div style="height:100%;overflow:hidden;"><p style='padding:7px'>{{= content }}</p></div>
+			{{ } }}
+			<div class="play-btn-overlay"></div>
+		</div>
+	</div>
+	<div class="dialog__section">
+		<input class="input-grey" placeholder="Описание и #теги" name="Comment" value="{{= plain_description || '' }}">
+	</div>
+	<div class="dialog__section dialog__btns">
+		<a href='#' class="ybtn" data-submit='1'>Репост</a>
+	</div>
+</script>
+
+<!-- попап редактирования итема -->
+<script type="text/ycm-template" id="item-big-edit-dialog-tpl">
+	<div class="dialog__section">
+		<div class="dialog__image-thumb">
+			<div></div>
+			<!-- <div class='dialog__image-thumb-wrapper'></div> -->
+			{{ if( type == 1 || type == 2 ) { }}
+				<img src='{{= small_image }}'>
+			{{ } else { }}
+				<div style="height:100%;overflow:hidden;"><p style='padding:7px'>{{= content }}</p></div>
+			{{ } }}
+			<div class="play-btn-overlay"></div>
+		</div>
+	</div>
+	<div class="dialog__section">
+		<input class="input-grey" placeholder="Описание и #теги" name="Comment" value="{{= plain_description || '' }}">
+	</div>
+	<div class="dialog__section dialog__btns">
+		<a href='#' class="ybtn" data-submit='1'>Сохранить</a>
+		<a href='#' class="ybtn ybtn-red" data-submit='2'>Удалить</a>
+	</div>
+</script>
+
+<!-- поповер добавления итема в коллекцию -->
+<script type="text/ycm-template" id="item-big-addto-tpl">
+	<div class="alt alt-top" style='margin-left:-27px;width:230px'>
+		<? #<h6>Добавить в коллекцию <a href="#" title='Закрыть' class="close-icon" onclick='this.parentNode.parentNode.style.display="none";return false;'>&times;</a></h6> ?>
+		<input type="text" style='display:block' />
+	</div>
+</script>
+
+<!-- Поповер для шеринга -->
+<script type="text/ycm-template" id="item-big-sharing-popover">
+	<div class="alt alt-top">
+		<h6>Поделиться <a href="#" title='Закрыть' class="close-icon" onclick='this.parentNode.parentNode.style.display="none";return false;'>&times;</a></h6>
+		<div><div><input class='input-white block' data-select='1' value='{{= APP.get("url") }}/{{= id }}' /></div></div>
+		<div><span id="i{{=id}}-share"></span></div>
+	</div>
+</script>

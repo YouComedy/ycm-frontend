@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../css/!/pack.main.css">
+<link rel="stylesheet" href="../css/!/pack.items.css">
+<link rel="stylesheet" href="../css/!/pack.profile.css">
+<link rel="stylesheet" href="../css/!/pack.ui.misc.css">
+<link rel="stylesheet" href="../css/!/pages/upload.css">
+<script src="../js/libs/jq.js"></script>
+</head>
+<body>
+<style>
+body {
+	padding: 40px;
+}
+.simpleMenu {
+	list-style: none;
+	margin-right: 40px;
+}
+.simpleMenu__link {
+	text-align: right;
+	width: 100%;
+	padding: 5px 10px;
+	border-bottom: 1px solid transparent;
+	color: #7C8698;
+}
+.simpleMenu__link._active {
+	background: #fff;
+	border-bottom: 1px solid #ddd;
+	border-radius: 3px;
+}
+.faqPanel {
+	overflow: hidden;
+	padding: 20px;
+}
+.faqPanel__head {
+	color: #444;
+	line-height: 1;
+	font-weight: normal;
+	font-size: 36px;
+	margin: 0 0 20px;
+}
+.faqPanel__list {
+	list-style: none;
+}
+.faqPanel__action {
+	line-height: 1;
+	font-weight: bold;
+	border-bottom: 1px dashed;
+	color: #1EB4E8;
+	margin: 10px 0;
+}
+.faqPanel__item > p {
+	display: none;
+	margin-bottom: 10px;
+}
+.faqPanel__banana {
+	width: 200px;
+	height: 250px;
+	margin-right: -20px;
+	
+	position: relative;
+	float: right;
+	background: url("../img/empty/faq.png") -60px 0px no-repeat;
+}
+</style>
+<div style="width: 998px; margin: auto;">
+	<div class="col col-3">
+		<ul class="simpleMenu">
+			<li><a class="simpleMenu__link" href="#">Что такое YCM?</a></li>
+			<li><a class="_active simpleMenu__link" href="#">Правила</a></li>
+		</ul>
+	</div>
+	<div class="col col-9">
+		<div class="panel faqPanel">
+			<h1 class="faqPanel__head">Правила пользования</h1>
+			<ul class="faqPanel__list">
+				<div class="faqPanel__banana"></div>
+				<li class="faqPanel__item">
+					<a class="faqPanel__action" href="#">Что такое YouComedy.Me?</a>
+					<p class="_show">YouComedy.Me - это место, где люди делятся шутками с друзьями.
+					Загружайте картинки, видео и тексты, показывайте друзьям, поднимайте
+					настроение себе и другим ;)</p>
+				</li>
+				<li class="faqPanel__item">
+					<a class="faqPanel__action" href="#">Как добавить шутку?</a>
+					<p class="_show">Нажмите на кнопку “Добавить шутку” в панели наверху. Загрузите
+					картику с компьютера или вставьте ссылку на картинку/видео. Потом
+					добавьте описание и несколько тегов. После короткой проверки на баяны,
+					вы сможете добавить шутку на сайт, чтобы все смогли ее увидеть!</p>
+				</li>
+				<li class="faqPanel__item">
+					<a class="faqPanel__action" href="#">Какие шутки можно добавлять?</a>
+					<p>Любые. Глубокие и плоские. Умные и тупые. Картинки и тексты.
+					Демотиваторы и комиксы. Смешные фотографии и забавные видео.
+					Мимими и черный юмор.<br><br>Загружайте все, что вам нравится, только
+					не грузите спам, жесть, порно и другое непотребство.<br><br>
+					Мы нейтрально относимся к мату, но чрезмерное кол-во х*ев при
+					отсутствии должного остроумия может нас расстроить.</p>
+				</li>
+				<li class="faqPanel__item">
+					<a class="faqPanel__action" href="#">Зачем нужны лайки/дислайки?</a>
+					<p>С помощью лайков и дислайков вы оставляете свою оценку шутке.
+					Лайки поднимают рейтинг шутки, дислайки опускают его. Если шутка
+					заставила вас улыбнуться, то обязательно оставляйте лайк, чтобы
+					автор загрузил еще.</p>
+				</li>
+				<li class="faqPanel__item">
+					<a class="faqPanel__action" href="#">Что такое репост?</a>
+					<p>С помощью репоста вы можете добавить чужую шутку себе в ленту.
+					Эту шутку увидят ваши подписчики, а также вы всегда сможете быстро
+					найти ее.</p>
+				</li>
+				<li class="faqPanel__item">
+					<a class="faqPanel__action" href="#">Что такое теги?</a>
+					<p>Теги сделаны для того, чтобы в 1 клик найти шутки на одну тему.
+					Помечайте свои шутки правильными тегами и больше людей увидят их.
+					Не стоит упоминать слишком много тегов, за это могут наказать.
+					2-4 тега - оптимально.</p>
+				</li>
+				<li class="faqPanel__item">
+					<a class="faqPanel__action" href="#">Как отредактировать описание шутки?</a>
+					<p>Чтобы отредактировать описание шутки, вы должны зайти на свой
+					профиль (нажмите на свою аватарку в боковом меню). Теперь найдите
+					нужную шутку и кликните прямо на текст описания - его можно
+					редактировать прямо на этой странице. После того как закончите,
+					просто нажмите Enter и все автоматически сохранится.</p>
+				</li>
+				<li class="faqPanel__item">
+					<a class="faqPanel__action" href="#">Как добавить видео на сайт?</a>
+					<p>Чтобы добавить видео на сайт скопируйте его ссылку (YouTube,
+					VK, Vimeo) и вставьте эту ссылку на <a class="link" href="/add">странице добавления шутки</a>.</p>
+				</li>
+				<li class="faqPanel__item">
+					<a class="faqPanel__action" href="#">Как добавить COUB на сайт?</a>
+					<p>Также как и с видео, скопируйте ссылку COUB’а, она выглядит примерно так:
+					<a class="link" href="http://coub.com/view/4jz7o6f">http://coub.com/view/4jz7o6f</a>
+					и вставьте ее на <a class="link" href="/add">странице добавления шутки</a>.</p>
+				</li>
+				<li class="faqPanel__item">
+					<a class="faqPanel__action" href="#">Что такое Зал славы?</a>
+					<p>В Зале славы мы показываем самые интересные страницы на сайте.
+					Каналы, пользователи и общий рейтинг - если вы не знаете на кого
+					подписаться, то заходите в Зал славы, чтобы найти новые подписки.</p>
+				</li>
+				<li class="faqPanel__item">
+					<a class="faqPanel__action" href="#">Как подняться в рейтинге?</a>
+					<p>Загружайте крутые шутки. Это самый верный способ. Шутки
+					должны быть свежими и актуальными. Если вы знаете английский,
+					то можете начать переводить картинки с зарубежных сайтов типа
+					<a class="link" href="http://9gag.com">9gag.com</a> и
+					<a class="link" href="http://reddit.com">reddit.com</a>.
+					<br><br>Чем больше у вас подписчиков, тем больше лайков
+					вы получаете на каждую шутку, тем выше вы в рейтинге.
+					Оставляйте остроумные комментарии, упоминайте людей,
+					подписывайтесь на других авторов. Оставляйте свои шутки
+					прямо в комментариях, если они в тему. В общем проявляйте
+					активность и подписчики не заставят себя ждать.<br><br>
+					Если вы крутой автор, вы всегда можете связаться с нами
+					напрямую, чтобы разместиться в большом баннере в Зале славы.
+					Пишите на <a class="link" href="mailto:hello@youcomedy.me">hello@youcomedy.me</a>.</p>
+				</li>
+				<li class="faqPanel__item">
+					<a class="faqPanel__action" href="#">Как найти друзей из других соц.сетей?</a>
+					<p>Чтобы найти друзей из других соц.сетей (VK, Facebook) нужно
+					нажать на кнопку “Друзья на сайте” в боковом меню. Дальше подключите
+					нужные аккаунты и подпишитесь на тех, кто вам интересен или
+					сразу на всех :P</p>
+				</li>
+				<li class="faqPanel__item">
+					<a class="faqPanel__action" href="#">Как пригласить друзей?</a>
+					<p>Вы можете пригласить друзей на сайт если зайдете в раздел
+					“Друзья на сайте” и выберете вкладку “пригласить друзей” сверху
+					страницы. Вы можете пригласить друзей через личное сообщение
+					в VK или Facebook, или послать им email.<br><br>
+					Вы также можете просто скинуть ссылку на сайт ;)</p>
+				</li>
+				<li class="faqPanel__item">
+					<a class="faqPanel__action" href="#">Почему не нужно добавлять баяны?</a>
+					<p>Не нужно дублировать шутки на сайте. Если баянометр
+					нашел идентичные шутки, то кликните на нее и сделайте
+					репост. Так ваши друзья и подписчики увидят ее, и вы не
+					будете засорять общий поток повторами.</p>
+				</li>
+				<li class="faqPanel__item">
+					<a class="faqPanel__action" href="#">У меня мало подписчиков, что делать?</a>
+					<p>Самый простой и эффективный способ получить
+					первых подписчиков - пригласить друзей. Найдите
+					тех, кому нравится ваше чувство юмора и скажите,
+					что теперь вы выкладываете шутки на YouComedy.
+					Несколько человек обязательно придут и подпишутся
+					на вас. Это даст вам первые лайки.<br><br>
+					Другой способ: выкладывать шутки в социальных
+					сетях, чтобы другие видели ваши шутки и оставляли
+					вам положительные оценки.<br><br>
+					Более трудозатратный, но не менее эффективный:
+					проявлять активность на сайте. Оставляйте
+					комментарии, упоминайте людей, ведите беседы
+					и что самое важное - выкладывайте свежие смешные
+					шутки. Постепенно сообщество узнает про вас и кол-во
+					подписчиков начнет расти.</p>
+				</li>
+				<li class="faqPanel__item">
+					<a class="faqPanel__action" href="#">У меня остались вопросы, что делать?</a>
+					<p>Напиши нам на <a class="link" href="mailto:hello@youcomedy.me">hello@youcomedy.me</a>
+					или упомяни @ItemPapa в комментарии, он поможет.</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<script>
+$(function(){
+	$('.faqPanel__item').each(function(){
+		var self = $(this);
+		var content = self.find('p');
+		
+		self.find('.faqPanel__action').click(function(){
+			content.slideToggle('fast');
+			return false;
+		});
+	})
+});
+</script>
+</body>
+</html>

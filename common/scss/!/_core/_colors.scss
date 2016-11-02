@@ -1,0 +1,90 @@
+
+$color-percent-lighten : 1%;
+$color-percent-lighten-hover: 10%;
+
+$color-percent-darken : 10%;
+$color-percent-darken-hover: 6%;
+
+
+// Автоматическое создание градиентной заливки на базе цвета
+@mixin gradient-from-color ($base-color) {
+	@include background-image(
+		linear-gradient(
+			lighten($base-color, $color-percent-lighten),
+			darken($base-color, $color-percent-darken)
+		)
+	);
+}
+
+
+// Автоматическое создание градиентной заливки для ховера на базе цвета
+@mixin gradient-from-color-hover ($base-color) {
+	@include background-image(
+		linear-gradient(
+			lighten($base-color, $color-percent-lighten-hover),
+			darken($base-color, $color-percent-darken-hover)
+		)
+	);
+}
+
+
+@mixin gradient-from-color-active ($base-color) {
+	@include background-image(
+		linear-gradient(
+			// darken($base-color, $color-percent-darken-hover),
+			// darken($base-color, $color-percent-darken-hover)
+			darken($base-color, $color-percent-darken-hover * 2),
+			darken($base-color, $color-percent-darken)
+		)
+	);
+}
+
+
+
+@function color-hover ($base-color) {
+	@return lighten($base-color, $color-percent-lighten);
+}
+
+@function color-active ($base-color) {
+	@return darken($base-color, $color-percent-darken);
+}
+
+
+@mixin border-from-color ($base-color, $hue: 6deg ) {
+	border-color: darken(adjust-hue($base_color, $hue), lightness($base_color) / 6 );
+}
+
+
+
+@mixin registerAnimation ($name) {
+	@-webkit-keyframes $name {
+	    @content;
+	}
+
+	@-moz-keyframes $name {
+	    @content;
+	}
+
+	@-o-keyframes $name {
+	    @content;
+	}
+
+	@-ms-keyframes $name {
+	    @content;
+	}
+
+	@keyframes $name {
+	    @content;
+	}
+}
+
+
+@mixin animation ($name, $duration: 0.3s) {
+	-webkit-animation: $name $duration;
+	-moz-animation: $name $duration;
+	-o-animation: $name $duration;
+	animation: $name $duration;
+}
+
+
+

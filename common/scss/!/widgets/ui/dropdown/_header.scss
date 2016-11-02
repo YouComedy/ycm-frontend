@@ -1,0 +1,16 @@
+//  Дропдаун для головного меню в хедере
+// 
+
+
+@import "base";
+
+.dropdown._header {
+
+	.caret {
+		vertical-align : middle;
+		margin-top: 0;
+		border-top-color: $ycm-grey;
+	}
+
+
+}

@@ -1,0 +1,64 @@
+
+<!--
+
+	Диалог репоста. Он же диалог редактирования
+
+	data-owner="Add" data-before="beforeUpload"
+	<div class="remark _small upload__descCount">400</div>
+
+-->
+
+<style>
+	.upload__field {margin: 10px auto;}
+</style>
+
+<script type="text/ycm-template" id="item-edit-repost-dialog-tpl" data-path='/common/tpl/_mobile/albums/add-edit-dialog.html'>
+	<!--div class="dialog__section">
+		<div class="dialog__image-thumb">
+			{{ if( type == APP.globals.TYPE_IMG || type == APP.globals.TYPE_VID || type == APP.globals.TYPE_GIF ) { }}
+				<img src='{{= small_image }}'>
+			{{ } else { }}
+				<span class="dialog__textPreview">{{= content }}</span>
+			{{ }
+			if( type == APP.globals.TYPE_VID || type == APP.globals.TYPE_GIF) { }}
+				<div class="play-btn-overlay _show"></div>
+			{{ } }}
+		</div>
+	</div-->
+
+	<form class="dialog__section" data-owner="EditRepost" data-success="after" data-before="before" data-noblock="1" action="{{= action }}" method="post" >
+		<div class="dialog__section upload__field">
+			<textarea style="width:100%" class="upload__description" maxlength="400" placeholder="Описание (необязательно)" name="description" cols="30" rows="2">{{= plain_description || ""}}</textarea>
+		</div>
+		<div class="dialog__section upload__field js-tags-input">
+			<input style="display:block;width:100%;padding:10px 5px;" name="tags" placeholder="Введите теги через запятую (минимум 2)" value="{{= (tags || []).join(',') }}">
+		</div>
+		<div class="dialog__section _textCenter">
+			<button type="submit" class="button _big" href="#">Сохранить</button>
+		</div>
+	</form>
+</script>
+
+
+
+
+<script type="text/ycm-template" id='dialog-user-reason-tpl'>
+	<form data-contentid="{{=id}}" method="POST" action="/content/{{= id }}/complain" data-owner="EditRepost" data-success="complainSuccess" data-before="complainBefore">
+		<div class="dialog__section">
+			<h4 class="title">Выберите причину жалобы</h4>
+		</div>
+		<div class="dialog__section">
+			<select name="reason">
+				<option value="шутка была добавлена на сайт ранее">шутка была добавлена на сайт ранее</option>
+				<option value="контент содержит эротику">контент содержит эротику</option>
+				<option value="контент не является шуткой">контент не является шуткой</option>
+			</select>
+		</div>
+		<div class="dialog__section">
+			<textarea style="width:100%" name="comment" placeholder="комментарий"></textarea>
+		</div>
+		<div class="dialog__section _clear">
+			<button class="button _red _right">Отправить жалобу</button>
+		</div>
+	</form>
+</script>

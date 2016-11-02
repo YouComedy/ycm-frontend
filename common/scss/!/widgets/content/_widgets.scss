@@ -1,0 +1,26 @@
+.authService {
+	min-width: 200px !important;
+}
+
+.authService__title {
+	font-size: 14px;
+	text-transform: none;
+
+	.ycm-icon {
+		top: -1px;
+		position: relative;
+		font-size: 18px;
+	}
+}
+
+.authService + .authService {
+	margin-left: 10px;
+}
+
+.ue-tab-container{
+	position: absolute !important;
+	top: 0 !important;
+	bottom: 0;
+	margin: auto;
+	height: 141px;
+}

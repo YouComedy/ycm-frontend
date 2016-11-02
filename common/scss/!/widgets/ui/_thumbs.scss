@@ -1,0 +1,62 @@
+.thumb {
+	width: 36px;
+	height: 36px;
+	margin-right: 10px;
+	float: left;
+
+	&._right {
+		margin-left: 10px;
+		margin-right: 0;
+	}
+
+	&._big {
+		width: 50px;
+		height: 50px;
+	}
+
+	&._xlarge {
+		width: 70px;
+		height: 70px;
+
+		.thumb__img {
+			min-width: 100%;
+		}
+	}
+
+	&._xxlarge {
+		width: 100%;
+		height: auto;
+
+		.thumb__img {
+			min-width: 100%;
+		}
+	}
+
+	&._small {
+		width: 24px;
+		height: 24px;
+
+		.thumb__img {
+			min-width: 100%;
+			min-height: 100%;
+		}
+	}
+
+	@if $isMobile == 1 {
+		width: 28px;
+		height: 28px;
+		margin-right: 5px;
+
+		&._right {
+			margin-left: 5px;
+		}
+	}
+}
+
+.thumb__img {
+	max-width: 100%;
+	max-height: 100%;
+	display: block;
+	border-radius: 3px;
+	border: 0;
+}

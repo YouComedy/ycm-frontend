@@ -1,0 +1,416 @@
+@import "compass";
+@import "../_conf";
+@import "../widgets/ui/progressbar";
+
+
+.progress.progress {
+	height: 40px;
+	padding: 6px;
+	margin: 0;
+	margin-right: 160px;
+	@include box-shadow(none !important);
+	border: 1px solid $ycm-border-color;
+	overflow: visible;
+	background: none;
+
+	&.noslider {
+		.bar:after {
+			content: inherit;
+			display: none !important;
+		}
+	}
+
+	.bar {
+		border-radius: 3px;
+		position: relative;
+		max-width: 100%;
+
+		&:after {
+			content: '';
+			background: url('/common/img/pages/quest/slider.png');
+			width: 17px;
+			height: 23px;
+			top: -15px;
+			z-index: 35;
+			position: absolute;
+			right: -9px;
+		}
+
+	}
+}
+
+#submitBtn._grey {
+	color: #ccc;
+}
+
+
+
+
+
+@-webkit-keyframes floating {
+  from {
+	top: 0px;
+  }
+
+  to {
+	top: -20px;
+  }
+}
+
+
+@keyframes floating {
+  from {
+	top: 20px;
+  }
+
+  to {
+	top: -20px;
+  }
+}
+
+@keyframes twiggle {
+  from {
+	-moz-transform: rotateZ(-0.3deg);
+  }
+
+  to {
+	-moz-transform: rotateZ(0.3deg);
+  }
+}
+
+@-webkit-keyframes twiggle {
+  from {
+	-webkit-transform: rotateZ(-0.3deg);
+  }
+
+  to {
+	-webkit-transform: rotateZ(0.3deg);
+  }
+}
+
+.dialogBrain {
+	top: 180px !important;
+	max-width: 500px !important;
+
+	.dialog__title,
+	.btnClose {
+		display: none !important;
+	}
+
+	.dialog__content {
+		&:after,
+		&:before {
+			content: '';
+			width: 100%;
+			display: table;
+		}
+
+		text-align: center;
+		padding: 0 40px 20px;
+	}
+
+	.imageBrain {
+		background: url(/common/img/pages/quest/mozg.png) center no-repeat;
+		margin: -80px auto -30px;
+		width: 247px;
+		height: 251px;
+		position: relative;
+
+		-webkit-animation: floating 0.8s, twiggle 0.05s;
+		-webkit-animation-iteration-count: infinite;
+		-webkit-animation-direction: alternate;
+
+		animation: floating 0.8s, twiggle 0.05s;
+		animation-iteration-count: infinite;
+		animation-direction: alternate;
+	}
+
+
+	.title {
+		font-size: 30px;
+		font-weight: normal;
+		margin-bottom: 20px !important;
+	}
+}
+
+
+
+@-webkit-keyframes rocket {
+  from {
+	-webkit-transform: translate(540px,-200px);
+  }
+
+  to {
+	-webkit-transform: rotate(70deg);
+  }
+}
+
+
+
+.tagIcon {
+	width: 44px;
+	height: 44px;
+	margin: 0 auto 5px;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.questHead {
+	width: 701px;
+	height: 209px;
+	margin: auto;
+	padding-top: 5px;
+	padding-left: 245px;
+	padding-right: 60px;
+	background: url("/common/img/pages/quest/banan.png") -40px center no-repeat;
+}
+
+.panelQuest_censored {
+	background: url('/common/img/pages/quest/censored.png') 10px center no-repeat;
+}
+.panelQuest_erotic {
+	background: url('/common/img/pages/quest/erotic.png') 10px center no-repeat;
+}
+.panelQuest_racist {
+	background: url('/common/img/pages/quest/racist.png') 10px center no-repeat;
+}
+.panelQuest_politics {
+	background: url('/common/img/pages/quest/politics.png') 10px center no-repeat;
+}
+.panelQuest_religion {
+	background: url('/common/img/pages/quest/religion.png') 10px center no-repeat;
+}
+.panelQuest_foreign {
+	background: url('/common/img/pages/quest/foreign.png') 10px center no-repeat;
+}
+
+.threedee {
+	font-family: verdana, geneva, sans-serif;
+	font-size: 38px;
+	font-weight: bold;
+	color: $ycm-red;
+	opacity: 0.8;
+	position: relative;
+	cursor: default;
+	text-transform: initial;
+	display: inline-block;
+	padding: 0 0.1em 0 0;
+	margin-bottom: 20px;
+}
+.threedee:after {
+	z-index: 1;
+	position: absolute;
+	content: attr(title);
+	color: $ycm-red;
+	left: 0.06em;
+	top: 0.06em;
+	opacity: 0.5;
+}
+.panelFlip {
+	outline : 0 !important;
+	width: 160px;
+	height: 90px;
+	word-break: break-word;
+	text-align: center;
+	display: inline-block;
+	color: $ycm-blue;
+	font-size: 14px;
+	vertical-align: center;
+	border-bottom-color: darken($ycm-grey-light, 10);
+	@include background-image(linear-gradient(#fff 70%, $ycm-grey-light));
+}
+.panelFlip ._table {
+	height: 100%;
+}
+.panelTags.panelTags {
+	width: 693px;
+	margin-bottom: 0;
+	margin-left: 9px;
+}
+.panelTags .tagedit-list  {
+	margin: 0 !important;
+	text-align: left !important;
+}
+.btnReload {
+	margin-top: 20px !important;
+
+	.ycm-icon {
+		vertical-align: middle;
+	}
+}
+
+.btnReload i {display: inline-block}
+
+.btnReload._active i {
+	-webkit-animation-name: spin;
+    -webkit-animation-duration: 1000ms;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-name: spin;
+    -moz-animation-duration: 1000ms;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: ease-in-out;
+    -ms-animation-name: spin;
+    -ms-animation-duration: 1000ms;
+    -ms-animation-iteration-count: infinite;
+    -ms-animation-timing-function: ease-in-out;
+    animation-name: spin;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+@-ms-keyframes spin {
+    from { -ms-transform: rotate(0deg); }
+    to { -ms-transform: rotate(360deg); }
+}
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+.flipTable {
+	margin: 20px auto 0;
+}
+
+.questIcon {
+	position: relative;
+	padding: 0 15px;
+}
+.questIcon._border:before {
+	left: 0;
+}
+.questIcon._border:after {
+	right: 0;
+}
+.questIcon._border:before,
+.questIcon._border:after {
+	position: absolute;
+	content: '';
+	display: block;
+	top: 0;
+	bottom: 0;
+	width: 1px;
+	background: $ycm-border-color;
+}
+.questIcon > .ycm-icon {
+	font-size: 24px;
+	line-height: 40px;
+	color: lighten($ycm-grey, 10);
+}
+ ._notouch .questIcon > .ycm-icon:hover  {
+	opacity: 0.8;
+}
+
+.questIcon._active > .ycm-icon-thumbs-up,
+.questIcon._active > .ycm-icon-neutral {
+	color: $ycm-blue;
+}
+.questIcon._active > .ycm-icon-thumbs-down {
+	color: $ycm-red;
+}
+.questIcon > .ycm-icon-thumbs-down {
+	position: relative;
+	top: 4px;
+}
+.panelQuest.panelQuest {
+	float: right;
+	padding: 0 0 0 65px;
+	width: 400px;
+	line-height: 40px;
+}
+.panelQuest > .link {
+	padding: 0 10px;
+	position: relative;
+	top: 2px;
+}
+.questContainer {
+	margin: 30px 0 30px;
+	background: url('/common/img/pages/quest/cop.png') 0 center no-repeat;
+}
+
+.flip-container {
+	-webkit-perspective: 1000;
+	-moz-perspective: 1000;
+	perspective: 1000;
+	display: inline-block;
+	margin : 9px;
+	position: relative;
+	top: 0;
+
+	-webkit-transition: top .3s;
+	-moz-transition: top .3s;
+	transition: top .3s;
+
+	 ._notouch &.active:hover  {
+		@include box-shadow(none);
+	}
+
+	 ._notouch &:hover  {
+		top: -10px;
+	}
+}
+
+.flip-container._active .panel {
+	color: #fff;
+	background: lighten($ycm-blue, 30);
+}
+
+
+.flip-container.hover .flipper, #flip-toggle.flip .flipper {
+	-webkit-transform: rotateY(180deg);
+	-moz-transform: rotateY(180deg);
+	transform: rotateY(180deg);
+	filter: FlipH;
+	-ms-filter: "FlipH";
+}
+
+.flip-container, .front, .back {
+	width: 160px;
+	height: 90px;
+}
+
+.flipper {
+	-webkit-transition: .7s;
+	-webkit-transform-style: preserve-3d;
+
+	-moz-transition: .7s;
+	-moz-transform-style: preserve-3d;
+
+	transition: .7s;
+	transform-style: preserve-3d;
+
+	position: relative;
+}
+
+.front, .back {
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	backface-visibility: hidden;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.front {
+	z-index: 2;
+}
+
+.back {
+	-webkit-transform: rotateY(180deg);
+	-moz-transform: rotateY(180deg);
+	transform: rotateY(180deg);
+}

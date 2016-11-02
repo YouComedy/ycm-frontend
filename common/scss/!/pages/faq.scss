@@ -1,0 +1,50 @@
+.simpleMenu {
+	list-style: none;
+	margin-right: 40px;
+}
+.simpleMenu__link {
+	text-align: right;
+	width: 100%;
+	padding: 5px 10px;
+	border-bottom: 1px solid transparent;
+	color: #7C8698;
+}
+.simpleMenu__link._active {
+	background: #fff;
+	border-bottom: 1px solid #ddd;
+	border-radius: 3px;
+}
+.faqPanel {
+	overflow: hidden;
+	padding: 20px;
+}
+.faqPanel__head {
+	color: #444;
+	line-height: 1;
+	font-weight: normal;
+	font-size: 36px;
+	margin: 0 0 20px;
+}
+.faqPanel__list {
+	list-style: none;
+}
+.faqPanel__action {
+	line-height: 1;
+	font-weight: bold;
+	border-bottom: 1px dashed;
+	color: #1EB4E8;
+	margin: 10px 0;
+}
+.faqPanel__item > p {
+	display: none;
+	margin-bottom: 10px;
+}
+.faqPanel__banana {
+	width: 200px;
+	height: 250px;
+	margin-right: -20px;
+	
+	position: relative;
+	float: right;
+	background: url("/common/img/empty/faq.png") -60px 0px no-repeat;
+}

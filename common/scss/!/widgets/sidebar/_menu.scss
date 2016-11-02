@@ -1,0 +1,97 @@
+.widgetMenu__label {
+	margin-left: 10px;
+	font-size: 13px;
+}
+
+.countdown-ready {
+	border:1px solid $ycm-yellow-dark;
+	background-color: $ycm-yellow-light;
+	@include filter-gradient($ycm-yellow-light, $ycm-yellow-dark, vertical);
+	@include background-image(linear-gradient(top, $ycm-yellow-light 0%, $ycm-yellow-dark 100%));
+	color : $ycm-yellow-dark-text;
+	text-indent: -100px;
+	position: relative;
+	overflow: hidden;
+
+	&:after {
+		content: 'new';
+		position: absolute;
+		text-align: right;
+		right: 5px;
+		top: -1px;
+	}
+}
+
+.countdown-hidden {
+	display: none;
+}
+
+.sidebar__counter {
+	display: none;
+
+	&.show {
+		display: block;
+	}
+}
+
+.widgetMenu__item {
+	 ._notouch &:hover  {
+		background-color: $ycm-grey-light;
+	}
+
+	&:last-child {
+		 ._notouch &:hover  {
+			border-bottom-left-radius: 5px;
+			border-bottom-right-radius: 5px;
+		}
+	}
+
+	&._active {
+		color: $ycm-blue;
+	}
+}
+
+.widgetMenu__profile {
+	display: block;
+	overflow: hidden;
+	width: 230px;
+	white-space: nowrap;
+
+	&._shade._shade:after {
+		@include background-image(linear-gradient(left, rgba(#fff, 0) 0%, rgba(#fff, 1) 100%));
+	}
+}
+
+.widgetMenu__profileTabs {
+	margin: 8px 0 0;
+	font-size: 11px;
+	position: relative;
+	bottom: -2px;
+}
+
+.widgetMenu__profileRating {
+	color: $ycm-grey;
+	margin-top: 3px;
+}
+
+.widgetMenu {
+	width: 250px;
+	position: fixed;
+	top:70px;
+
+	.ycm-icon {
+		width: 13px;
+		height: 13px;
+		display: inline-block;
+	}
+
+    .widget__head {
+        background: #fff !important;
+    }
+
+    .thumb {
+        width: 30px;
+        height: 30px;
+    }
+
+}
