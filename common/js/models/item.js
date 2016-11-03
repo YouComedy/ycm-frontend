@@ -1098,7 +1098,6 @@ var POPOVER_TPL = APP.globals.POPOVER_TPL = [
 
  	var TPL_SHARE = "#item-sharing-popover";
 
- 	// Кароч хуйня какая-то
  	APP.views.ItemWithPopovers = Backbone.View.extend({
 
  		'registerPopover' : function(btn, o, undefined){

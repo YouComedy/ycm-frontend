@@ -1,10 +1,10 @@
 
 
 
-// @todo спиздить и адаптировать функцию autosizeSetup() с vk.com
+// @todo адаптировать функцию autosizeSetup() с vk.com
 
 $.fn.autoGrowTextarea = function( opts ) {
-	
+
 	opts = opts || {};
 
 	return this.each(function() {
@@ -33,7 +33,7 @@ $.fn.autoGrowTextarea = function( opts ) {
 
 		// Create a mirror
 		var mirror = createMirror(this);
-		
+
 		// Style the mirror
 		mirror.style.display = 'none';
 		mirror.style.wordWrap = 'break-word';
