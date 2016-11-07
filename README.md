@@ -1,6 +1,6 @@
 # YCM-frontend
 
-This is the frontend code of [http://youcomedy.me](YouComedy.me). ATM, there is no way to run the local development environment because it requires the backend code, which is missing. We are working to resolve this issue.
+This is the frontend code of [YouComedy.me](http://youcomedy.me). ATM, there is no way to run the local development environment because it requires the backend code, which is missing. We are working to resolve this issue.
 
 ## How to build
 ```
